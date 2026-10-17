@@ -1,0 +1,24 @@
+{
+  "Collection": [
+    {
+      "Id": 2,
+      "Sender": {
+        "UserId": 2,
+        "UserName": "watrabi"
+      },
+      "SenderAbsoluteUrl": "/users/2/profile",
+      "SenderThumbnail": {
+        "Url": "/images/defaultimage.png",
+        "Final": true
+      },
+      "Subject": "welcome to watrbx",
+      "Body": "Welcome to watrbx!<br>Please keep in mind that this site is in active development and things could change at any moment!<br><br>If you have any questions, join our <a href=\"https://discord.gg/kwX8wvEFw6\">discord</a>!",
+      "IsRead": true,
+      "IsSystemMessage": false,
+      "DateSent": "2025-05-27T12:34:56Z"
+    }
+  ],
+  "TotalMessages": 0,
+  "Page": 1,
+  "PageSize": 20
+}
