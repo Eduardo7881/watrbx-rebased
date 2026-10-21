@@ -1,0 +1,28 @@
+# ---- Private Stuff ----
+storage/PrivateNut.pem
+storage/public_key.pem
+storage/thumbnails/*
+storage/assets/*
+storage/logs/*
+storage/mariadb.pid
+PrivateNut.pem
+public_key.pem
+
+# ---- Other ----
+.env
+
+# ---- Composer ----
+vendor
+vendor/*
+composer.lock
+
+# ---- Residual Assets ----
+public/*.apk
+public/*.exe
+public/*.deb
+public/watrbx.apk
+public/watrbxbootstrapper.exe
+
+# Cache
+public/.well-known/*
+public/.well-known
