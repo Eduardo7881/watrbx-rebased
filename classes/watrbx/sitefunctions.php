@@ -5,12 +5,14 @@ use Pixie\Connection;
 use Pixie\QueryBuilder\QueryBuilderHandler;
 use watrlabs\users\getinfo;
 use watrlabs\watrkit\pagebuilder;
+use lavakit\Text\{Config, ContextualModeration, ModerationContext};
 
 class sitefunctions {
     
     public $key = ''; // TODO: DO NOT SHOW THIS HERE
     public $method = 'AES-128-CTR'; 
     public $iv = '5449494959313423';
+    public $filter = new ContextualModeration(new Config(apiKey: $_ENV["OPENAI_API_KEY"]));
 
     function construct__() {
         $this->key = $_ENV["random_key"];
@@ -27,6 +29,8 @@ class sitefunctions {
         $decrypted = openssl_decrypt($text, $this->method, $this->key, 0, $this->iv);
         return $decrypted;
     }
+
+    public function maskMessage($text, $char = '#') { return str_repeat($char, mb_strlen($message, 'UTF-8')); }
 
     public static function returnPlatform($returnPc = false){
 
@@ -257,6 +261,7 @@ class sitefunctions {
 
     static function filter_text($text) 
     {
+        /*
         $badlist = array_filter(explode(",", file_get_contents("../storage/bad_words.txt")));
         $filterCount = count($badlist);
 
@@ -268,9 +273,14 @@ class sitefunctions {
         }
 
         return $text;
+        */
+
+        if ($this->isbadtext($text)) return $this->maskMessage($text, "#");
+        return $text;
     }
 
     static function isbadtext($text){
+         /*
         $badlist = array_map('trim', array_filter(explode(",", file_get_contents("../storage/bad_words.txt"))));
                 
         foreach ($badlist as $word) {
@@ -280,7 +290,9 @@ class sitefunctions {
         }
         
         return false;
-
+        */
+        $result = $this->filter->moderate($text, new ModerationContext()); // TODO: History thing
+        return $result->shouldBlock();
     }
 
     public function set_message($message, $type = "error") {
