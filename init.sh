@@ -343,6 +343,16 @@ DB_PORT="$(printf '%s' "$DB_PORT" | sed 's/"/\\"/g')"
 WEBRCC_IP="$(printf '%s' "$RCC_IP" | sed 's/"/\\"/g')"
 WEBRCC_PORT="$(printf '%s' "$RCC_PORT" | sed 's/"/\\"/g')"
 WEBRCC_URL="roblox.com"
+
+# ---- FFLags ----
+FFLAG_DeveloperProducts=true
+FFLAG_EnableGamePassForDevelopers=true
+FFLAG_EnableGamePassApi=true
+FFLAG_StarterPlaceOnAccountCreation=true
+FFLAG_UseAlgorithmForGames=true
+FFLAG_UseNewSearch=true
+FFLAG_RedirectHelpToSubdomain=false
+
 ENV
     ok ".env created."
 else
