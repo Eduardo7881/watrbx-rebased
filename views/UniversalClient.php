@@ -1,9 +1,16 @@
+<?php
+
+$applicationName = $_ENV["APP_NAME"];
+//$placeId = (int)$placeId;
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>watrbx</title>
+  <title><?=htmlspecialchars($applicationName)?> - WASM Client</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -66,10 +73,10 @@
     var Module = {
       canvas: document.getElementById('canvas'),
       arguments: [
-        '-j', 'https://www.watrbx.wtf/Game/PlaceLauncher.ashx?placeId=1',
+        '-j', '<?=$_ENV["BASE_URL"]?>/Game/PlaceLauncher.ashx?placeId=<?=$placeId?>',
         '-t', 'sigmite',
-        '-a', 'https://www.watrbx.wtf/Login/Negotiate.ashx',
-        '-b', 'https://www.watrbx.wtf'
+        '-a', '<?=$_ENV["BASE_URL"]?>/Login/Negotiate.ashx',
+        '-b', '<?=$_ENV["BASE_URL"]?>'
       ],   
       setStatus: function(text) {
         if (text) document.getElementById('status').innerText = text;
@@ -85,6 +92,6 @@
       }
     };
   </script>
-  <script async type="text/javascript" src="UniversalClient.js?tj=is-inside-of-me"></script>
+  <script async type="text/javascript" src="UniversalClient.js?tj=is-inside-of-me"></script> <!-- WTFFFFF -->
 </body>
 </html>

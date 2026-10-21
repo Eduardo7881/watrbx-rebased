@@ -1,4 +1,4 @@
-<?php
+\<?php
 use watrlabs\logging\discord;
 use watrlabs\router\Routing;
 use watrlabs\authentication;
@@ -15,6 +15,14 @@ global $router; // IMPORTANT: KEEP THIS HERE!
 $router->get('/stats', function(){
     $page = new pagebuilder;
     $page::get_template("stats");
+});
+
+$router->get('/wasm/UniversalClient.html', function() {
+    if (!isset($_GET['placeId'])) { http_response_code(400); die("Malformed place id param"); }
+    if ($_GET['placeId'] < 1) { http_response_code(400); die("Invalid place id"); }
+
+    $page = new pagebuilder;
+    $page::get_template("UniversalClient", ["placeId"=>(int)$_GET['placeId']]);
 });
 
 $router->get('/game/GetAllowedExperimentalFeatures', function(){
