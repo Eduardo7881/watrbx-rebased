@@ -5,19 +5,11 @@
 ?>
 <div id="Footer" class="footer-container">
     <div class="FooterNav">
-        <a href="https://www.watrbx.wtf/info/Privacy.aspx">Privacy Policy</a>
+        <a href="/info/Privacy.aspx">Privacy Policy</a>
         &nbsp;|&nbsp;
-        <a href="https://corp.watrbx.wtf/advertise-on-roblox" class="roblox-interstitial">Advertise with Us</a>
-        &nbsp;|&nbsp;
-        <a href="https://corp.watrbx.wtf/press" class="roblox-interstitial">Press</a>
-        &nbsp;|&nbsp;
-        <a href="https://corp.watrbx.wtf/contact-us" class="roblox-interstitial">Contact Us</a>
-        &nbsp;|&nbsp;
-            <a href="https://corp.watrbx.wtf/about" class="roblox-interstitial">About Us</a>
-&nbsp;|&nbsp;        <a href="https://blog.watrbx.wtf">Blog</a>
-        &nbsp;|&nbsp;
-            <a href="https://corp.watrbx.wtf/careers" class="roblox-interstitial">Jobs</a>
-&nbsp;|&nbsp;        <a href="https://corp.watrbx.wtf/parents" class="roblox-interstitial">Parents</a>
+            <a href="/about" class="roblox-interstitial">About Us</a>
+            &nbsp;|&nbsp;
+            <a href="https://blog.watrbx.wtf">Blog</a>
     </div>
     <div class="legal">
             <div class="left">
@@ -54,7 +46,7 @@
 
     <script type="text/javascript">
         $(function () {
-            Roblox.CookieUpgrader.domain = 'watrbx.wtf';
+            Roblox.CookieUpgrader.domain = '<?=$_ENV["APP_D0MAIN"]?>';
             Roblox.CookieUpgrader.upgrade("GuestData", { expires: Roblox.CookieUpgrader.thirtyYearsFromNow });
             Roblox.CookieUpgrader.upgrade("RBXSource", { expires: function (cookie) { return Roblox.CookieUpgrader.getExpirationFromCookieValue("rbx_acquisition_time", cookie); } });
             Roblox.CookieUpgrader.upgrade("RBXViralAcquisition", { expires: function (cookie) { return Roblox.CookieUpgrader.getExpirationFromCookieValue("time", cookie); } });

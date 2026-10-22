@@ -19,7 +19,7 @@
             DialogMinimizeTemplate: "chat-dialog-minimize"
         };
         Roblox.Chat = {
-            SoundFile: "https://www.watrbx.wtf/Chat/sound/chatsound.mp3"
+            SoundFile: "/Chat/sound/chatsound.mp3"
         };
         Roblox.Party = {};
         Roblox.Party.SetGoogleAnalyticsCallback = function () {

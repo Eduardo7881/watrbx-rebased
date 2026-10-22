@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/base.css?t=<?=time()?>">
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <title>watrbx - Account Deletion</title>
+    <title>Account Deletion</title>
 </head>
 <body>
     <div id="main">
@@ -17,8 +17,8 @@
                 You can do so via the following methods:
                 <ul>
                     <li>Email: <a href="mailto:help@watrbx.wtf">help@watrbx.wtf</a></li>
-                    <li>Discord: <a href="https://discord.gg/kwX8wvEFw6">https://discord.gg/kwX8wvEFw6</a></li>
-                    <li>Direct Messaging (on-site) or via forum: <a href="https://watrbx.wtf/users/2/profile">via pm</a> - <a href="https://watrbx.wtf/Forum/ShowForum.aspx?ForumID=2">via forum</a></li> 
+                    <li>Discord: <a href="https://discord.gg/CHANGE_THIS_LINK">https://discord.gg/CHANGE_THIS_LINK</a></li>
+                    <li>Direct Messaging (on-site) or via forum: <a href="<?=$_ENV['BASE_URL']?>/users/2/profile">via pm</a> - <a href="<?=$_ENV['BASE_URL']?>/Forum/ShowForum.aspx?ForumID=2">via forum</a></li> 
                 </ul>
                 <br>
                 We will get back to you as soon as we can.

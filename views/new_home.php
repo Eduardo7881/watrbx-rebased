@@ -266,7 +266,7 @@ $pagebuilder->buildheader();
 
 <div id="usernotifications-data-model"
      class="hidden"
-     data-notificationsdomain="https://www.watrbx.wtf/"
+     data-notificationsdomain="<?=$_ENV['BASE_URL']?>"
      data-notificationstestinterval="5000"
      data-notificationsmaxconnectiontime="43200000">
 </div>    <script type="text/javascript">
@@ -312,7 +312,7 @@ $pagebuilder->buildheader();
      data-userpresencemultigetlimit="100"
      data-intervalofchangetitleforpartychrome="500"
      data-spinner="https://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif"
-     data-notificationsdomain="https://www.<?=$_ENV["APP_DOMAIN"]?>/"
+     data-notificationsdomain="<?=$_ENV['BASE_URL']?>"
      data-devicetype="Computer"
      data-inapp=false
      data-smallerchatenabled=true
@@ -1029,7 +1029,7 @@ $pagebuilder->buildheader();
      data-is-protocol-handler-launch-enabled="True"
      data-is-user-logged-in="True"
      data-os-name="Windows"
-     data-protocol-name-for-client="roblox-player"
+     data-protocol-name-for-client="watrbx-player"
      data-protocol-name-for-studio="watrbx-studio"
      data-protocol-url-includes-launchtime="true"
      data-protocol-detection-enabled="true">

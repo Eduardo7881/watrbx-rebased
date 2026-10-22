@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>watrbx maintenance</title>
+    <title>maintenance</title>
     <style type="text/css">         
         html {
              height: 100%;
@@ -77,21 +76,23 @@
 </div>
     <div class="content">
         <p class="notification">
-            watrbx is undergoing maintenance. Join our <a href="https://discord.gg/kwX8wvEFw6">discord</a> for more info.
+            <?=$_ENV["APP_NAME"]?> is undergoing maintenance (or something really bad happened). Check the console for further details.
         </p>
     </div>
 
     <script type="text/javascript">
-        window.window.setTimeout("window.location = 'https://www.watrbx.wtf/'", 30000);
+        window.window.setTimeout("window.location = `<?=$_ENV['BASE_URL']?>`", 30000);
     </script>
 
+    <!-- Sorry! The website has crashed on you OwO -->
     <!-- 
         Your Error:
 
         <?=$e?>
 
-        Report this to waterblox dev.
+        Report this to the website owner/hoster.
         
     -->
+    <script type="text/javascript">console.log("<?=$e?>");</script>
 </body>
 </html>

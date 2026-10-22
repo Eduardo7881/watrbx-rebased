@@ -107,7 +107,7 @@ $router->group('/api/v1/discord-bot', function($router) {
                 if($lastVisited){
                     $visited["id"] = $lastVisited->id;
                     $visited["title"] = $lastVisited->title;
-                    $visited["url"] = "https://www.watrbx.wtf/games/".$lastVisited->id."/" . $slugify->slugify($lastVisited->title);
+                    $visited["url"] = $_ENV["BASE_URL"] . "/games/".$lastVisited->id."/" . $slugify->slugify($lastVisited->title);
                 }
 
                 $activity = "Offline";
@@ -150,7 +150,7 @@ $router->group('/api/v1/discord-bot', function($router) {
         $expires = time() + 5000000;
         $code = $func->genstring(25);
         $data = array(
-            "url"=>"https://www.watrbx.wtf/?validate=$code",
+            "url"=>$_ENV["BASE_URL"] . "/?validate=$code",
             "expires"=>$expires
         );
 

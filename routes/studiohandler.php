@@ -34,7 +34,7 @@ $router->get('/login/RequestAuth.ashx', function(){
     if($currentuser !== null && isset($_COOKIE["_ROBLOSECURITY"])){
         http_response_code(200);
         setcookie(".ROBLOSECURITY", $_COOKIE["_ROBLOSECURITY"], time() + 8600, "/", "." . $_ENV["APP_DOMAIN"]);
-        echo "https://www.watrbx.wtf/Login/Negotiate.ashx?suggest=" . $_COOKIE["_ROBLOSECURITY"];
+        echo $_ENV["BASE_URL"] . "/Login/Negotiate.ashx?suggest=" . $_COOKIE["_ROBLOSECURITY"];
         die();
     } else {
         http_response_code(401);
@@ -126,7 +126,6 @@ $router->get('/universes/get-info', function(){
 
     }
 
-
     die('');
 });
 
@@ -205,7 +204,7 @@ $router->get('/my/settings/json', function() {
     if($currentuser !== null){
         $data = [
             "AccountAgeInDays" => 29,
-            "AccountSettingsApiDomain" => "https://www.watrbx.wtf",
+            "AccountSettingsApiDomain" => $_ENV["BASE_URL"],
             "AgeBracket" => 0,
             "AllowedNotificationSourceTypes" => [
                 "Test", "FriendRequestReceived", "FriendRequestAccepted", "PartyInviteReceived",
@@ -214,8 +213,8 @@ $router->get('/my/settings/json', function() {
                 "GameUpdate", "DeveloperMetricsAvailable"
             ],
             "AllowedReceiverDestinationTypes" => ["DesktopPush", "NotificationStream"],
-            "ApiProxyDomain" => "https://www.watrbx.wtf",
-            "AuthDomain" => "https://www.watrbx.wtf",
+            "ApiProxyDomain" => $_ENV["BASE_URL"],
+            "AuthDomain" => $_ENV["BASE_URL"],
             "BcExpireDate" => "/Date(-0)/",
             "BcLevel" => "None",
             "BcRenewalPeriod" => null,
@@ -273,7 +272,7 @@ $router->get('/my/settings/json', function() {
             "IsUpdateEmailApiEndpointEnabled" => true,
             "IsUpdateEmailSectionShown" => true,
             "IsUserConnectedToFacebook" => false,
-            "LocaleApiDomain" => "https://www.watrbx.wtf",
+            "LocaleApiDomain" => $_ENV["BASE_URL"],
             "MinimumChromeVersionForPushNotifications" => 50,
             "MissingParentEmail" => false,
             "MyAccountSecurityModel" => [
@@ -289,7 +288,7 @@ $router->get('/my/settings/json', function() {
                 ]
             ],
             "Name" => $currentuser->username,
-            "NotificationSettingsDomain" => "https://www.watrbx.wtf",
+            "NotificationSettingsDomain" => $_ENV["BASE_URL"],
             "PreviousUserNames" => "",
             "PushNotificationsEnabledOnFirefox" => true,
             "ReceiveNewsletter" => false,

@@ -146,13 +146,13 @@ function __doPostBack(eventTarget, eventArgument) {
 		    _gaq.push(['_setCampSourceKey', 'rbx_source']);
 		    _gaq.push(['_setCampMediumKey', 'rbx_medium']);
 		    _gaq.push(['_setCampContentKey', 'rbx_campaign']);
-		        _gaq.push(['_setDomainName', 'watrbx.wtf']);
+		        _gaq.push(['_setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
 		_gaq.push(['b._setAccount', 'UA-486632-1']);
 		_gaq.push(['b._setCampSourceKey', 'rbx_source']);
 		_gaq.push(['b._setCampMediumKey', 'rbx_medium']);
 		_gaq.push(['b._setCampContentKey', 'rbx_campaign']);
 
-		_gaq.push(['b._setDomainName', 'watrbx.wtf']);
+		_gaq.push(['b._setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
         
             _gaq.push(['b._setCustomVar', 1, 'Visitor', 'Anonymous', 2]);
             _gaq.push(['b._trackPageview']);    
@@ -161,7 +161,7 @@ function __doPostBack(eventTarget, eventArgument) {
         
 
 		_gaq.push(['c._setAccount', 'UA-26810151-2']);
-		_gaq.push(['c._setDomainName', 'watrbx.wtf']);
+		_gaq.push(['c._setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
 
 		(function() {
 			var ga = document.createElement('script');

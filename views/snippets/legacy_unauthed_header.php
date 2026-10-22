@@ -53,13 +53,13 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 		    _gaq.push(['_setCampSourceKey', 'rbx_source']);
 		    _gaq.push(['_setCampMediumKey', 'rbx_medium']);
 		    _gaq.push(['_setCampContentKey', 'rbx_campaign']);
-		        _gaq.push(['_setDomainName', 'watrbx.wtf']);
+		        _gaq.push(['_setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
 		_gaq.push(['b._setAccount', 'UA-486632-1']);
 		_gaq.push(['b._setCampSourceKey', 'rbx_source']);
 		_gaq.push(['b._setCampMediumKey', 'rbx_medium']);
 		_gaq.push(['b._setCampContentKey', 'rbx_campaign']);
 
-		_gaq.push(['b._setDomainName', 'watrbx.wtf']);
+		_gaq.push(['b._setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
         
             _gaq.push(['b._setCustomVar', 1, 'Visitor', 'Anonymous', 2]);
             _gaq.push(['b._trackPageview']);    
@@ -68,7 +68,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
         
 
 		_gaq.push(['c._setAccount', 'UA-26810151-2']);
-		_gaq.push(['c._setDomainName', 'watrbx.wtf']);
+		_gaq.push(['c._setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
 
 		(function() {
 			var ga = document.createElement('script');
@@ -127,16 +127,16 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 if (typeof(Roblox) === "undefined") { Roblox = {}; }
 Roblox.Endpoints = Roblox.Endpoints || {};
 Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
-Roblox.Endpoints.Urls['/asset/'] = 'https://assetgame.watrbx.wtf/asset/';
+Roblox.Endpoints.Urls['/asset/'] = '/asset/';
 Roblox.Endpoints.Urls['/client-status/set'] = '/client-status/set';
 Roblox.Endpoints.Urls['/client-status'] = '/client-status';
-Roblox.Endpoints.Urls['/game/'] = 'https://assetgame.watrbx.wtf/game/';
-Roblox.Endpoints.Urls['/game/edit.ashx'] = 'https://assetgame.watrbx.wtf/game/edit.ashx';
-Roblox.Endpoints.Urls['/game/getauthticket'] = 'https://assetgame.watrbx.wtf/game/getauthticket';
-Roblox.Endpoints.Urls['/game/placelauncher.ashx'] = 'https://assetgame.watrbx.wtf/game/placelauncher.ashx';
-Roblox.Endpoints.Urls['/game/report-stats'] = 'https://assetgame.watrbx.wtf/game/report-stats';
-Roblox.Endpoints.Urls['/game/report-event'] = 'https://assetgame.watrbx.wtf/game/report-event';
-Roblox.Endpoints.Urls['/chat/chat'] = 'https://misc.watrbx.wtf/chat/chat';
+Roblox.Endpoints.Urls['/game/'] = '/game/';
+Roblox.Endpoints.Urls['/game/edit.ashx'] = '/game/edit.ashx';
+Roblox.Endpoints.Urls['/game/getauthticket'] = '/game/getauthticket';
+Roblox.Endpoints.Urls['/game/placelauncher.ashx'] = '/game/placelauncher.ashx';
+Roblox.Endpoints.Urls['/game/report-stats'] = '/game/report-stats';
+Roblox.Endpoints.Urls['/game/report-event'] = '/game/report-event';
+Roblox.Endpoints.Urls['/chat/chat'] = '/chat/chat';
 Roblox.Endpoints.Urls['/presence/users'] = '/presence/users';
 Roblox.Endpoints.Urls['/presence/user'] = '/presence/user';
 Roblox.Endpoints.Urls['/friends/list'] = '/friends/list';
@@ -225,7 +225,7 @@ Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
             <div id="rbx-continue-shopping-btn" class="btn btn-medium btn-neutral rbx-btn-secondary-xs btn-more btn-continue-shopping">Continue to Shop</div>
         </div>
         <div class="fine-print">
-            The shop is not part of watrbx.wtf and is governed by a separate <a href="https://www.myplay.com/direct/cookie-policy?origin=desktop&permalink=shoproblox">privacy policy</a>.
+            The shop is not part of ROBLOX.com and is governed by a separate <a href="https://www.myplay.com/direct/cookie-policy?origin=desktop&permalink=shoproblox">privacy policy</a>.
         </div>
     </div>
 </div>

@@ -256,7 +256,7 @@ $auth->requiresession();
 
 <div id="usernotifications-data-model"
      class="hidden"
-     data-notificationsdomain="https://www.watrbx.wtf/"
+     data-notificationsdomain="$_ENV['BASE_URL']"
      data-notificationstestinterval="5000"
      data-notificationsmaxconnectiontime="43200000">
 </div>    <script type="text/javascript">
@@ -295,14 +295,14 @@ $auth->requiresession();
      chat-library="chatLibrary"
      data-userid="62402235"
      data-domain="<?=$_ENV["APP_DOMAIN"]?>"
-     data-gamespagelink="https://www.roblox.com/games"
+     data-gamespagelink="<?=$_ENV['BASE_URL']?>/games"
      data-chatdomain="/"
      data-numberofmembersforpartychrome="6"
      data-avatarheadshotsmultigetlimit="100"
      data-userpresencemultigetlimit="100"
      data-intervalofchangetitleforpartychrome="500"
      data-spinner="https://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif"
-     data-notificationsdomain="https://www.watrbx.wtf/"
+     data-notificationsdomain="<?=$_ENV['BASE_URL']?>"
      data-devicetype="Computer"
      data-inapp=false
      data-smallerchatenabled=true

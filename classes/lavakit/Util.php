@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace lavakit;
 use lavakit\Http\ClientIp;
 
@@ -12,7 +10,21 @@ class Util {
          $this->initialized = true;
     }
 
-    public static function getVisitorTimezone(): ?string {
+    public static function clamp($n, $min, $max) {
+        if ($min > $max) throw new \InvalidArgumentException("Minimum cannot exceed maximum");
+        return max($min, min($n, $max));
+    }
+
+    public static function lerp($start, $end, $amount) {
+        return $start + (($end - $start) * $amount);
+    }
+
+    public static function isBetween($n, $min, $max, $inclusive = true) {
+        if ($inclusive) return $value >= $min && $value <= $max;
+        return $value > $min && $value < $max;
+    }
+
+    public static function getVisitorTimezone() {
         if (isset($_COOKIE["RBX__TIMEZONE"])) {
             if (is_string($_COOKIE["RBX__TIMEZONE"]) && in_array($_COOKIE["RBX__TIMEZONE"], timezone_identifiers_list(), true)) return $_COOKIE["RBX__TIMEZONE"];
         }
