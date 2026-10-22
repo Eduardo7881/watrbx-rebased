@@ -119,7 +119,6 @@ $router->get('/api/v1/gameserver/end-laggy-server', function() {
 });
 
 $router->get('/api/v1/gameserver/pinger', function(){
-
     global $db;
     $gameserver = new gameserver();
 
@@ -145,15 +144,12 @@ $router->get('/api/v1/gameserver/pinger', function(){
                 $Renew = $Grid->Renew($Url);
                 $Renew->RenewLease($jobId, 600); // 600 Seconds.
                 // TODO: Track last ping time and predict server shutdown to prevent people from joining
-                die(createsuccess("your life has been extended"));
+                die(createsuccess("your life has been extended")); // congrats
             }
         } else {
             die(createerror("Oof."));
         }
-
-
     }
-
 });
 
 $router->get("/api/v1/gameserver/mark-active", function(){
@@ -287,16 +283,12 @@ $router->get("/api/v1/gameserver/client-presence", function(){
                     $db->table("visits")->insert($visitsinsert);
                     $db->table("activeplayers")->insert($insert);
 
-                    
-
-                    
                     $log->internal_log($userinfo->username . " has joined place " . $jobinfo->assetid);
                     die("Success.");
                 } elseif($action == "disconnect"){
                     $update = [
                         "active_where"=>"Website"
                     ];
-
 
                     $db->table("users")->where("id", $userid)->update($update);
                     $db->table("activeplayers")->where("userid", $userid)->where("jobid", $jobid)->delete();
@@ -308,7 +300,6 @@ $router->get("/api/v1/gameserver/client-presence", function(){
                         // End server. KILL. IT.
                         $gameserver->end_job($jobid);
                     }
-
 
                     die("Success.");
                 } else {
@@ -330,7 +321,6 @@ $router->get("/api/v1/gameserver/client-presence", function(){
 });
 
 $router->group('/api/v1/gameserver', function($router) {
-    
     $router->get("/validate-info", function () {
         $accesskey = $_SERVER['HTTP_AUTHORIZATION']; // im not issetting it because as long as validate_header is working as it should then they should have it
         global $db;
@@ -530,6 +520,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+                            $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                         } elseif ($jobinfo->jobtype == "headshot"){
                             header("Content-type: text/lua");
@@ -538,6 +529,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+                            $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                         } 
                     }
@@ -551,6 +543,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+                            $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                         case "10":
@@ -560,6 +553,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+                            $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                         case "18":
@@ -569,6 +563,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+ 			    $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                         case "19":
@@ -578,6 +573,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+			    $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                         case "9":
@@ -588,6 +584,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+			    $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                         case "11":
@@ -597,6 +594,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+			    $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                         case "12":
@@ -606,6 +604,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+			    $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                         case "17":
@@ -615,6 +614,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+			    $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                         case "13":
@@ -624,6 +624,7 @@ $router->group('/api/v1/gameserver', function($router) {
                             $dimensions = explode("x", $jobinfo->dimensions);
                             $lua = str_replace("%x%", $dimensions[0], $lua);
                             $lua = str_replace("%y%", $dimensions[1], $lua);
+			    $lua = str_replace("%baseurl%", $_ENV['BASE_URL'], $lua);
                             die($lua);
                             break;
                     }
@@ -649,7 +650,7 @@ $router->group('/api/v1/gameserver', function($router) {
                 $return_array = array(
                     "jobid"=>$jobinfo->jobid,
                     "type"=>$jobinfo->type,
-                    "lua_url"=>"https://www.watrbx.wtf/api/v1/gameserver/fetch-job-lua?jobid=" . $jobinfo->jobid,
+                    "lua_url"=>$_ENV["BASE_URL"] . "/api/v1/gameserver/fetch-job-lua?jobid=" . $jobinfo->jobid,
                 );
 
                 die(json_encode($return_array));
