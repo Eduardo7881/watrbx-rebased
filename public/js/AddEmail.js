@@ -77,7 +77,7 @@ if (typeof Roblox.AddEmail === "undefined") {
                 onAccept: validate,
                 allowHtmlContentInBody: true,
                 allowHtmlContentInFooter: true,
-                footerText: "<a href='https://watrbx.wtf/Forum/ShowPost.aspx?PostID=407'>Need Help?</a>",
+                footerText: "<a href='/Forum/ShowPost.aspx?PostID=407'>Need Help?</a>",
                 dismissable: false,
                 fieldValidationRequired: true
             });
