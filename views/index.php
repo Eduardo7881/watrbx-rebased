@@ -35,7 +35,7 @@ if($auth->hasaccount()){
     <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
 
     
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700" rel="stylesheet" type="text/css">
 
     
     
@@ -47,9 +47,9 @@ if($auth->hasaccount()){
     
     
     
-    <script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js'></script>
+    <script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js'></script>
 <script type='text/javascript'>window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-1.11.1.js'><\/script>")</script>
-<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js'></script>
 <script type='text/javascript'>window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-migrate-1.2.1.js'><\/script>")</script>
 
 
@@ -96,7 +96,7 @@ if($auth->hasaccount()){
 			var ga = document.createElement('script');
 			ga.type = 'text/javascript';
 			ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+			ga.src = ('https:' == document.location.protocol ? 'http://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(ga, s);
 		})();
@@ -748,7 +748,7 @@ Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
 </script>
 
 <script
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  src="http://challenges.cloudflare.com/turnstile/v0/api.js"
   defer
 ></script>
 

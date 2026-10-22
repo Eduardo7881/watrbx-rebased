@@ -42,7 +42,7 @@
 			var ga = document.createElement('script');
 			ga.type = 'text/javascript';
 			ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+			ga.src = ('https:' == document.location.protocol ? 'http://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(ga, s);
 		})();
@@ -52,9 +52,9 @@
 
     <script type="text/javascript">function urchinTracker() {}</script>
 
-        <script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js'></script>
+        <script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js'></script>
 <script type='text/javascript'>window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-1.11.1.js'><\/script>")</script>
-<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js'></script>
 <script type='text/javascript'>window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-migrate-1.2.1.js'><\/script>")</script>
 <script type='text/javascript' src='/js/jquery/MicrosoftAjax.js'></script>
 <script type='text/javascript'>window.Sys || document.write("<script type='text/javascript' src='/js/Microsoft/MicrosoftAjax.js'><\/script>")</script>
@@ -97,7 +97,7 @@ Roblox.Endpoints.Urls['/game/getauthticket'] = '<?=$_ENV["BASE_URL"]?>/game/geta
 Roblox.Endpoints.Urls['/game/placelauncher.ashx'] = '<?=$_ENV["BASE_URL"]?>/game/placelauncher.ashx';
 Roblox.Endpoints.Urls['/game/report-stats'] = '<?=$_ENV["BASE_URL"]?>/game/report-stats';
 Roblox.Endpoints.Urls['/game/report-event'] = '<?=$_ENV["BASE_URL"]?>/game/report-event';
-Roblox.Endpoints.Urls['/chat/chat'] = 'https://misc.watrbx.wtf/chat/chat';
+Roblox.Endpoints.Urls['/chat/chat'] = 'http://misc.watrbx.wtf/chat/chat';
 Roblox.Endpoints.Urls['/presence/users'] = '<?=$_ENV["BASE_URL"]?>/presence/users';
 Roblox.Endpoints.Urls['/presence/user'] = '<?=$_ENV["BASE_URL"]?>/presence/user';
 Roblox.Endpoints.Urls['/friends/list'] = '<?=$_ENV["BASE_URL"]?>/friends/list';
@@ -367,17 +367,17 @@ Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
     <div class="FooterNav">
         <a href="<?=$_ENV["BASE_URL"]?>/info/Privacy.aspx">Privacy Policy</a>
         &nbsp;|&nbsp;
-        <a href="https://corp.watrbx.wtf/advertise-on-roblox" class="roblox-interstitial">Advertise with Us</a>
+        <a href="http://corp.watrbx.wtf/advertise-on-roblox" class="roblox-interstitial">Advertise with Us</a>
         &nbsp;|&nbsp;
-        <a href="https://corp.watrbx.wtf/press" class="roblox-interstitial">Press</a>
+        <a href="http://corp.watrbx.wtf/press" class="roblox-interstitial">Press</a>
         &nbsp;|&nbsp;
-        <a href="https://corp.watrbx.wtf/contact-us" class="roblox-interstitial">Contact Us</a>
+        <a href="http://corp.watrbx.wtf/contact-us" class="roblox-interstitial">Contact Us</a>
         &nbsp;|&nbsp;
-            <a href="https://corp.watrbx.wtf/about" class="roblox-interstitial">About Us</a>
-&nbsp;|&nbsp;        <a href="https://blog.watrbx.wtf">Blog</a>
+            <a href="http://corp.watrbx.wtf/about" class="roblox-interstitial">About Us</a>
+&nbsp;|&nbsp;        <a href="http://blog.watrbx.wtf">Blog</a>
         &nbsp;|&nbsp;
-            <a href="https://corp.watrbx.wtf/careers" class="roblox-interstitial">Jobs</a>
-&nbsp;|&nbsp;        <a href="https://corp.watrbx.wtf/parents" class="roblox-interstitial">Parents</a>
+            <a href="http://corp.watrbx.wtf/careers" class="roblox-interstitial">Jobs</a>
+&nbsp;|&nbsp;        <a href="http://corp.watrbx.wtf/parents" class="roblox-interstitial">Parents</a>
     </div>
     <div class="legal">
             <div class="left">
@@ -389,7 +389,7 @@ Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
             </div>
             <div class="right">
                 <p class="Legalese">
-    ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a href="https://corp.watrbx.wtf/" ref="footer-smallabout" class="roblox-interstitial">ROBLOX Corporation</a>, ©2016. Patents pending.
+    ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a href="http://corp.watrbx.wtf/" ref="footer-smallabout" class="roblox-interstitial">ROBLOX Corporation</a>, ©2016. Patents pending.
     ROBLOX is not sponsored, authorized or endorsed by any producer of plastic building bricks, including The LEGO Group, MEGA Brands, and K'Nex, and no resemblance to the products of these companies is intended.
     Use of this site signifies your acceptance of the <a href="<?=$_ENV["BASE_URL"]?>/info/terms-of-service" ref="footer-terms">Terms and Conditions</a>.
 </p>

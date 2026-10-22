@@ -6,4 +6,4 @@ By verifying the email address associated with your watrbx account, you enable a
 
 Please click the link below to complete the verification process.
 
-https://www.watrbx.wtf/EmailVerify.aspx?Mode=emailOnly&Ticket=%ticket%
+http://www.watrbx.wtf/EmailVerify.aspx?Mode=emailOnly&Ticket=%ticket%

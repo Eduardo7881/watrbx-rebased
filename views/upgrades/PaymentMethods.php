@@ -1,4 +1,4 @@
 <?php
-header('Location: https://discord.gg/UqpYrnX7Dz');
+header('Location: http://discord.gg/UqpYrnX7Dz');
 exit;
 ?>

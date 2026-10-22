@@ -9,7 +9,7 @@
         &nbsp;|&nbsp;
             <a href="/about" class="roblox-interstitial">About Us</a>
             &nbsp;|&nbsp;
-            <a href="https://blog.watrbx.wtf">Blog</a>
+            <a href="http://blog.watrbx.wtf">Blog</a>
     </div>
     <div class="legal">
             <div class="left">
@@ -21,9 +21,9 @@
             </div>
             <div class="right">
                 <p class="Legalese">
-    ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a href="https://corp.watrbx.wtf/" ref="footer-smallabout" class="roblox-interstitial">ROBLOX Corporation</a>, ©2015. Patents pending.
+    ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a href="http://corp.watrbx.wtf/" ref="footer-smallabout" class="roblox-interstitial">ROBLOX Corporation</a>, ©2015. Patents pending.
     ROBLOX is not sponsored, authorized or endorsed by any producer of plastic building bricks, including The LEGO Group, MEGA Brands, and K'Nex, and no resemblance to the products of these companies is intended.
-    Use of this site signifies your acceptance of the <a href="https://www.watrbx.wtf/info/terms-of-service" ref="footer-terms">Terms and Conditions</a>.
+    Use of this site signifies your acceptance of the <a href="http://www.watrbx.wtf/info/terms-of-service" ref="footer-terms">Terms and Conditions</a>.
 </p>
             </div>
         <div class="clear"></div>
@@ -66,7 +66,7 @@
         (function() {
             var s = document.createElement("script"), el = document.getElementsByTagName("script")[0];
             s.async = true;
-            s.src = (document.location.protocol == "https:" ? "https://sb" : "https://b") + ".scorecardresearch.com/beacon.js";
+            s.src = (document.location.protocol == "https:" ? "http://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
             el.parentNode.insertBefore(s, el);
         })();
     </script>

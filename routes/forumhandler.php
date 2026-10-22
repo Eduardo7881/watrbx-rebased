@@ -319,7 +319,7 @@ $router->get("/Forum/ShowPost.aspx", function() {
     $page::get_template("forum/showpost");
 });
 /*
-https://github.com/WatrLabs/watrbx/issues/16 - hope this works
+http://github.com/WatrLabs/watrbx/issues/16 - hope this works
 */
 $router->post("/Forum/ShowPost.aspx", function(){
     global $db;

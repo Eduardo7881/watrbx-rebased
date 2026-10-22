@@ -20,7 +20,7 @@
      data-protocol-detection-enabled="true">
     <div class="modalPopup blueAndWhite PlaceLauncherModal" style="min-height: 160px">
         <div id="Spinner" class="Spinner" style="padding:20px 0;">
-            <img src="https://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif" height="32" width="32" alt="Progress" />
+            <img src="http://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif" height="32" width="32" alt="Progress" />
         </div>
         <div id="status" style="min-height:40px;text-align:center;margin:5px 20px">
             <div id="Starting" class="PlaceLauncherStatus MadStatusStarting" style="display:block">
@@ -47,7 +47,7 @@
                 ROBLOX is now loading. Get ready to play!
             </p>
             <div class="ph-startingdialog-spinner-row">
-                <img src="https://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif" width="82" height="24" />
+                <img src="http://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif" width="82" height="24" />
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
                 </button>
             </div>
             <div class="rbx-small rbx-text-notes">
-                <a href="https://en.help.watrbx.wtf/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
+                <a href="http://en.help.watrbx.wtf/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
             </div>
 
         </div>
@@ -79,7 +79,7 @@
 <div id="ProtocolHandlerClickAlwaysAllowed" class="ph-clickalwaysallowed" style="display:none;">
     <p class="larger-font-size">
         <span class="rbx-icon-moreinfo"></span>
-        Check <b>Remember my choice</b> and click <img src="https://images.rbxcdn.com/7c8d7a39b4335931221857cca2b5430b.png" alt="Launch Application" />  in the dialog box above to join games faster in the future!
+        Check <b>Remember my choice</b> and click <img src="http://images.rbxcdn.com/7c8d7a39b4335931221857cca2b5430b.png" alt="Launch Application" />  in the dialog box above to join games faster in the future!
     </p>
 </div>
 
@@ -112,7 +112,7 @@
         </div>
         <div id="videoPrerollJoinBC">
             <span>Get more with Builders Club!</span>
-            <a href="https://www.watrbx.wtf/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
+            <a href="http://www.watrbx.wtf/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
         </div>
     </div>   
         <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
@@ -161,8 +161,8 @@
         <div style="clear:both; height:25px;"></div>
         <div class="RevisedFooter">
             <div style="width:200px;margin:10px auto 0 auto;">
-                <a href="https://www.watrbx.wtf/?returnUrl=http%3A%2F%2Fwww.watrbx.wtf%2Fmy%2Fmessages%2F"><div class="RevisedCharacterSelectSignup"></div></a>
-                <a class="HaveAccount" href="https://www.watrbx.wtf/newlogin?returnUrl=http%3A%2F%2Fwww.watrbx.wtf%2Fmy%2Fmessages%2F">I have an account</a>
+                <a href="http://www.watrbx.wtf/?returnUrl=http%3A%2F%2Fwww.watrbx.wtf%2Fmy%2Fmessages%2F"><div class="RevisedCharacterSelectSignup"></div></a>
+                <a class="HaveAccount" href="http://www.watrbx.wtf/newlogin?returnUrl=http%3A%2F%2Fwww.watrbx.wtf%2Fmy%2Fmessages%2F">I have an account</a>
             </div>
         </div>
     </div>
@@ -185,17 +185,17 @@
                     <div class="ph-install-step ph-installinstructions-step1-of4">
                         <h1>1</h1>
                         <p class="larger-font-size">Click RobloxPlayerLauncher.exe to run the ROBLOX installer, which just downloaded via your web browser.</p>
-                        <img width="230" height="180" src="https://images.rbxcdn.com/8b0052e4ff81d8e14f19faff2a22fcf7.png" />
+                        <img width="230" height="180" src="http://images.rbxcdn.com/8b0052e4ff81d8e14f19faff2a22fcf7.png" />
                     </div>
                     <div class="ph-install-step ph-installinstructions-step2-of4">
                         <h1>2</h1>
                         <p class="larger-font-size">Click <strong>Run</strong> when prompted by your computer to begin the installation process.</p>
-                        <img width="230" height="180" src="https://images.rbxcdn.com/4a3f96d30df0f7879abde4ed837446c6.png" />
+                        <img width="230" height="180" src="http://images.rbxcdn.com/4a3f96d30df0f7879abde4ed837446c6.png" />
                     </div>
                     <div class="ph-install-step ph-installinstructions-step3-of4">
                         <h1>3</h1>
                         <p class="larger-font-size">Click <strong>Ok</strong> once you've successfully installed ROBLOX.</p>
-                        <img width="230" height="180" src="https://images.rbxcdn.com/6e23e4971ee146e719fb1abcb1d67d59.png" />
+                        <img width="230" height="180" src="http://images.rbxcdn.com/6e23e4971ee146e719fb1abcb1d67d59.png" />
                     </div>
                     <div class="ph-install-step ph-installinstructions-step4-of4">
                         <h1>4</h1>

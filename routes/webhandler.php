@@ -83,7 +83,7 @@ $router->get('/marketplace/productinfo', function(){
             $productinfo["Creator"]["CreatorType"] = "User";
         } else {
             try {
-                die(file_get_contents("https://economy.ttblox.mom/v2/assets/$assetid/details"));
+                die(file_get_contents("http://economy.ttblox.mom/v2/assets/$assetid/details"));
             } catch (ErrorException $e){
                 die(json_encode($productinfo, JSON_UNESCAPED_SLASHES));
             }
@@ -179,7 +179,7 @@ $router->get('/Thumbs/Asset.ashx', function(){
             header("Content-type: image/png");
             die($sitefunc->resize_image($File, $x, $y, true));
         } else {
-            $url = "https://thumbnails.roblox.com/v1/assets?assetIds=$assetid&format=PNG&size=512x512";
+            $url = "http://thumbnails.roblox.com/v1/assets?assetIds=$assetid&format=PNG&size=512x512";
             $robloxapi = file_get_contents($url);
 
             if($robloxapi){
@@ -1074,7 +1074,7 @@ $router->get("/UploadMedia/UploadVideo.aspx", function() {
 });
 
 $router->get('/thumbnail/user-avatar', function(){ 
-    return ['Url' => 'https://cdn.watrbx.wtf/503b295fa0d2216558136b355422b9f9', 'Final' => true];
+    return ['Url' => 'http://cdn.watrbx.wtf/503b295fa0d2216558136b355422b9f9', 'Final' => true];
 });
 
 $router->get('/my/groupadmin.aspx', function(){
@@ -1293,7 +1293,7 @@ $router->get('/Help/Builderman.aspx', function(){
     $fastflags = new \watrlabs\fastflags();
     
     if($fastflags::get("RedirectHelpToSubdomain")){
-        header('Location: https://help.watrbx.wtf');
+        header('Location: http://help.watrbx.wtf');
         die();
     }
     
@@ -1847,7 +1847,7 @@ $router->get('/grid-test', function(){
 
     echo $Close->CloseExpiredJobs();
 
-    //$RobloxGrid = new Grid("https://group-she.gl.at.ply.gg:49837");
+    //$RobloxGrid = new Grid("http://group-she.gl.at.ply.gg:49837");
     //$grid = $RobloxGrid->useGet();
 
     //$script = new \StructType\ScriptExecution("print(\"hi\")");

@@ -1,3 +1,3 @@
 <?php
-header('Location: https://www.watrbx.wtf/');
+header('Location: http://www.watrbx.wtf/');
 exit;

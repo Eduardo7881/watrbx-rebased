@@ -1,4 +1,4 @@
 Hello, %username%
 You have requested your watrbx account password to be reset.
 Click the link below to reset your password:
-https://www.watrbx.wtf/ResetPassword.aspx?ticket=%emailTicket%
+http://www.watrbx.wtf/ResetPassword.aspx?ticket=%emailTicket%

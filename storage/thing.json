@@ -24,7 +24,7 @@
             "IsApproved": false,
             "LastUpdated": "/Date(-62135575200000)/",
             "LastUpdatedBy": null,
-            "AudioUrl": "https://nut.com/audio.mp3"
+            "AudioUrl": "http://nut.com/audio.mp3"
           },
           "Creator": {
             "Id": 1,
@@ -56,7 +56,7 @@
           "PrivateServer": null,
           "Thumbnail": {
             "Final": true,
-            "Url": "https://web.archive.org/web/20170406185611if_/https://t7.rbxcdn.com/207ef144505d87783cc77eb03a087064",
+            "Url": "http://web.archive.org/web/20170406185611if_/http://t7.rbxcdn.com/207ef144505d87783cc77eb03a087064",
             "RetryUrl": "",
             "IsApproved": false
           },

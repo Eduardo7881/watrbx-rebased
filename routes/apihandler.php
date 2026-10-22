@@ -257,13 +257,13 @@ $router->get('/Thumbs/BCOverlay.ashx', function(){
             $overlay = $auth->get_bc_overlay($userinfo->id);
             header("Location: $overlay");
         } else {
-            header("Location: https://cdn.watrbx.wtf/blank.jpg");
+            header("Location: http://cdn.watrbx.wtf/blank.jpg");
         }
     } else {
-        header("Location: https://cdn.watrbx.wtf/blank.jpg");
+        header("Location: http://cdn.watrbx.wtf/blank.jpg");
     }
 
-    header("Location: https://cdn.watrbx.wtf/blank.jpg");
+    header("Location: http://cdn.watrbx.wtf/blank.jpg");
 
 });
 
@@ -773,7 +773,7 @@ $router->get("/asset-thumbnail-3d/", function(){
 });
 
 $router->get('/asset-thumbnail-3d/json', function(){
-    // {"Url":"https://web.archive.org/web/20150801002803/http://t5.rbxcdn.com/682ceca48cd03e698aa5e0dc65c758b7","Final":true}
+    // {"Url":"http://web.archive.org/web/20150801002803/http://t5.rbxcdn.com/682ceca48cd03e698aa5e0dc65c758b7","Final":true}
 
     header("Content-type: application/json");
 
@@ -805,7 +805,7 @@ $router->get('/asset-thumbnail-3d/json', function(){
 
 
 $router->get('/avatar-thumbnail-3d/json', function(){
-    // {"Url":"https://web.archive.org/web/20150801002803/https://t5.rbxcdn.com/682ceca48cd03e698aa5e0dc65c758b7","Final":true}
+    // {"Url":"http://web.archive.org/web/20150801002803/http://t5.rbxcdn.com/682ceca48cd03e698aa5e0dc65c758b7","Final":true}
 
     header("Content-type: application/json");
 
@@ -831,13 +831,13 @@ $router->get('/avatar-thumbnail-3d/json', function(){
 });
 
 $router->get('/thumbnail/resolve-hash/{the}', function($the){
-    // {"Url":"https://web.archive.org/web/20150801002803/https://t5.rbxcdn.com/682ceca48cd03e698aa5e0dc65c758b7","Final":true}
+    // {"Url":"http://web.archive.org/web/20150801002803/http://t5.rbxcdn.com/682ceca48cd03e698aa5e0dc65c758b7","Final":true}
 
     header("Content-type: application/json");
 
     $json = array(
         "Final"=>true,
-        "Url"=>"https://cdn.watrbx.wtf/$the",
+        "Url"=>"http://cdn.watrbx.wtf/$the",
         "width"=>500,
         "height"=>500
     );
@@ -878,11 +878,11 @@ $router->get('/Game/AreFriends', function() {
 
 
 $router->get('/thumbnail/place-thumbnails', function(){
-    die('{"IsJpegThumbnailEnabled":true,"thumbnails":[{"AssetId":696217389,"AssetHash":null,"AssetTypeId":1,"Url":"https://cdn.watrbx.wtf/bcd556a3becf0c3773653ded31449e84","IsFinal":true}],"thumbnailCount":1,"ShowYouTubeVideo":false,"IsMobile":false,"PlaceThumbnailsResources":{"ActionContinueToVideoMetadata":{"IsTranslated":true},"ActionContinueToVideo":"Continue to Video","DescriptionLeaveRobloxForYouTubeMetadata":{"IsTranslated":true},"DescriptionLeaveRobloxForYouTube":"You are about to leave Roblox to view a video on YouTube.","DescriptionYouTubeIsNotRobloxMetadata":{"IsTranslated":true},"DescriptionYouTubeIsNotRoblox":"YouTube is not part of Roblox.com and is governed by a separate privacy policy.","HeadingLeavingRobloxMetadata":{"IsTranslated":true},"HeadingLeavingRoblox":"You are leaving Roblox","LabelNextMetadata":{"IsTranslated":true},"LabelNext":"Next","LabelPreviousMetadata":{"IsTranslated":true},"LabelPrevious":"Previous","State":0}}');
+    die('{"IsJpegThumbnailEnabled":true,"thumbnails":[{"AssetId":696217389,"AssetHash":null,"AssetTypeId":1,"Url":"http://cdn.watrbx.wtf/bcd556a3becf0c3773653ded31449e84","IsFinal":true}],"thumbnailCount":1,"ShowYouTubeVideo":false,"IsMobile":false,"PlaceThumbnailsResources":{"ActionContinueToVideoMetadata":{"IsTranslated":true},"ActionContinueToVideo":"Continue to Video","DescriptionLeaveRobloxForYouTubeMetadata":{"IsTranslated":true},"DescriptionLeaveRobloxForYouTube":"You are about to leave Roblox to view a video on YouTube.","DescriptionYouTubeIsNotRobloxMetadata":{"IsTranslated":true},"DescriptionYouTubeIsNotRoblox":"YouTube is not part of Roblox.com and is governed by a separate privacy policy.","HeadingLeavingRobloxMetadata":{"IsTranslated":true},"HeadingLeavingRoblox":"You are leaving Roblox","LabelNextMetadata":{"IsTranslated":true},"LabelNext":"Next","LabelPreviousMetadata":{"IsTranslated":true},"LabelPrevious":"Previous","State":0}}');
 });
 
 $router->get('/places/api-get-details', function(){
-    die('{"AssetId":192800,"Name":"Work at a Pizza Place","Description":"Work together to get the pizzas to the customers.\r\n\r\nHow to play:\r\nhttps://www.youtube.com/watch?v=93wwyxkJ1Uw","Created":"3/30/2008","Updated":"6/20/2014","FavoritedCount":389086,"VisitedCount":16599836,"MaxPlayers":12,"Builder":"Dued1","IsPlayable":true,"IsPersonalServer":false,"IsPersonalServerOverlay":false,"BuildersClubOverlay":"None","PlayButtonType":"FancyButtons","AssetGenre":"Town and City","OnlineCount":2158}');
+    die('{"AssetId":192800,"Name":"Work at a Pizza Place","Description":"Work together to get the pizzas to the customers.\r\n\r\nHow to play:\r\nhttp://www.youtube.com/watch?v=93wwyxkJ1Uw","Created":"3/30/2008","Updated":"6/20/2014","FavoritedCount":389086,"VisitedCount":16599836,"MaxPlayers":12,"Builder":"Dued1","IsPlayable":true,"IsPersonalServer":false,"IsPersonalServerOverlay":false,"BuildersClubOverlay":"None","PlayButtonType":"FancyButtons","AssetGenre":"Town and City","OnlineCount":2158}');
 });
 
 $router->get('/Thumbs/Avatar.ashx', function(){
@@ -1301,13 +1301,13 @@ $router->post('/api/v1/shirt-creator', function(){
             ]);
             $insertid = $db->table("assets")->insert($insert);
 
-            $shirtxml = '<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.roblox.com/roblox.xsd" version="4">
+            $shirtxml = '<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
                         <External>null</External>
                         <External>nil</External>
                         <Item class="Shirt" referent="RBX0">
                             <Properties>
                             <Content name="ShirtTemplate">
-                                <url>https://www.watrbx.wtf/asset/?id='.$insertid.'</url>
+                                <url>' . $_ENV["BASE_URL"] . '/asset/?id='.$insertid.'</url>
                             </Content>
                             <string name="Name">Shirt</string>
                             <bool name="archivable">true</bool>
@@ -1420,7 +1420,7 @@ $router->post('/api/v1/pants-creator', function(){
             ]);
             $insertid = $db->table("assets")->insert($insert);
 
-            $shirtxml = '<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.roblox.com/roblox.xsd" version="4">
+            $shirtxml = '<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
                         <External>null</External>
                         <External>nil</External>
                         <Item class="Pants" referent="RBX0">
@@ -1707,7 +1707,7 @@ $router->post('/api/v1/decal-creator', function(){
             ]);
             $insertid = $db->table("assets")->insert($insert);
 
-            $shirtxml = '<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.roblox.com/roblox.xsd" version="4">
+            $shirtxml = '<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
                             <External>null</External>
                             <External>nil</External>
                             <Item class="Decal" referent="RBX0">
@@ -3761,7 +3761,7 @@ $router->get('/marketplace/productDetails', function(){
 
 
         header("Content-type: application/json");
-        die(file_get_contents("https://economy.ttblox.mom/v2/assets/$assetid/details"));
+        die(file_get_contents("http://economy.ttblox.mom/v2/assets/$assetid/details"));
         
     }
 });
@@ -3793,7 +3793,7 @@ $router->get('/Game/PlaceLauncher.ashx', function() {
 
     // cleaned this up a lot (again)
 
-    header("Access-Control-Allow-Origin: https://wasm.watrbx.wtf");
+    header("Access-Control-Allow-Origin: http://wasm.watrbx.wtf");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
 
@@ -3929,7 +3929,7 @@ $router->post('/Game/PlaceLauncher.ashx', function() {
 
     // cleaned this up a lot (again)
 
-    header("Access-Control-Allow-Origin: https://wasm.watrbx.wtf");
+    header("Access-Control-Allow-Origin: http://wasm.watrbx.wtf");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
 
@@ -3946,7 +3946,7 @@ $router->post('/Game/PlaceLauncher.ashx', function() {
         "jobid"              => null,
         "status"             => 12,
         "joinScriptUrl"      => null,
-        "authenticationUrl"  => "https://www.watrbx.wtf/Login/Negotiate.ashx",
+        "authenticationUrl"  => $_ENV["BASE_URL"] . "/Login/Negotiate.ashx",
         "authenticationTicket"=> "diddy",
         "message"            => "Please ensure you privided diddy tokens."
     ];
@@ -4160,7 +4160,7 @@ $router->get('/games/list-json', function(){
 
     header("Content-type: application/json");
     die();
-    die('[{"CreatorID":131,"CreatorName":"Dued1","CreatorUrl":"https://www.roblox.com/users/82471/profile","Plays":216463921,"Price":0,"ProductID":0,"IsOwned":false,"IsVotingEnabled":true,"TotalUpVotes":264204,"TotalDownVotes":17667,"TotalBought":0,"UniverseID":47545,"HasErrorOcurred":false,"GameDetailReferralUrl":"https://web.archive.org/web/20170101144445/https://www.roblox.com/games/192800/Work-at-a-Pizza-Place","Url":"https://cdn.watrbx.wtf/15daa6827d7eee2fcc932c08caa77b00","RetryUrl":null,"Final":true,"Name":"Work at a Pizza Place","PlaceID":192800,"PlayerCount":3313,"ImageId":566142976}]');
+    die('[{"CreatorID":131,"CreatorName":"Dued1","CreatorUrl":"http://www.roblox.com/users/82471/profile","Plays":216463921,"Price":0,"ProductID":0,"IsOwned":false,"IsVotingEnabled":true,"TotalUpVotes":264204,"TotalDownVotes":17667,"TotalBought":0,"UniverseID":47545,"HasErrorOcurred":false,"GameDetailReferralUrl":"http://web.archive.org/web/20170101144445/http://www.roblox.com/games/192800/Work-at-a-Pizza-Place","Url":"http://cdn.watrbx.wtf/15daa6827d7eee2fcc932c08caa77b00","RetryUrl":null,"Final":true,"Name":"Work at a Pizza Place","PlaceID":192800,"PlayerCount":3313,"ImageId":566142976}]');
 
 });
 
@@ -4225,7 +4225,7 @@ $router->get('/api/v1/get-preroll', function(){
         [
             "video"=>"/videos/1.mp4",
             "sponsor_name"=>"watrabi rce",
-            "sponsor_logo"=>"https://watrbx.wtf/ads/tower/9.png"
+            "sponsor_logo"=>"/ads/tower/9.png"
         ],
         [
             "video"=>"/videos/2.mp4",
@@ -4268,7 +4268,7 @@ $router->get('/api/v1/get-preroll', function(){
             "sponsor_name"=>"young rabi"
         ],
         [
-            "video"=>"https://cdn.watrbx.wtf/2f76ba55c0eeefe85c3d89300674ab33.mp4",
+            "video"=>"http://cdn.watrbx.wtf/2f76ba55c0eeefe85c3d89300674ab33.mp4",
             "sponsor_name"=>"bro wtf"
         ],
         [
@@ -4674,17 +4674,17 @@ $router->get('/asset/CharacterFetch.aspx', function(){
         $allitems = $db->table("wearingitems")->where("userid", $id)->get();
 
         if(!empty($allitems)){
-            $charapp = "https://www.watrbx.wtf/Asset/BodyColors.ashx?Id=$id;";
+            $charapp = "http://www.watrbx.wtf/Asset/BodyColors.ashx?Id=$id;";
         }
 
         foreach ($allitems as $item){
             $assetinfo = $db->table("assets")->where("id", $item->itemid)->first();
 
             if ($assetinfo === null) {
-                $charapp .= "https://www.watrbx.wtf/asset/?id=". $item->itemid .";";
+                $charapp .= "http://www.watrbx.wtf/asset/?id=". $item->itemid .";";
             } else {
                 if (!($assetinfo->prodcategory == 19 && false)) {
-                    $charapp .= "https://www.watrbx.wtf/asset/?id=". $item->itemid .";";
+                    $charapp .= "http://www.watrbx.wtf/asset/?id=". $item->itemid .";";
                 }
             }
         }
@@ -4709,17 +4709,17 @@ $router->get('/CharacterFetch.aspx', function(){
         $allitems = $db->table("wearingitems")->where("userid", $id)->get();
 
         if(!empty($allitems)){
-            $charapp = "https://www.watrbx.wtf/Asset/BodyColors.ashx?Id=$id;";
+            $charapp = "http://www.watrbx.wtf/Asset/BodyColors.ashx?Id=$id;";
         }
 
         foreach ($allitems as $item){
             $assetinfo = $db->table("assets")->where("id", $item->itemid)->first();
 
             if ($assetinfo === null) {
-                $charapp .= "https://www.watrbx.wtf/asset/?id=". $item->itemid .";";
+                $charapp .= "http://www.watrbx.wtf/asset/?id=". $item->itemid .";";
             } else {
                 if (!($assetinfo->prodcategory == 19 && false)) {
-                    $charapp .= "https://www.watrbx.wtf/asset/?id=". $item->itemid .";";
+                    $charapp .= "http://www.watrbx.wtf/asset/?id=". $item->itemid .";";
                 }
             }
         }
@@ -5061,7 +5061,7 @@ $router->get('/users/inventory/recommended-json', function(){
 
 $router->get('/Game/Join.ashx', function() {
 
-    header("Access-Control-Allow-Origin: https://wasm.watrbx.wtf");
+    header("Access-Control-Allow-Origin: http://wasm.watrbx.wtf");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
 
@@ -5104,7 +5104,7 @@ $router->get('/Game/Join.ashx', function() {
                 $port = (int)$_GET["serverPort"];
             } 
 
-            $charappurl = "https://www.watrbx.wtf/CharacterFetch.aspx?Id=1&placeId=1";
+            $charappurl = "http://www.watrbx.wtf/CharacterFetch.aspx?Id=1&placeId=1";
 
             header("Content-Type: application/json");
             // Construct joinscript
@@ -5124,7 +5124,7 @@ $router->get('/Game/Join.ashx', function() {
                 "PlaceId" => 0,
                 "MeasurementUrl" => "", // No telemetry here :) (pls add telemetry)
                 "WaitingForCharacterGuid" => "26eb3e21-aa80-475b-a777-b43c3ea5f7d2", // todo: generate uuid
-                "BaseUrl" => "https://www.watrbx.wtf/",
+                "BaseUrl" => "http://www.watrbx.wtf/",
                 "ChatStyle" => "ClassicAndBubble",
                 "VendorId" => "0",
                 "ScreenShotInfo" => "",
@@ -5171,7 +5171,7 @@ $router->get('/Game/Join.ashx', function() {
         $port = $joincode->port;
         $pid = $joincode->placeid;
         $placeinfo = $db->table("assets")->where("id", $joincode->placeid)->first();
-        $charappurl = "https://www.watrbx.wtf/CharacterFetch.aspx?Id=" . $currentuser->id . "&placeId=" . $pid;
+        $charappurl = "http://www.watrbx.wtf/CharacterFetch.aspx?Id=" . $currentuser->id . "&placeId=" . $pid;
         
         $clientticket = $func->generateClientTicket($currentuser->id, $currentuser->username,$charappurl, $joincode->jobid, file_get_contents("../storage/PrivateNut.pem"));
 
@@ -5193,7 +5193,7 @@ $router->get('/Game/Join.ashx', function() {
             "PlaceId" => $pid,
             "MeasurementUrl" => "", // No telemetry here :) (pls add telemetry)
             "WaitingForCharacterGuid" => "26eb3e21-aa80-475b-a777-b43c3ea5f7d2", // todo: generate uuid
-            "BaseUrl" => "https://www.watrbx.wtf/",
+            "BaseUrl" => "http://www.watrbx.wtf/",
             "ChatStyle" => "ClassicAndBubble",
             "VendorId" => "0",
             "ScreenShotInfo" => "",

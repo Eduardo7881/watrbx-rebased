@@ -188,7 +188,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 			var ga = document.createElement('script');
 			ga.type = 'text/javascript';
 			ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+			ga.src = ('https:' == document.location.protocol ? 'http://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(ga, s);
 		})();
@@ -222,7 +222,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
             var e = document.createElement('script');
             e.type = 'text/javascript';
             e.async = true;
-            e.src = ('https:' === document.location.protocol ? 'https://' : 'https://') + 'cdn.siftscience.com/s.js';
+            e.src = ('https:' === document.location.protocol ? 'http://' : 'http://') + 'cdn.siftscience.com/s.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(e, s);
         }
@@ -331,7 +331,7 @@ Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
             <div id="rbx-continue-shopping-btn" class="btn btn-medium btn-neutral rbx-btn-secondary-xs btn-more btn-continue-shopping">Continue to Shop</div>
         </div>
         <div class="fine-print">
-            The shop is not part of ROBLOX.com and is governed by a separate <a href="https://www.myplay.com/direct/cookie-policy?origin=desktop&permalink=shoproblox">privacy policy</a>.
+            The shop is not part of ROBLOX.com and is governed by a separate <a href="http://www.myplay.com/direct/cookie-policy?origin=desktop&permalink=shoproblox">privacy policy</a>.
         </div>
     </div>
 </div>

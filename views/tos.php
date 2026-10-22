@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/base.css?t=<?=time()?>">
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <title>watrbx - ToS</title>
+    <title><?=$_ENV["APP_NAME"]?> - ToS</title>
 </head>
 <body>
     <div id="main">

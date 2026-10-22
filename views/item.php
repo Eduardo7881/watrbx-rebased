@@ -173,7 +173,7 @@ if($currentuser !== null){
                         <div id="assetContainer">
                             <div id="Thumbnail">
                                 <div id="AssetThumbnail" class="thumbnail-holder"  <? if($asset->prodcategory == 8 || $asset->prodcategory == 10 || $asset->prodcategory == 11 || $asset->prodcategory == 12 || $asset->prodcategory == 19 || $asset->prodcategory == 32) { echo "data-3d-thumbs-enabled"; } ?> data-url="/thumbnail/asset?assetId=<?=$asset->id?>&amp;thumbnailFormatId=254&amp;width=320&amp;height=320" style="width:320px; height:320px;">
-                                    <span class="thumbnail-span" data-3d-url="/asset-thumbnail-3d/json?assetId=<?=$asset->id?>"  data-js-files='https://js.rbxcdn.com/2cdabe2b5b7eb87399a8e9f18dd7ea05.js' ><img  class='' src='<?=$thumb?>' /></span>
+                                    <span class="thumbnail-span" data-3d-url="/asset-thumbnail-3d/json?assetId=<?=$asset->id?>"  data-js-files='http://js.rbxcdn.com/2cdabe2b5b7eb87399a8e9f18dd7ea05.js' ><img  class='' src='<?=$thumb?>' /></span>
                                     <span class="enable-three-dee btn-control btn-control-small"></span>
                                 </div>
                             </div>
@@ -740,7 +740,7 @@ if($currentuser !== null){
     </div>
     <div class="unifiedModalContent" style="padding-top:5px; margin-bottom: 3px; margin-left: 3px; margin-right: 3px">
         <div class="ImageContainer" >
-            <img class="GenericModalImage BCModalImage" alt="Builder's Club" src="https://images.rbxcdn.com/ae345c0d59b00329758518edc104d573.png" />
+            <img class="GenericModalImage BCModalImage" alt="Builder's Club" src="http://images.rbxcdn.com/ae345c0d59b00329758518edc104d573.png" />
             <div id="BCMessageDiv" class="BCMessage Message">
                 You need  to buy this item!
             </div>
@@ -793,13 +793,13 @@ if($currentuser !== null){
 
     <div id="InstallingPluginView" class="processing-view" style="display:none">
         <div class="ProcessingModalBody">
-            <p style="margin:0px"><img src='https://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif' alt="Installing Plugin..." /></p>
+            <p style="margin:0px"><img src='http://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif' alt="Installing Plugin..." /></p>
             <p class="processing-text" style="margin:7px 0px">Installing Plugin...</p>
         </div>
     </div>
     <div id="UpdatingPluginView" class="processing-view" style="display:none">
         <div class="ProcessingModalBody">
-            <p style="margin:0px"><img src='https://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif' alt="Updating Plugin..." /></p>
+            <p style="margin:0px"><img src='http://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif' alt="Updating Plugin..." /></p>
             <p class="processing-text" style="margin:7px 0px">Updating Plugin...</p>
         </div>
     </div>

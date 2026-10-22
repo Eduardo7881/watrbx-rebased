@@ -9,7 +9,7 @@
             "Text": "Comment Text",
             "ShowAuthorOwnsAsset": false,
             "Thumbnail": {
-                "Url": "https://www.watrbx.wtf/images/defaultimage.png",
+                "Url": "http://www.watrbx.wtf/images/defaultimage.png",
                 "IsFinal": false
             }
         }

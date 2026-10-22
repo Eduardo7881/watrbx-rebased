@@ -29,8 +29,8 @@
 	$pagebuilder->addresource('jsfiles', '/js/59e30cf6dc89b69db06bd17fbf8ca97c.js.gzip');
 	$pagebuilder->addresource('jsfiles', '/js/f3251ed8271ce1271b831073a47b65e3.js.gzip');
 	$pagebuilder->addresource('jsfiles', '/js/11538f50c384b7e98cc9fdd96e55772d.js.gzip');
-    $pagebuilder->addresource('jsfiles', 'https://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjaxWebForms.js');
-    $pagebuilder->addresource('jsfiles', 'https://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js');
+    $pagebuilder->addresource('jsfiles', 'http://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjaxWebForms.js');
+    $pagebuilder->addresource('jsfiles', 'http://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js');
 	$pagebuilder->addresource('jsfiles', '/ScriptResource.axd');
 
     $pagebuilder->setlegacy(true);

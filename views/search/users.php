@@ -36,7 +36,7 @@ if(isset($_GET["keyword"])){
         <input id="people-search-keyword" autofocus autocomplete="off" name="name" type="text" class="text-box text-box-large people-search-textbox" placeholder="Search for users..." <? if(isset($keyword)){ echo "value=\"". htmlspecialchars($keyword) . "\""; } ?> />
         <span class="search-button-image-container">
             <a  class="btn-small btn-primary" id="peoplesearch-search-button">Search Users</a>
-            <img id="peoplesearch-search-loading" style="display: none" src="https://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif" />
+            <img id="peoplesearch-search-loading" style="display: none" src="http://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif" />
         </span>
     </div>
     <div>
@@ -57,13 +57,13 @@ if(isset($_GET["keyword"])){
 
             <div class="divider-top result-item-container" data-userpageurl="/users/<?=$user->id?>/profile">
             <div class="avatar-image-container notranslate">
-                <span class="avatar-image-link" data-3d-url="<?=$thumb?>"" data-js-files="https://js.rbxcdn.com/2cdabe2b5b7eb87399a8e9f18dd7ea05.js">
+                <span class="avatar-image-link" data-3d-url="<?=$thumb?>"" data-js-files="http://js.rbxcdn.com/2cdabe2b5b7eb87399a8e9f18dd7ea05.js">
                     <img alt="InviteKeyTest" class="avatar-image" src="<?=$thumb?>">
                 </span>
             </div>
             <div class="text-container text">
                 <div class="notranslate">
-                    <img alt="offline" src="https://images.rbxcdn.com/3a3aa21b169be06d20de7586e56e3739.png" title="Offline">
+                    <img alt="offline" src="http://images.rbxcdn.com/3a3aa21b169be06d20de7586e56e3739.png" title="Offline">
                     <a href="/users/<?=$user->id?>/profile"><?=$user->username?></a>
                 </div>
                 <div class="notranslate linkify"><?=$user->blurb?></div>
@@ -98,7 +98,7 @@ if(isset($_GET["keyword"])){
 
 <div id="ProcessingView" style="display:none">
     <div class="ProcessingModalBody">
-        <p class="processing-indicator"><img src='https://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif' alt="Searching..." /></p>
+        <p class="processing-indicator"><img src='http://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif' alt="Searching..." /></p>
     </div>
 </div>
                                 <div style="clear:both"></div>

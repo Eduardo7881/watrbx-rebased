@@ -17,7 +17,7 @@
                 You can do so via the following methods:
                 <ul>
                     <li>Email: <a href="mailto:help@watrbx.wtf">help@watrbx.wtf</a></li>
-                    <li>Discord: <a href="https://discord.gg/CHANGE_THIS_LINK">https://discord.gg/CHANGE_THIS_LINK</a></li>
+                    <li>Discord: <a href="http://discord.gg/CHANGE_THIS_LINK">http://discord.gg/CHANGE_THIS_LINK</a></li>
                     <li>Direct Messaging (on-site) or via forum: <a href="<?=$_ENV['BASE_URL']?>/users/2/profile">via pm</a> - <a href="<?=$_ENV['BASE_URL']?>/Forum/ShowForum.aspx?ForumID=2">via forum</a></li> 
                 </ul>
                 <br>

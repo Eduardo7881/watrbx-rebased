@@ -12,15 +12,15 @@
 <link rel='stylesheet' href='/CSS/Base/CSS/FetchCSS?path=main___6e296d537fba6676b05da60de57c2a30_m.css' />
 
 <link rel='stylesheet' href='/CSS/Base/CSS/FetchCSS?path=page___a8df4e05745e2f1982052b2df4b09733_m.css' />
-<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js'></script>
+<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js'></script>
 <script type='text/javascript'>window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-1.11.1.js'><\/script>")</script>
-<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js'></script>
 <script type='text/javascript'>window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-migrate-1.2.1.js'><\/script>")</script>
 <script type='text/javascript' src='//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js'></script>
 <script type='text/javascript'>window.Sys || document.write("<script type='text/javascript' src='/js/Microsoft/MicrosoftAjax.js'><\/script>")</script>
 <script type='text/javascript' src='/js/fbf1ee7f87e15b4da11fda4617461836.js'></script>
 </head>
-<body data-parent-url="https://www.watrbx.wtf/home" data-captchaon="false" data-clientipaddress="207.241.225.226" data-redirecttohttp ="true">
+<body data-parent-url="<?=$_ENV['BASE_URL']?>/home" data-captchaon="false" data-clientipaddress="207.241.225.226" data-redirecttohttp ="true">
  
 
 <div id="TwoStepVerificationApiPaths"
@@ -137,3 +137,4 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'FacebookLoginForm'
 	</script>
 </body>
 </html>
+

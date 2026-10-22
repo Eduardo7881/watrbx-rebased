@@ -40,7 +40,7 @@ $count = $pendingfq + $msgcount;
 ?>
 
 <!DOCTYPE html>
-<html xmlns:fb="https://www.facebook.com/2008/fbml">
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
 <!-- MachineID: WEB109 -->
 <head id="ctl00_ctl00_Head1">
     <title><?=$config["title"] ?? "Untitled Page" ?> - <?=$_ENV["APP_NAME"]?></title>
@@ -101,7 +101,7 @@ $count = $pendingfq + $msgcount;
 			var ga = document.createElement('script');
 			ga.type = 'text/javascript';
 			ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+			ga.src = ('https:' == document.location.protocol ? 'http://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(ga, s);
 		})();
@@ -117,7 +117,7 @@ $count = $pendingfq + $msgcount;
      class="hidden"
      data-page-heartbeat-event-intervals="[2,8,20,60]">
 </div><script type='text/javascript' src='/js/f49d858ef181e7cd401d8fcb4245e6e8.js.gzip'></script>
-<script type='text/javascript'>Roblox.config.externalResources = [];Roblox.config.paths['Pages.Catalog'] = 'https://js.rbxcdn.com/46776eac503b939a2fd9146d77d735a3.js';Roblox.config.paths['Pages.CatalogShared'] = 'https://js.rbxcdn.com/da18f3da914691fb825e5ae9f00c9e49.js';Roblox.config.paths['Pages.Messages'] = 'https://js.rbxcdn.com/e8cbac58ab4f0d8d4c707700c9f97630.js';Roblox.config.paths['Resources.Messages'] = 'https://js.rbxcdn.com/fb9cb43a34372a004b06425a1c69c9c4.js';Roblox.config.paths['Widgets.AvatarImage'] = 'https://js.rbxcdn.com/bbaeb48f3312bad4626e00c90746ffc0.js';Roblox.config.paths['Widgets.DropdownMenu'] = 'https://js.rbxcdn.com/7b436bae917789c0b84f40fdebd25d97.js';Roblox.config.paths['Widgets.GroupImage'] = 'https://js.rbxcdn.com/33d82b98045d49ec5a1f635d14cc7010.js';Roblox.config.paths['Widgets.HierarchicalDropdown'] = 'https://js.rbxcdn.com/3368571372da9b2e1713bb54ca42a65a.js';Roblox.config.paths['Widgets.ItemImage'] = 'https://js.rbxcdn.com/8babd891cf420dfe3999b3824a0154cb.js';Roblox.config.paths['Widgets.PlaceImage'] = 'https://js.rbxcdn.com/f2697119678d0851cfaa6c2270a727ed.js';Roblox.config.paths['Widgets.SurveyModal'] = 'https://js.rbxcdn.com/d6e979598c460090eafb6d38231159f6.js';</script>
+<script type='text/javascript'>Roblox.config.externalResources = [];Roblox.config.paths['Pages.Catalog'] = 'http://js.rbxcdn.com/46776eac503b939a2fd9146d77d735a3.js';Roblox.config.paths['Pages.CatalogShared'] = 'http://js.rbxcdn.com/da18f3da914691fb825e5ae9f00c9e49.js';Roblox.config.paths['Pages.Messages'] = 'http://js.rbxcdn.com/e8cbac58ab4f0d8d4c707700c9f97630.js';Roblox.config.paths['Resources.Messages'] = 'http://js.rbxcdn.com/fb9cb43a34372a004b06425a1c69c9c4.js';Roblox.config.paths['Widgets.AvatarImage'] = 'http://js.rbxcdn.com/bbaeb48f3312bad4626e00c90746ffc0.js';Roblox.config.paths['Widgets.DropdownMenu'] = 'http://js.rbxcdn.com/7b436bae917789c0b84f40fdebd25d97.js';Roblox.config.paths['Widgets.GroupImage'] = 'http://js.rbxcdn.com/33d82b98045d49ec5a1f635d14cc7010.js';Roblox.config.paths['Widgets.HierarchicalDropdown'] = 'http://js.rbxcdn.com/3368571372da9b2e1713bb54ca42a65a.js';Roblox.config.paths['Widgets.ItemImage'] = 'http://js.rbxcdn.com/8babd891cf420dfe3999b3824a0154cb.js';Roblox.config.paths['Widgets.PlaceImage'] = 'http://js.rbxcdn.com/f2697119678d0851cfaa6c2270a727ed.js';Roblox.config.paths['Widgets.SurveyModal'] = 'http://js.rbxcdn.com/d6e979598c460090eafb6d38231159f6.js';</script>
 <script>$(function () {
         Roblox.JSErrorTracker.initialize({ 'suppressConsoleError': true});
     });
@@ -181,7 +181,7 @@ Roblox.Endpoints.Urls['/presence/users'] = '/presence/users';
 Roblox.Endpoints.Urls['/presence/user'] = '/presence/user';
 Roblox.Endpoints.Urls['/friends/list'] = '/friends/list';
 Roblox.Endpoints.Urls['/navigation/getCount'] = '/navigation/getCount';
-Roblox.Endpoints.Urls['/catalog/browse.aspx'] = 'https://www.watrbx.wtf/catalog/browse.aspx';
+Roblox.Endpoints.Urls['/catalog/browse.aspx'] = 'http://www.watrbx.wtf/catalog/browse.aspx';
 Roblox.Endpoints.Urls['/catalog/html'] = '/catalog/html';
 Roblox.Endpoints.Urls['/catalog/json'] = '/catalog/json';
 Roblox.Endpoints.Urls['/catalog/contents'] = '/catalog/contents';
@@ -248,7 +248,7 @@ Roblox.Endpoints.Urls['/authentication/is-logged-in'] = '/authentication/is-logg
             var e = document.createElement('script');
             e.type = 'text/javascript';
             e.async = true;
-            e.src = ('https:' === document.location.protocol ? 'https://' : 'https://') + 'cdn.siftscience.com/s.js';
+            e.src = ('https:' === document.location.protocol ? 'http://' : 'http://') + 'cdn.siftscience.com/s.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(e, s);
         }
@@ -326,7 +326,7 @@ function __doPostBack(eventTarget, eventArgument) {
             <div id="rbx-continue-shopping-btn" class="btn btn-medium btn-neutral rbx-btn-secondary-xs btn-more btn-continue-shopping">Continue to Shop</div>
         </div>
         <div class="fine-print">
-            The shop is not part of ROBLOX.com and is governed by a separate <a href="https://www.myplay.com/direct/cookie-policy?origin=desktop&permalink=shoproblox">privacy policy</a>.
+            The shop is not part of ROBLOX.com and is governed by a separate <a href="http://www.myplay.com/direct/cookie-policy?origin=desktop&permalink=shoproblox">privacy policy</a>.
         </div>
     </div>
 </div>

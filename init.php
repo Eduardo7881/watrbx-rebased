@@ -21,7 +21,7 @@ spl_autoload_register(function ($class_name) {
 });
 
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+//    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
 });
 
 register_shutdown_function(function () {
@@ -49,7 +49,7 @@ try {
 
     $options = [
         'region' => 'auto',
-        'endpoint' => "https://".$_ENV["R2_ACCOUNT_ID"].".r2.cloudflarestorage.com",
+        'endpoint' => "http://".$_ENV["R2_ACCOUNT_ID"].".r2.cloudflarestorage.com",
         'version' => 'latest',
         'credentials' => $credentials,
         'request_checksum_calculation' => 'when_required',

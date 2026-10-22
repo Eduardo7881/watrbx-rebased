@@ -12,11 +12,13 @@ class sitefunctions {
     public $key = ''; // TODO: DO NOT SHOW THIS HERE
     public $method = 'AES-128-CTR'; 
     public $iv = '5449494959313423';
-    public $filter = new ContextualModeration(new Config(apiKey: $_ENV["OPENAI_API_KEY"]));
+    //public $filter = new ContextualModeration(new Config($_ENV["OPENAI_API_KEY"]));
+    public $filter;
 
     function construct__() {
         $this->key = $_ENV["random_key"];
         $this->iv = $_ENV["encryption_iv"];
+        $this->filter = new ContextualModeration(new Config($_ENV["OPENAI_API_KEY"]));
     }
     
     public function encrypt($text){
@@ -199,7 +201,7 @@ class sitefunctions {
         // this is for generating job ids.
     }
 
-    // https://stackoverflow.com/questions/14649645/resize-image-in-php - ty
+    // http://stackoverflow.com/questions/14649645/resize-image-in-php - ty
     public function resize_image($file, $w, $h, $crop=FALSE) {
         list($width, $height) = getimagesize($file);
         $r = $width / $height;
@@ -239,7 +241,7 @@ class sitefunctions {
         return imagepng($dst);
     }
 
-    // ty https://stackoverflow.com/questions/21671179/how-to-generate-a-new-guid
+    // ty http://stackoverflow.com/questions/21671179/how-to-generate-a-new-guid
     public function createguid() {
         if (function_exists('com_create_guid') === true) {
             return trim(com_create_guid(), '{}');

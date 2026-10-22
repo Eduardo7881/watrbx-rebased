@@ -138,7 +138,7 @@ $pagebuilder = new pagebuilder();
                     </div>
                     <div class="build-loading-container" style="display:none">
                       <div class="buildpage-loading-container">
-                        <img alt="^_^" src="https://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif">
+                        <img alt="^_^" src="http://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif">
                       </div>
                     </div>
                   </td>

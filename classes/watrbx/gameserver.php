@@ -193,7 +193,7 @@ class gameserver {
         $server = $this->get_server_info($jobinfo->server);
 
         $Grid = new \watrbx\Grid\Grid;
-        //$Grid = $Grid->Close("https://group-she.gl.at.ply.gg:49837");
+        //$Grid = $Grid->Close("http://group-she.gl.at.ply.gg:49837");
         $Grid = new \watrbx\Grid\Close\Service("http://" . $server->wireguard_ip . ":" . $server->port);
         $Result = $Grid->CloseJob($jobid);
 

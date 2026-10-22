@@ -23,7 +23,7 @@ try {
         $ipbanned = $db->table("ipbans")->where("ip", $ip)->first();
         if($ipbanned == true){
             echo "<h1>You have been banned.</h1>";
-            echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/0E9kzyAwC9Y?si=yKyOOMbofLEQyjJk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+            echo '<iframe width="560" height="315" src="http://www.youtube.com/embed/0E9kzyAwC9Y?si=yKyOOMbofLEQyjJk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
             http_response_code(403);
             exit; // should I make this show the iis 403?
         }

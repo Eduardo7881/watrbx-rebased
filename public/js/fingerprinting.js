@@ -1,4 +1,4 @@
-const fpPromise = import('https://openfpcdn.io/fingerprintjs/v5')
+const fpPromise = import('http://openfpcdn.io/fingerprintjs/v5')
     .then(FingerprintJS => FingerprintJS.load())
 
 async function sendFingerprint() {

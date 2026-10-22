@@ -18,7 +18,7 @@ $pagebuilder->buildheader();
                 
                 <h1><span id="ctl00_cphRoblox_ErrorTitle">Unexpected error with your request</span></h1>
                 <h3><span id="ctl00_cphRoblox_ErrorMessage">Please try again after a few moments.</span></h3>
-                <p><span id="ctl00_cphRoblox_CustomerServiceMessage">If you continue to receive this page, please contact customer service at <span class="SL_swap" id="CsEmailLink"><a href="https://web.archive.org/web/20150924082625/mailto:info@roblox.com">info@roblox.com</a></span>.</span></p>
+                <p><span id="ctl00_cphRoblox_CustomerServiceMessage">If you continue to receive this page, please contact customer service at <span class="SL_swap" id="CsEmailLink"><a href="http://web.archive.org/web/20150924082625/mailto:info@roblox.com">info@roblox.com</a></span>.</span></p>
                 <pre style="text-align:left;margin-left:10px;"><span id="ctl00_cphRoblox_errorMsgLbl"></span></pre>
             
                 <div class="divideTitleAndBackButtons">&nbsp;</div>

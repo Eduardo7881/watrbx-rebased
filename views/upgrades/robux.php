@@ -42,7 +42,7 @@ $pagebuilder->buildheader();
                         <h1>400</h1>
                         <h2>ROBUX</h2>
                     </div>
-                    <a  href="https://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $4.95</a>
+                    <a  href="http://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $4.95</a>
                         <div class="robux-bonus-nbc">Want to get <span class="robux-bonus">50 Bonus ROBUX</span> ?
                         </div>
                         <a href=/Upgrades/BuildersClubMemberships.aspx?ap=42&amp;page=grid class="rbx-link"> Join Builders Club</a>
@@ -54,7 +54,7 @@ $pagebuilder->buildheader();
                         <h1>800</h1>
                         <h2>ROBUX</h2>
                     </div>
-                    <a  href="https://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $9.95</a>
+                    <a  href="http://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $9.95</a>
                         <div class="robux-bonus-nbc">Want to get <span class="robux-bonus">200 Bonus ROBUX</span> ?
                         </div>
                         <a href=/Upgrades/BuildersClubMemberships.aspx?ap=45&amp;page=grid class="rbx-link"> Join Builders Club</a>
@@ -66,7 +66,7 @@ $pagebuilder->buildheader();
                         <h1>2,000</h1>
                         <h2>ROBUX</h2>
                     </div>
-                    <a  href="https://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $24.95</a>
+                    <a  href="http://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $24.95</a>
                         <div class="robux-bonus-nbc">Want to get <span class="robux-bonus">750 Bonus ROBUX</span> ?
                         </div>
                         <a href=/Upgrades/BuildersClubMemberships.aspx?ap=10&amp;page=grid class="rbx-link"> Join Builders Club</a>
@@ -78,7 +78,7 @@ $pagebuilder->buildheader();
                         <h1>4,500</h1>
                         <h2>ROBUX</h2>
                     </div>
-                    <a  href="https://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $49.95</a>
+                    <a  href="http://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $49.95</a>
                         <div class="robux-bonus-nbc">Want to get <span class="robux-bonus">1,500 Bonus ROBUX</span> ?
                         </div>
                         <a href=/Upgrades/BuildersClubMemberships.aspx?ap=46&amp;page=grid class="rbx-link"> Join Builders Club</a>
@@ -90,7 +90,7 @@ $pagebuilder->buildheader();
                         <h1>10,000</h1>
                         <h2>ROBUX</h2>
                     </div>
-                    <a  href="https://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $99.95</a>
+                    <a  href="http://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $99.95</a>
                         <div class="robux-bonus-nbc">Want to get <span class="robux-bonus">5,000 Bonus ROBUX</span> ?
                         </div>
                         <a href=/Upgrades/BuildersClubMemberships.aspx?ap=19&amp;page=grid class="rbx-link"> Join Builders Club</a>
@@ -102,7 +102,7 @@ $pagebuilder->buildheader();
                         <h1>22,500</h1>
                         <h2>ROBUX</h2>
                     </div>
-                    <a  href="https://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $199.95</a>
+                    <a  href="http://discord.gg/UqpYrnX7Dz" class="rbx-btn-primary-sm robux-product-price btn-full-width robux-buy">Buy for $199.95</a>
                         <div class="robux-bonus-nbc">Want to get <span class="robux-bonus">12,500 Bonus ROBUX</span> ?
                         </div>
                         <a href=/Upgrades/BuildersClubMemberships.aspx?ap=21&amp;page=grid class="rbx-link"> Join Builders Club</a>
@@ -194,7 +194,7 @@ $pagebuilder->buildheader();
      data-protocol-detection-enabled="true">
     <div class="modalPopup blueAndWhite PlaceLauncherModal" style="min-height: 160px">
         <div id="Spinner" class="Spinner" style="padding:20px 0;">
-            <img src="https://s3.amazonaws.com/images.roblox.com/e998fb4c03e8c2e30792f2f3436e9416.gif" height="32" width="32" alt="Progress" />
+            <img src="http://s3.amazonaws.com/images.roblox.com/e998fb4c03e8c2e30792f2f3436e9416.gif" height="32" width="32" alt="Progress" />
         </div>
         <div id="status" style="min-height:40px;text-align:center;margin:5px 20px">
             <div id="Starting" class="PlaceLauncherStatus MadStatusStarting" style="display:block">
@@ -244,7 +244,7 @@ $pagebuilder->buildheader();
                 </button>
             </div>
             <div class="rbx-small rbx-text-notes">
-                <a href="https://en.help.roblox.com/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
+                <a href="http://en.help.roblox.com/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
             </div>
 
         </div>
@@ -379,7 +379,7 @@ $pagebuilder->buildheader();
 <div id="pluginObjDiv" style="height:1px;width:1px;visibility:hidden;position: absolute;top: 0;"></div>
 <iframe id="downloadInstallerIFrame" style="visibility:hidden;height:0;width:1px;position:absolute"></iframe>
 
-<script type='text/javascript' src='https://s3.amazonaws.com/js.roblox.com/453a3526187103f27673584103a84bc7.js'></script>
+<script type='text/javascript' src='http://s3.amazonaws.com/js.roblox.com/453a3526187103f27673584103a84bc7.js'></script>
 
 <script type="text/javascript">
     Roblox.Client._skip = '/install/unsupported.aspx';
@@ -450,15 +450,15 @@ $pagebuilder->buildheader();
 
 
     
-    <script type='text/javascript' src='https://s3.amazonaws.com/js.roblox.com/eb2c38a17735382dfb8c08291b7dd25a.js'></script>
+    <script type='text/javascript' src='http://s3.amazonaws.com/js.roblox.com/eb2c38a17735382dfb8c08291b7dd25a.js'></script>
 
 
     
-            <script type='text/javascript' src='https://s3.amazonaws.com/js.roblox.com/822491cace41a2d39fd76db6cfd17800.js'></script>
+            <script type='text/javascript' src='http://s3.amazonaws.com/js.roblox.com/822491cace41a2d39fd76db6cfd17800.js'></script>
 
 
     
-    <script type='text/javascript'>Roblox.config.externalResources = [];Roblox.config.paths['Pages.Catalog'] = 'https://s3.amazonaws.com/js.roblox.com/1612c57544c7977e19cd15c824f7ecc3.js';Roblox.config.paths['Pages.CatalogShared'] = 'https://s3.amazonaws.com/js.roblox.com/209f2b781ea84e8d0332648ddf547d57.js';Roblox.config.paths['Pages.Messages'] = 'https://s3.amazonaws.com/js.roblox.com/e8cbac58ab4f0d8d4c707700c9f97630.js';Roblox.config.paths['Resources.Messages'] = 'https://s3.amazonaws.com/js.roblox.com/fb9cb43a34372a004b06425a1c69c9c4.js';Roblox.config.paths['Widgets.AvatarImage'] = 'https://s3.amazonaws.com/js.roblox.com/bbaeb48f3312bad4626e00c90746ffc0.js';Roblox.config.paths['Widgets.DropdownMenu'] = 'https://s3.amazonaws.com/js.roblox.com/7b436bae917789c0b84f40fdebd25d97.js';Roblox.config.paths['Widgets.GroupImage'] = 'https://s3.amazonaws.com/js.roblox.com/33d82b98045d49ec5a1f635d14cc7010.js';Roblox.config.paths['Widgets.HierarchicalDropdown'] = 'https://s3.amazonaws.com/js.roblox.com/fbb86cf0752d23f389f983419d3085b4.js';Roblox.config.paths['Widgets.ItemImage'] = 'https://s3.amazonaws.com/js.roblox.com/8babd891cf420dfe3999b3824a0154cb.js';Roblox.config.paths['Widgets.PlaceImage'] = 'https://s3.amazonaws.com/js.roblox.com/f2697119678d0851cfaa6c2270a727ed.js';Roblox.config.paths['Widgets.SurveyModal'] = 'https://s3.amazonaws.com/js.roblox.com/d6e979598c460090eafb6d38231159f6.js';</script>
+    <script type='text/javascript'>Roblox.config.externalResources = [];Roblox.config.paths['Pages.Catalog'] = 'http://s3.amazonaws.com/js.roblox.com/1612c57544c7977e19cd15c824f7ecc3.js';Roblox.config.paths['Pages.CatalogShared'] = 'http://s3.amazonaws.com/js.roblox.com/209f2b781ea84e8d0332648ddf547d57.js';Roblox.config.paths['Pages.Messages'] = 'http://s3.amazonaws.com/js.roblox.com/e8cbac58ab4f0d8d4c707700c9f97630.js';Roblox.config.paths['Resources.Messages'] = 'http://s3.amazonaws.com/js.roblox.com/fb9cb43a34372a004b06425a1c69c9c4.js';Roblox.config.paths['Widgets.AvatarImage'] = 'http://s3.amazonaws.com/js.roblox.com/bbaeb48f3312bad4626e00c90746ffc0.js';Roblox.config.paths['Widgets.DropdownMenu'] = 'http://s3.amazonaws.com/js.roblox.com/7b436bae917789c0b84f40fdebd25d97.js';Roblox.config.paths['Widgets.GroupImage'] = 'http://s3.amazonaws.com/js.roblox.com/33d82b98045d49ec5a1f635d14cc7010.js';Roblox.config.paths['Widgets.HierarchicalDropdown'] = 'http://s3.amazonaws.com/js.roblox.com/fbb86cf0752d23f389f983419d3085b4.js';Roblox.config.paths['Widgets.ItemImage'] = 'http://s3.amazonaws.com/js.roblox.com/8babd891cf420dfe3999b3824a0154cb.js';Roblox.config.paths['Widgets.PlaceImage'] = 'http://s3.amazonaws.com/js.roblox.com/f2697119678d0851cfaa6c2270a727ed.js';Roblox.config.paths['Widgets.SurveyModal'] = 'http://s3.amazonaws.com/js.roblox.com/d6e979598c460090eafb6d38231159f6.js';</script>
 
     
     <script>
@@ -564,7 +564,7 @@ $pagebuilder->buildheader();
 </script>
 
     
-    <script type='text/javascript' src='https://s3.amazonaws.com/js.roblox.com/26913b613d22e4a367bde7e8716261c3.js'></script>
+    <script type='text/javascript' src='http://s3.amazonaws.com/js.roblox.com/26913b613d22e4a367bde7e8716261c3.js'></script>
 
 </body>
 </html>

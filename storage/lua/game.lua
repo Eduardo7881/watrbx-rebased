@@ -54,7 +54,7 @@ end
 local badgeUrlFlagExists, badgeUrlFlagValue = pcall(function () return settings():GetFFlag("NewBadgeServiceUrlEnabled") end)
 local newBadgeUrlEnabled = badgeUrlFlagExists and badgeUrlFlagValue
 if url~=nil then
-	if baseUrl ~= "localhost:8080" then local apiProxyUrl = "https://api." .. baseUrl else local apiProxyUrl = baseUrl end -- baseUrl is really the domain
+	if baseUrl ~= "localhost:8080" then local apiProxyUrl = "http://api." .. baseUrl else local apiProxyUrl = baseUrl end -- baseUrl is really the domain
 
 	pcall(function() game:GetService("Players"):SetAbuseReportUrl(url .. "/AbuseReport/InGameChatHandler.ashx") end)
 	pcall(function() game:GetService("ScriptInformationProvider"):SetAssetUrl(assetGameUrl .. "/Asset/") end)

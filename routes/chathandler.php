@@ -8,13 +8,13 @@ use watrbx\relationship\friends;
 global $router; // IMPORTANT: KEEP THIS HERE!
 
 function add_cors(){
-    //header('Access-Control-Allow-Origin: https://watrbx.wtf');
+    //header('Access-Control-Allow-Origin: http://watrbx.wtf');
     header('Access-Control-Allow-Origin: ' . $_ENV["BASE_URL"]);
     header('Access-Control-Allow-Credentials: true');
 }
 
 $router->get('/presence/user', function(){
-    //header('Access-Control-Allow-Origin: https://www.watrbx.wtf');
+    //header('Access-Control-Allow-Origin: http://www.watrbx.wtf');
     header('Access-Control-Allow-Origin: ' . $_ENV["BASE_URL"]);
     header('Access-Control-Allow-Credentials: true');
 
@@ -24,7 +24,7 @@ $router->get('/presence/user', function(){
 $router->get('/friends/list', function(){
 
     header("Content-type: application/json");
-    //header('Access-Control-Allow-Origin: https://www.watrbx.wtf');
+    //header('Access-Control-Allow-Origin: http://www.watrbx.wtf');
     header('Access-Control-Allow-Origin: ' . $_ENV["BASE_URL"]);
     header('Access-Control-Allow-Credentials: true');
     $auth = new authentication();
@@ -102,7 +102,7 @@ $router->group('/v1.0', function($router) {
     });
 
     $router->options("/start-one-to-one-conversation", function(){
-        //header("Access-Control-Allow-Origin: https://www.watrbx.wtf");
+        //header("Access-Control-Allow-Origin: http://www.watrbx.wtf");
         header('Access-Control-Allow-Origin: ' . $_ENV["BASE_URL"]);
         header("Access-Control-Allow-Credentials: true");
         header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, x-csrf-token");
@@ -150,7 +150,7 @@ $router->group('/v1.0', function($router) {
                 "IsGroupChat"=> false
             ];
 
-           //header('Access-Control-Allow-Origin: https://www.watrbx.wtf');
+           //header('Access-Control-Allow-Origin: http://www.watrbx.wtf');
             header('Access-Control-Allow-Origin: ' . $_ENV["BASE_URL"]);
             header('Access-Control-Allow-Credentials: true');
 
@@ -175,7 +175,7 @@ $router->group('/v1.0', function($router) {
     });
 
     $router->options("/send-message", function(){
-        //header("Access-Control-Allow-Origin: https://www.watrbx.wtf");
+        //header("Access-Control-Allow-Origin: http://www.watrbx.wtf");
         header('Access-Control-Allow-Origin: ' . $_ENV["BASE_URL"]);
         header("Access-Control-Allow-Credentials: true");
         header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, x-csrf-token");

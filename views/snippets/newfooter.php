@@ -7,17 +7,17 @@
     <div class="footer">
         <ul class="row footer-links">
                 <li class="col-xs-4 col-sm-2 footer-link">
-                    <a href="https://corp.roblox.com" class="roblox-interstitial" target="_blank">
+                    <a href="http://corp.roblox.com" class="roblox-interstitial" target="_blank">
                         <h2>About Us</h2>
                     </a>
                 </li>
                 <li class="col-xs-4 col-sm-2 footer-link">
-                    <a href="https://corp.roblox.com/jobs" class="roblox-interstitial" target="_blank">
+                    <a href="http://corp.roblox.com/jobs" class="roblox-interstitial" target="_blank">
                         <h2>Jobs</h2>
                     </a>
                 </li>
             <li class="col-xs-4 col-sm-2 footer-link">
-                <a href="https://blog.roblox.com" target="_blank">
+                <a href="http://blog.roblox.com" target="_blank">
                     <h2>Blog</h2>
                 </a>
             </li>
@@ -27,18 +27,18 @@
                 </a>
             </li>
             <li class="col-xs-4 col-sm-2 footer-link">
-                <a href="https://corp.roblox.com/parents" class="roblox-interstitial" target="_blank">
+                <a href="http://corp.roblox.com/parents" class="roblox-interstitial" target="_blank">
                     <h2>Parents</h2>
                 </a>
             </li>
             <li class="col-xs-4 col-sm-2 footer-link">
-                <a href="https://en.help.roblox.com/" class="roblox-interstitial" target="_blank">
+                <a href="http://en.help.roblox.com/" class="roblox-interstitial" target="_blank">
                     <h2>Help</h2>
                 </a>
             </li>
         </ul>
         <p class="footer-note">
-            ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a target="_blank" href="https://corp.roblox.com" class="rbx-link roblox-interstitial">ROBLOX Corporation</a>, ©2015.
+            ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a target="_blank" href="http://corp.roblox.com" class="rbx-link roblox-interstitial">ROBLOX Corporation</a>, ©2015.
             Patents pending. ROBLOX is not sponsored, authorized or endorsed by any producer of plastic building bricks, including The LEGO Group, MEGA Brands, and K'Nex, and no resemblance to the products of these companies is intended.
             Use of this site signifies your acceptance of the <a href="/info/terms-of-service" target="_blank" class="rbx-link">Terms and Conditions</a>.
         </p>
@@ -76,12 +76,12 @@
         (function() {
             var s = document.createElement("script"), el = document.getElementsByTagName("script")[0];
             s.async = true;
-            s.src = (document.location.protocol == "https:" ? "https://sb" : "https://b") + ".scorecardresearch.com/beacon.js";
+            s.src = (document.location.protocol == "https:" ? "http://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
             el.parentNode.insertBefore(s, el);
         })();
     </script>
     <noscript>
-        <img src="https://b.scorecardresearch.com/p?c1=2&c2=&c3=&c4=&c5=&c6=&c15=&cv=2.0&cj=1"/>
+        <img src="http://b.scorecardresearch.com/p?c1=2&c2=&c3=&c4=&c5=&c6=&c15=&cv=2.0&cj=1"/>
     </noscript>
 </body>
 </html>

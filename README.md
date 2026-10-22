@@ -63,7 +63,7 @@ sudo apt install git composer php php-cli php-mysql php-curl php-xml php-mbstrin
 **2. Clone the repository**
 
 ```bash
-git clone https://github.com/Eduardo7881/watrbx-rebased.git
+git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
@@ -139,7 +139,7 @@ sudo dnf install git composer php php-cli php-mysqlnd php-curl php-xml php-mbstr
 **2. Clone the repository**
 
 ```bash
-git clone https://github.com/Eduardo7881/watrbx-rebased.git
+git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
@@ -177,7 +177,7 @@ If the project needs PHP extensions that aren't enabled by default, check your P
 **2. Clone the repository**
 
 ```bash
-git clone https://github.com/Eduardo7881/watrbx-rebased.git
+git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
@@ -218,7 +218,7 @@ sudo systemctl enable --now mariadb
 
 If you don't have Homebrew installed, follow the instructions on its official website:
 
-https://brew.sh/
+http://brew.sh/
 
 **2. Install the dependencies**
 
@@ -229,7 +229,7 @@ brew install git composer php mariadb openssl
 **3. Clone the repository**
 
 ```bash
-git clone https://github.com/Eduardo7881/watrbx-rebased.git
+git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
@@ -286,7 +286,7 @@ sudo apt install git composer php php-cli php-mysql php-curl php-xml php-mbstrin
 **4. Clone the repository**
 
 ```bash
-git clone https://github.com/Eduardo7881/watrbx-rebased.git
+git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 

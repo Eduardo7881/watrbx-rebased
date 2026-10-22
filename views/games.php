@@ -238,7 +238,7 @@ $pagebuilder->buildheader();
                 </button>
             </div>
             <div class="rbx-small rbx-text-notes">
-                <a href="https://en.help.roblox.com/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
+                <a href="http://en.help.roblox.com/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
             </div>
 
         </div>
@@ -267,7 +267,7 @@ $pagebuilder->buildheader();
         </div>
         <div id="videoPrerollJoinBC">
             <span>Get more with Builders Club!</span>
-            <a href="https://www.roblox.com/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
+            <a href="http://www.roblox.com/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
         </div>
     </div>
     <script type="text/javascript">
@@ -319,7 +319,7 @@ $pagebuilder->buildheader();
         <div class="RevisedFooter">
             <div style="width:200px;margin:10px auto 0 auto;">
                 <a href="/?returnUrl=http%3A%2F%2Fwww.roblox.com%2Fgames"><div class="RevisedCharacterSelectSignup"></div></a>
-                <a class="HaveAccount" href="https://www.roblox.com/newlogin?returnUrl=http%3A%2F%2Fwww.roblox.com%2Fgames">I have an account</a>
+                <a class="HaveAccount" href="http://www.roblox.com/newlogin?returnUrl=http%3A%2F%2Fwww.roblox.com%2Fgames">I have an account</a>
             </div>
         </div>
     </div>

@@ -51,7 +51,7 @@ $router->group('/api/v1/discord-bot', function($router) {
                 $boughtamount = $db->table("ownedassets")->where("assetid", $assetInfo->id)->count();
                 $creator = $auth->getuserbyid($assetInfo->owner);
                 $thumbnailurl = "https:" . $thumbs->get_asset_thumb($assetInfo->id);
-                $assetUrl = "https://www.watrbx.wtf/" . $slugify->slugify($assetInfo->name) . "-item?id=" . $assetInfo->id;
+                $assetUrl = $_ENV["BASE_URL"] . "/" . $slugify->slugify($assetInfo->name) . "-item?id=" . $assetInfo->id;
 
                 $name = htmlspecialchars_decode($assetInfo->name);
                 $description = htmlspecialchars_decode($assetInfo->description);

@@ -3,7 +3,7 @@
 ?>
 <div id="usernotifications-data-model"
      class="hidden"
-     data-notificationsdomain="https://notifications.watrbx.wtf/"
+     data-notificationsdomain="http://notifications.watrbx.wtf/"
      data-notificationstestinterval="5000"
      data-notificationsmaxconnectiontime="43200000">
 </div>
@@ -43,14 +43,14 @@
      chat-library="chatLibrary"
      data-userid="<?=$currentuser->id?>"
      data-domain="<?=$_ENV["APP_DOMAIN"]?>"
-     data-gamespagelink="https://www.<?=$_ENV["APP_DOMAIN"]?>/games"
+     data-gamespagelink="http://www.<?=$_ENV["APP_DOMAIN"]?>/games"
      data-chatdomain="/"
      data-numberofmembersforpartychrome="6"
      data-avatarheadshotsmultigetlimit="100"
      data-userpresencemultigetlimit="100"
      data-intervalofchangetitleforpartychrome="500"
-     data-spinner="https://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif"
-     data-notificationsdomain="https://notifications.<?=$_ENV["APP_DOMAIN"]?>/"
+     data-spinner="http://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif"
+     data-notificationsdomain="http://notifications.<?=$_ENV["APP_DOMAIN"]?>/"
      data-devicetype="Computer"
      data-inapp=false
      data-smallerchatenabled=true

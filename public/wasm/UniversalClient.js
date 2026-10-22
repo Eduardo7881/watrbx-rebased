@@ -6129,7 +6129,7 @@ if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
     }
     readAsync = async url => {
       // Fetch has some additional restrictions over XHR, like it can't be used on a file:// url.
-      // See https://github.com/github/fetch/pull/92#issuecomment-140665932
+      // See http://github.com/github/fetch/pull/92#issuecomment-140665932
       // Cordova or Electron apps are typically loaded from a file:// url.
       // So use XHR on webview if URL is a file URL.
       if (isFileURI(url)) {
@@ -6167,7 +6167,7 @@ if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
 // Normally just binding console.log/console.error here works fine, but
 // under node (with workers) we see missing/out-of-order messages so route
 // directly to stdout and stderr.
-// See https://github.com/emscripten-core/emscripten/issues/14804
+// See http://github.com/emscripten-core/emscripten/issues/14804
 var defaultPrint = console.log.bind(console);
 
 var defaultPrintErr = console.error.bind(console);
@@ -6319,7 +6319,7 @@ var runtimeDebug = true;
 function dbg(...args) {
   if (!runtimeDebug && typeof runtimeDebug != "undefined") return;
   // Avoid using the console for debugging in multi-threaded node applications
-  // See https://github.com/emscripten-core/emscripten/issues/14804
+  // See http://github.com/emscripten-core/emscripten/issues/14804
   if (ENVIRONMENT_IS_NODE) {
     // TODO(sbc): Unify with err/out implementation in shell.sh.
     var fs = require("node:fs");
@@ -6487,7 +6487,7 @@ if (ENVIRONMENT_IS_NODE && (ENVIRONMENT_IS_PTHREAD)) {
   }
   // Node.js Workers do not pass postMessage()s and uncaught exception events to the parent
   // thread necessarily in the same order where they were generated in sequential program order.
-  // See https://github.com/nodejs/node/issues/59617
+  // See http://github.com/nodejs/node/issues/59617
   // To remedy this, capture all uncaughtExceptions in the Worker, and sequentialize those over
   // to the same postMessage pipe that other messages use.
   process.on("uncaughtException", err => {
@@ -6653,7 +6653,7 @@ function initMemory() {
       "initial": INITIAL_MEMORY / 65536,
       // In theory we should not need to emit the maximum if we want "unlimited"
       // or 4GB of memory, but VMs error on that atm, see
-      // https://github.com/emscripten-core/emscripten/issues/14130
+      // http://github.com/emscripten-core/emscripten/issues/14130
       // And in the pthreads case we definitely need to emit a maximum. So
       // always emit one.
       "maximum": 32768,
@@ -6740,7 +6740,7 @@ function postRun() {
   // Suppress closure compiler warning here. Closure compiler's builtin extern
   // definition for WebAssembly.RuntimeError claims it takes no arguments even
   // though it can.
-  // TODO(https://github.com/google/closure-compiler/pull/3913): Remove if/when upstream closure gets fixed.
+  // TODO(http://github.com/google/closure-compiler/pull/3913): Remove if/when upstream closure gets fixed.
   /** @suppress {checkTypes} */ var e = new WebAssembly.RuntimeError(what);
   // Throw the error whether or not MODULARIZE is set because abort is used
   // in code paths apart from instantiation where an exception is expected
@@ -6799,7 +6799,7 @@ async function instantiateArrayBuffer(binaryFile, imports) {
     err(`failed to asynchronously prepare wasm: ${reason}`);
     // Warn on some common problems.
     if (isFileURI(binaryFile)) {
-      err(`warning: Loading from a file URI (${binaryFile}) is not supported in most browsers. See https://emscripten.org/docs/getting_started/FAQ.html#how-do-i-run-a-local-webserver-for-testing-why-does-my-program-stall-in-downloading-or-preparing`);
+      err(`warning: Loading from a file URI (${binaryFile}) is not supported in most browsers. See http://emscripten.org/docs/getting_started/FAQ.html#how-do-i-run-a-local-webserver-for-testing-why-does-my-program-stall-in-downloading-or-preparing`);
     }
     abort(reason);
   }
@@ -7259,7 +7259,7 @@ var PThread = {
         worker.postMessage(d);
       } else if (cmd === "uncaughtException") {
         // Message handler for Node.js specific out-of-order behavior:
-        // https://github.com/nodejs/node/issues/59617
+        // http://github.com/nodejs/node/issues/59617
         // A pthread sent an uncaught exception event. Re-raise it on the main thread.
         worker.onerror(d.error);
       } else if (cmd === "callHandler") {
@@ -7555,8 +7555,8 @@ var findStringEnd = (heapOrArray, idx, maxBytesToRead, ignoreNul) => {
   while (idx < endPtr) {
     // For UTF8 byte structure, see:
     // http://en.wikipedia.org/wiki/UTF-8#Description
-    // https://www.ietf.org/rfc/rfc2279.txt
-    // https://tools.ietf.org/html/rfc3629
+    // http://www.ietf.org/rfc/rfc2279.txt
+    // http://tools.ietf.org/html/rfc3629
     var u0 = heapOrArray[idx++];
     if (!(u0 & 128)) {
       str += String.fromCharCode(u0);
@@ -8008,8 +8008,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   // -1 for string null terminator.
   for (var i = 0; i < str.length; ++i) {
     // For UTF8 byte structure, see http://en.wikipedia.org/wiki/UTF-8#Description
-    // and https://www.ietf.org/rfc/rfc2279.txt
-    // and https://tools.ietf.org/html/rfc3629
+    // and http://www.ietf.org/rfc/rfc2279.txt
+    // and http://tools.ietf.org/html/rfc3629
     var u = str.codePointAt(i);
     if (u <= 127) {
       if (outIdx >= endIdx) break;
@@ -8059,7 +8059,7 @@ var FS_stdin_getChar = () => {
       // For some reason we must suppress a closure warning here, even though
       // fd definitely exists on process.stdin, and is even the proper way to
       // get the fd of stdin,
-      // https://github.com/nodejs/help/issues/2136#issuecomment-523649904
+      // http://github.com/nodejs/help/issues/2136#issuecomment-523649904
       // This started to happen after moving this logic out of library_tty.js,
       // so it is related to the surrounding code in some unclear manner.
       /** @suppress {missingProperties} */ var fd = process.stdin.fd;
@@ -10691,7 +10691,7 @@ var SOCKFS = {
         // When an non-blocking connect fails mark the socket as writable.
         // Its up to the calling code to then use getsockopt with SO_ERROR to
         // retrieve the error.
-        // See https://man7.org/linux/man-pages/man2/connect.2.html
+        // See http://man7.org/linux/man-pages/man2/connect.2.html
         if (sock.connecting) {
           mask |= 4;
         } else {
@@ -11378,7 +11378,7 @@ function ___syscall_fcntl64(fd, cmd, varargs) {
       // Pretend that the locking is successful. These are process-level locks,
       // and Emscripten programs are a single process. If we supported linking a
       // filesystem between programs, we'd need to do more here.
-      // See https://github.com/emscripten-core/emscripten/issues/23697
+      // See http://github.com/emscripten-core/emscripten/issues/23697
       return 0;
     }
     return -28;
@@ -11526,7 +11526,7 @@ function ___syscall_getsockopt(fd, level, optname, optval, optlen, d1) {
   if (ENVIRONMENT_IS_PTHREAD) return proxyToMainThread(10, 0, 1, fd, level, optname, optval, optlen, d1);
   try {
     var sock = getSocketFromFD(fd);
-    // Minimal getsockopt aimed at resolving https://github.com/emscripten-core/emscripten/issues/2211
+    // Minimal getsockopt aimed at resolving http://github.com/emscripten-core/emscripten/issues/2211
     // so only supports SOL_SOCKET with SO_ERROR.
     if (level === 1) {
       if (optname === 4) {
@@ -12044,7 +12044,7 @@ var __embind_register_float = (rawType, name, size) => {
         throw new TypeError(`Cannot convert ${embindRepr(value)} to ${this.name}`);
       }
       // The VM will perform JS to Wasm value conversion, according to the spec:
-      // https://www.w3.org/TR/wasm-js-api-1/#towebassemblyvalue
+      // http://www.w3.org/TR/wasm-js-api-1/#towebassemblyvalue
       return value;
     },
     readValueFromPointer: floatReadValueFromPointer(name, size),
@@ -12070,7 +12070,7 @@ var __embind_register_float = (rawType, name, size) => {
       }
       assertIntegerRange(name, value, minRange, maxRange);
       // The VM will perform JS to Wasm value conversion, according to the spec:
-      // https://www.w3.org/TR/wasm-js-api-1/#towebassemblyvalue
+      // http://www.w3.org/TR/wasm-js-api-1/#towebassemblyvalue
       return value;
     },
     readValueFromPointer: integerReadValueFromPointer(name, size, minRange !== 0),
@@ -12356,7 +12356,7 @@ var maybeExit = () => {
     try {
       if (ENVIRONMENT_IS_PTHREAD) {
         // exit the current thread, but only if there is one active.
-        // TODO(https://github.com/emscripten-core/emscripten/issues/25076):
+        // TODO(http://github.com/emscripten-core/emscripten/issues/25076):
         // Unify this check with the runtimeExited check above
         if (_pthread_self()) __emscripten_thread_exit(EXITSTATUS);
         return;
@@ -12401,7 +12401,7 @@ var __emscripten_thread_mailbox_await = pthread_ptr => {
 var checkMailbox = () => callUserCallback(() => {
   // Only check the mailbox if we have a live pthread runtime. We implement
   // pthread_self to return 0 if there is no live runtime.
-  // TODO(https://github.com/emscripten-core/emscripten/issues/25076):
+  // TODO(http://github.com/emscripten-core/emscripten/issues/25076):
   // Is this check still needed?  `callUserCallback` is supposed to
   // ensure the runtime is alive, and if `_pthread_self` is NULL then the
   // runtime certainly is *not* alive, so this should be a redundant check.
@@ -12803,7 +12803,7 @@ var __tzset_js = (timezone, daylight, std_name, dst_name) => {
   (growMemViews(), HEAP32)[((daylight) >> 2)] = Number(winterOffset != summerOffset);
   var extractZone = timezoneOffset => {
     // Why inverse sign?
-    // Read here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset
+    // Read here http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset
     var sign = timezoneOffset >= 0 ? "-" : "+";
     var absOffset = Math.abs(timezoneOffset);
     var hours = String(Math.floor(absOffset / 60)).padStart(2, "0");
@@ -13102,7 +13102,7 @@ var Browser = {
   exitFullscreen() {
     // This is workaround for chrome. Trying to exit from fullscreen
     // not in fullscreen state will cause "TypeError: Document not active"
-    // in chrome. See https://github.com/emscripten-core/emscripten/pull/8236
+    // in chrome. See http://github.com/emscripten-core/emscripten/pull/8236
     if (!Browser.isFullscreen) {
       return false;
     }
@@ -13113,7 +13113,7 @@ var Browser = {
   safeSetTimeout(func, timeout) {
     // Legacy function, this is used by the SDL2 port so we need to keep it
     // around at least until that is updated.
-    // See https://github.com/libsdl-org/SDL/pull/6304
+    // See http://github.com/libsdl-org/SDL/pull/6304
     return safeSetTimeout(func, timeout);
   },
   getMimetype(name) {
@@ -13668,9 +13668,9 @@ var GL = {
     // context on a canvas, calling .getContext() will always return that
     // context independent of which 'webgl' or 'webgl2'
     // context version was passed. See:
-    //   https://webkit.org/b/222758
+    //   http://webkit.org/b/222758
     // and:
-    //   https://github.com/emscripten-core/emscripten/issues/13295.
+    //   http://github.com/emscripten-core/emscripten/issues/13295.
     // TODO: Once the bug is fixed and shipped in Safari, adjust the Safari
     // version field in above check.
     if (!canvas.getContextSafariWebGL2Fixed) {
@@ -13777,7 +13777,7 @@ var GL = {
     }
     // However, Firefox exposes the WebGL 1 version on WebGL 2 as well and
     // thus we look for the WebGL 1 version again if the WebGL 2 version
-    // isn't present. https://bugzil.la/1328882
+    // isn't present. http://bugzil.la/1328882
     if (context.version < 2 || !GLctx.disjointTimerQueryExt) {
       GLctx.disjointTimerQueryExt = GLctx.getExtension("EXT_disjoint_timer_query");
     }
@@ -14179,7 +14179,7 @@ function _eglSwapBuffers(dpy, surface) {
     EGL.setErrorCode(12302);
   } else {
     // According to documentation this does an implicit flush.
-    // Due to discussion at https://github.com/emscripten-core/emscripten/pull/1871
+    // Due to discussion at http://github.com/emscripten-core/emscripten/pull/1871
     // the flush was removed since this _may_ result in slowing code down.
     //_glFlush();
     EGL.setErrorCode(12288);
@@ -14513,7 +14513,7 @@ var _emscripten_check_blocking_allowed = () => {
   if (ENVIRONMENT_IS_NODE) return;
   if (ENVIRONMENT_IS_WORKER) return;
   // Blocking in a worker/pthread is fine.
-  warnOnce("Blocking on the main thread is very dangerous, see https://emscripten.org/docs/porting/pthreads.html#blocking-on-the-main-browser-thread");
+  warnOnce("Blocking on the main thread is very dangerous, see http://emscripten.org/docs/porting/pthreads.html#blocking-on-the-main-browser-thread");
 };
 
 var _emscripten_err = str => err(UTF8ToString(str));
@@ -14559,9 +14559,9 @@ var JSEvents = {
     if (navigator.userActivation) {
       // Verify against transient activation status from UserActivation API
       // whether it is possible to perform a request here without needing to defer. See
-      // https://developer.mozilla.org/en-US/docs/Web/Security/User_activation#transient_activation
-      // and https://caniuse.com/mdn-api_useractivation
-      // At the time of writing, Firefox does not support this API: https://bugzil.la/1791079
+      // http://developer.mozilla.org/en-US/docs/Web/Security/User_activation#transient_activation
+      // and http://caniuse.com/mdn-api_useractivation
+      // At the time of writing, Firefox does not support this API: http://bugzil.la/1791079
       return navigator.userActivation.isActive;
     }
     return JSEvents.inEventHandler && JSEvents.currentEventHandler.allowsDeferredCalls;
@@ -15209,7 +15209,7 @@ var _emscripten_glClientWaitSync = (sync, flags, timeout) => {
   // WebGL2 vs GLES3 differences: in GLES3, the timeout parameter is a uint64, where 0xFFFFFFFFFFFFFFFFULL means GL_TIMEOUT_IGNORED.
   // In JS, there's no 64-bit value types, so instead timeout is taken to be signed, and GL_TIMEOUT_IGNORED is given value -1.
   // Inherently the value accepted in the timeout is lossy, and can't take in arbitrary u64 bit pattern (but most likely doesn't matter)
-  // See https://www.khronos.org/registry/webgl/specs/latest/2.0/#5.15
+  // See http://www.khronos.org/registry/webgl/specs/latest/2.0/#5.15
   timeout = Number(timeout);
   return GLctx.clientWaitSync(GL.syncs[sync], flags, timeout);
 };
@@ -15231,7 +15231,7 @@ var _emscripten_glCompressedTexImage2D = (target, level, internalFormat, width, 
   // don't upload" in GLES parlance, but `compressedTexImage2D` requires the
   // final data parameter, so we simply pass a heap view starting at zero
   // effectively uploading whatever happens to be near address zero.  See
-  // https://github.com/emscripten-core/emscripten/issues/19300.
+  // http://github.com/emscripten-core/emscripten/issues/19300.
   if (GL.currentContext.version >= 2) {
     if (GLctx.currentPixelUnpackBufferBinding || !imageSize) {
       GLctx.compressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, data);
@@ -15581,7 +15581,7 @@ var _glDrawElements = _emscripten_glDrawElements;
 var _emscripten_glDrawRangeElements = (mode, start, end, count, type, indices) => {
   // TODO: This should be a trivial pass-through function registered at the bottom of this page as
   // glFuncs[6][1] += ' drawRangeElements';
-  // but due to https://bugzil.la/1202427,
+  // but due to http://bugzil.la/1202427,
   // we work around by ignoring the range.
   _glDrawElements(mode, count, type, indices);
 };
@@ -17710,7 +17710,7 @@ var _emscripten_glVertexAttribPointer = (index, size, type, normalized, stride, 
 var _emscripten_glViewport = (x0, x1, x2, x3) => GLctx.viewport(x0, x1, x2, x3);
 
 var _emscripten_glWaitSync = (sync, flags, timeout) => {
-  // See WebGL2 vs GLES3 difference on GL_TIMEOUT_IGNORED above (https://www.khronos.org/registry/webgl/specs/latest/2.0/#5.15)
+  // See WebGL2 vs GLES3 difference on GL_TIMEOUT_IGNORED above (http://www.khronos.org/registry/webgl/specs/latest/2.0/#5.15)
   timeout = Number(timeout);
   GLctx.waitSync(GL.syncs[sync], flags, timeout);
 };

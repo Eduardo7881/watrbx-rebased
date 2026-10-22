@@ -24,7 +24,7 @@
     <h1>Temporary shirt creator</h1>
     <small>this is temporary till the develop page is done</small>
     <br>
-    <small><a href="https://cdn.watrbx.wtf/ShirtTemplate_02222016.png">Need the template?</a></small>
+    <small><a href="http://cdn.watrbx.wtf/ShirtTemplate_02222016.png">Need the template?</a></small>
     <br><br>
 
     <form method="post" action="/api/v1/shirt-creator" enctype="multipart/form-data">

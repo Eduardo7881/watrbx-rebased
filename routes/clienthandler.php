@@ -23,7 +23,7 @@ $router->get('/place/{id}/fetch', function($id){
             $asset = $db->table("assets")->where("id", $id)->first();
 
             if($asset){
-                header("Location: https://cdn.watrbx.wtf/" . $asset->fileid);
+                header("Location: http://cdn.watrbx.wtf/" . $asset->fileid);
                 die();
             } else {
                 http_response_code(403);
@@ -189,7 +189,7 @@ $router->get('/asset/', function() {
     if($type){
         if($type == "roblox"){
             try {
-                $asset = @file_get_contents("https://assetdelivery.ttblox.mom/v1/asset/?id=$id");
+                $asset = @file_get_contents("http://assetdelivery.ttblox.mom/v1/asset/?id=$id");
                 $decoded = gzdecode($asset);
 
                 if($asset){
@@ -233,7 +233,7 @@ $router->get('/asset/', function() {
                         }
                     }
 
-                    header("Location: https://cdn.watrbx.wtf/" . $asset->fileid);
+                    header("Location: http://cdn.watrbx.wtf/" . $asset->fileid);
                     die();
                 }
 
@@ -276,7 +276,7 @@ $router->get('/asset/', function() {
                     if($asset->owner == $currentuser->id){
                         try {
                             header("Content-type: application/octet-stream");
-                            $asset = file_get_contents("https://cdn.watrbx.wtf/" . $asset->fileid);
+                            $asset = file_get_contents("http://cdn.watrbx.wtf/" . $asset->fileid);
                             $asset = str_replace("roblox.com", $_ENV["APP_DOMAIN"], $asset);
                             $asset = str_replace("watrbx.xyz", $_ENV["APP_DOMAIN"], $asset);
                             die($asset);
@@ -295,7 +295,7 @@ $router->get('/asset/', function() {
             } else {
                 header("Content-type: application/octet-stream");
                 try {
-                    $asset = file_get_contents("https://cdn.watrbx.wtf/" . $asset->fileid);
+                    $asset = file_get_contents("http://cdn.watrbx.wtf/" . $asset->fileid);
                     $asset = str_replace("roblox.com", $_ENV["APP_DOMAIN"], $asset);
                     $asset = str_replace("watrbx.xyz", $_ENV["APP_DOMAIN"], $asset);
                     die($asset);
@@ -315,7 +315,7 @@ $router->get('/asset/', function() {
             $queryparams = http_build_query($_GET);
             
             try {
-                $asset = @file_get_contents("https://assetdelivery.ttblox.mom/v1/asset/?$queryparams");
+                $asset = @file_get_contents("http://assetdelivery.ttblox.mom/v1/asset/?$queryparams");
 
                 if($asset){
                     
@@ -353,13 +353,13 @@ $router->get('/Game/Tools/InsertAsset.ashx', function(){
 
     $queryparams = http_build_query($_GET);
 
-    header("Location: https://sets.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?$queryparams"); // * Pizzaboxer makes api * W Pizzaboxer
+    header("Location: http://sets.pizzaboxer.xyz/Game/Tools/InsertAsset.ashx?$queryparams"); // * Pizzaboxer makes api * W Pizzaboxer
     die();
 });
 
 $router->get('/Game/Tools/ThumbnailAsset.ashx', function(){
 
-    //https://roblox.com/Game/Tools/ThumbnailAsset.ashx?fmt=png&wd=420&ht=420&aid=67572213
+    //http://roblox.com/Game/Tools/ThumbnailAsset.ashx?fmt=png&wd=420&ht=420&aid=67572213
 
     $queryparams = http_build_query($_GET);
 
@@ -371,11 +371,11 @@ $router->get('/Game/Tools/ThumbnailAsset.ashx', function(){
         $assetid = $_GET['aid'];
 
         try {
-            $jsonstuff = @json_decode(file_get_contents('https://thumbnails.ttblox.mom/v1/assets?assetids='.$assetid.'&size=420x420&format=Png&isCircular=false'));
+            $jsonstuff = @json_decode(file_get_contents('http://thumbnails.ttblox.mom/v1/assets?assetids='.$assetid.'&size=420x420&format=Png&isCircular=false'));
         } catch (ErrorException $e){
             sleep(10);
             try {
-                $jsonstuff = @json_decode(file_get_contents('https://thumbnails.ttblox.mom/v1/assets?assetids='.$assetid.'&size=420x420&format=Png&isCircular=false'));
+                $jsonstuff = @json_decode(file_get_contents('http://thumbnails.ttblox.mom/v1/assets?assetids='.$assetid.'&size=420x420&format=Png&isCircular=false'));
             } catch (ErrorException $e){
                 http_response_code(429); // im just gonna assume we're getting rate limited
                 die();
@@ -408,7 +408,7 @@ $router->get("/Asset/BodyColors.ashx", function(){
     $auth = new authentication();
     $bodycolors = $auth->get_body_colors($userid);
 
-    die('<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.watrbx.wtf/roblox.xsd" version="4">
+    die('<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="' . $_ENV["BASE_URL"] . '/roblox.xsd" version="4">
 <External>null</External>
 <External>nil</External>
 <Item class="BodyColors" referent="RBX2DC0258909A9441E8A72097F024F5FC7">

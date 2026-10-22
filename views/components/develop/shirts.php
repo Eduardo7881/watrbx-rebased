@@ -4,7 +4,7 @@
     <h2>Create a Shirt</h2>
     <div class="col-12">
         <div class="ms-4 me-4 mt-4">
-            <p>Did you use the template? If not, <a href="https://cdn.watrbx.wtf/ShirtTemplate_02222016.png" download>download it here</a>.</p>
+            <p>Did you use the template? If not, <a href="http://cdn.watrbx.wtf/ShirtTemplate_02222016.png" download>download it here</a>.</p>
             <p>Find your image: <input name="shirtItem" accept="png" id="itemImage" type="file"></p>
             <p>Shirt Name: <input id="itemName" type="text" class="inputItemName-0-2-57"></p>
             <a href="#" id="CreateShirt" class="btn-medium btn-primary">Upload</a>

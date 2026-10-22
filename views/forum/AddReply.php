@@ -176,17 +176,17 @@ $pagebuilder->buildheader();
         <div class="footer">
             <ul class="row footer-links">
                     <li class="col-4 col-xs-2 footer-link">
-                        <a href="https://corp.roblox.com" class="text-footer-nav roblox-interstitial" target="_blank">
+                        <a href="http://corp.roblox.com" class="text-footer-nav roblox-interstitial" target="_blank">
                             About Us
                         </a>
                     </li>
                     <li class="col-4 col-xs-2 footer-link">
-                        <a href="https://corp.roblox.com/jobs" class="text-footer-nav roblox-interstitial" target="_blank">
+                        <a href="http://corp.roblox.com/jobs" class="text-footer-nav roblox-interstitial" target="_blank">
                             Jobs
                         </a>
                     </li>
                 <li class="col-4 col-xs-2 footer-link">
-                    <a href="https://blog.roblox.com" class="text-footer-nav" target="_blank">
+                    <a href="http://blog.roblox.com" class="text-footer-nav" target="_blank">
                         Blog
                     </a>
                 </li>
@@ -196,18 +196,18 @@ $pagebuilder->buildheader();
                     </a>
                 </li>
                 <li class="col-4 col-xs-2 footer-link">
-                    <a href="https://corp.roblox.com/parents" class="text-footer-nav roblox-interstitial" target="_blank">
+                    <a href="http://corp.roblox.com/parents" class="text-footer-nav roblox-interstitial" target="_blank">
                         Parents
                     </a>
                 </li>
                 <li class="col-4 col-xs-2 footer-link">
-                    <a href="https://en.help.roblox.com/" class="text-footer-nav roblox-interstitial" target="_blank">
+                    <a href="http://en.help.roblox.com/" class="text-footer-nav roblox-interstitial" target="_blank">
                         Help
                     </a>
                 </li>
             </ul>
             <p class="text-footer footer-note">
-                ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a target="_blank" href="https://corp.roblox.com" class="text-link roblox-interstitial">ROBLOX Corporation</a>, ©2016.
+                ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a target="_blank" href="http://corp.roblox.com" class="text-link roblox-interstitial">ROBLOX Corporation</a>, ©2016.
                 Patents pending. ROBLOX is not sponsored, authorized or endorsed by any producer of plastic building bricks, including The LEGO Group, MEGA Brands, and K'Nex, and no resemblance to the products of these companies is intended.
                 Use of this site signifies your acceptance of the <a href="/info/terms-of-service" target="_blank" class="text-link">Terms and Conditions</a>.
             </p>
@@ -272,7 +272,7 @@ $pagebuilder->buildheader();
     <div id="pluginObjDiv" style="height:1px;width:1px;visibility:hidden;position: absolute;top: 0;"></div>
     <iframe id="downloadInstallerIFrame" style="visibility:hidden;height:0;width:1px;position:absolute"></iframe>
     
-    <script type='text/javascript' src='https://js.rbxcdn.com/1ba208cf31fb5a6a592b902955c8770b.js'></script>
+    <script type='text/javascript' src='http://js.rbxcdn.com/1ba208cf31fb5a6a592b902955c8770b.js'></script>
     
     <script type="text/javascript">
         Roblox.Client._skip = '/install/unsupported.aspx';
@@ -311,7 +311,7 @@ $pagebuilder->buildheader();
             data-protocol-detection-enabled="true">
         <div class="modalPopup blueAndWhite PlaceLauncherModal" style="min-height: 160px">
             <div id="Spinner" class="Spinner" style="padding:20px 0;">
-                <img src="https://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif" height="32" width="32" alt="Progress" />
+                <img src="http://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif" height="32" width="32" alt="Progress" />
             </div>
             <div id="status" style="min-height:40px;text-align:center;margin:5px 20px">
                 <div id="Starting" class="PlaceLauncherStatus MadStatusStarting" style="display:block">
@@ -331,14 +331,14 @@ $pagebuilder->buildheader();
     
             </div>
             <div class="ph-logo-row">
-                <img src="https://images.rbxcdn.com/e060b59b57fdcc7874c820d13fdcee71.svg" width="90" height="90" alt="R" />
+                <img src="http://images.rbxcdn.com/e060b59b57fdcc7874c820d13fdcee71.svg" width="90" height="90" alt="R" />
             </div>
             <div class="ph-areyouinstalleddialog-content">
                 <p class="larger-font-size">
                     ROBLOX is now loading. Get ready to play!
                 </p>
                 <div class="ph-startingdialog-spinner-row">
-                    <img src="https://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif" width="82" height="24" />
+                    <img src="http://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif" width="82" height="24" />
                 </div>
             </div>
         </div>
@@ -349,7 +349,7 @@ $pagebuilder->buildheader();
                 <span class="icon-close simplemodal-close"></span>
             </div>
             <div class="ph-logo-row">
-                <img src="https://images.rbxcdn.com/e060b59b57fdcc7874c820d13fdcee71.svg" width="90" height="90" alt="R" />
+                <img src="http://images.rbxcdn.com/e060b59b57fdcc7874c820d13fdcee71.svg" width="90" height="90" alt="R" />
             </div>
             <div class="ph-areyouinstalleddialog-content">
                 <p class="larger-font-size">
@@ -361,7 +361,7 @@ $pagebuilder->buildheader();
                     </button>
                 </div>
                 <div class="small">
-                    <a href="https://en.help.roblox.com/hc/en-us/articles/204473560" class="text-name" target="_blank">Click here for help</a>
+                    <a href="http://en.help.roblox.com/hc/en-us/articles/204473560" class="text-name" target="_blank">Click here for help</a>
                 </div>
     
             </div>
@@ -370,7 +370,7 @@ $pagebuilder->buildheader();
     <div id="ProtocolHandlerClickAlwaysAllowed" class="ph-clickalwaysallowed" style="display:none;">
         <p class="larger-font-size">
             <span class="icon-moreinfo"></span>
-            Check <b>Remember my choice</b> and click <img src="https://images.rbxcdn.com/7c8d7a39b4335931221857cca2b5430b.png" alt="Launch Application" />  in the dialog box above to join games faster in the future!
+            Check <b>Remember my choice</b> and click <img src="http://images.rbxcdn.com/7c8d7a39b4335931221857cca2b5430b.png" alt="Launch Application" />  in the dialog box above to join games faster in the future!
         </p>
     </div>
     
@@ -390,7 +390,7 @@ $pagebuilder->buildheader();
             </div>
             <div id="videoPrerollJoinBC">
                 <span>Get more with Builders Club!</span>
-                <a href="https://www.roblox.com/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
+                <a href="http://www.roblox.com/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
             </div>
         </div>
         <script type="text/javascript">
@@ -442,7 +442,7 @@ $pagebuilder->buildheader();
             <div class="RevisedFooter">
                 <div style="width:200px;margin:10px auto 0 auto;">
                     <a href="/?returnUrl=http%3A%2F%2Fforum.roblox.com%2FForum%2FShowPost.aspx%3FPostID%3D112156401"><div class="RevisedCharacterSelectSignup"></div></a>
-                    <a class="HaveAccount" href="https://www.roblox.com/newlogin?returnUrl=http%3A%2F%2Fforum.roblox.com%2FForum%2FShowPost.aspx%3FPostID%3D112156401">I have an account</a>
+                    <a class="HaveAccount" href="http://www.roblox.com/newlogin?returnUrl=http%3A%2F%2Fforum.roblox.com%2FForum%2FShowPost.aspx%3FPostID%3D112156401">I have an account</a>
                 </div>
             </div>
         </div>

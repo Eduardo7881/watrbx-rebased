@@ -62,7 +62,7 @@ if(isset($newblurb)){
             <input name="__RequestVerificationToken" type="hidden" value="Eyz0_gyuXxwx74Q6xigT8xOa7HTcrkFCdIXAsP3-5gCh1tvGtCpyPjgdVNGOAAdyxvlOpnrvwDNEiLM29Nn9DCIjp0EaLvoCixZwWQeHglUrLNswAzzeVOCNof8-qDSK-IPHJddxujB2d15i1oRWR55t4yg1" />
             <div class="tab-content active" id="settings_tab">
               <div id="AccountSettings" class="settings-section">
-                <div class="SettingSubTitle" id="UsernameSetting" data-robux-remaining="0" data-email-verified="false" data-alerturl="https://s3.amazonaws.com/images.roblox.com/cbb24e0c0f1fb97381a065bd1e056fcb.png" data-change-username-verifyurl="/account/username/verifyupdate" data-change-username-url="/account/username/update" data-buy-robux-url="/upgrades/robux">
+                <div class="SettingSubTitle" id="UsernameSetting" data-robux-remaining="0" data-email-verified="false" data-alerturl="http://s3.amazonaws.com/images.roblox.com/cbb24e0c0f1fb97381a065bd1e056fcb.png" data-change-username-verifyurl="/account/username/verifyupdate" data-change-username-url="/account/username/update" data-buy-robux-url="/upgrades/robux">
                   <span class="settingLabel form-label">Username:</span>
                   <span id="username"><?=$currentuser->username?></span>
                   <a class="btn-small btn-primary" id="changeUsername">Change My Username</a>
@@ -519,7 +519,7 @@ if(isset($newblurb)){
             passwordLabel: "Password:",
             warningText: "IMPORTANT: <ul><li>Original account creation date and forum post count will carry over to your new username.</li><li>Previous forum posts will appear under your old username and will NOT carry over to your new username.</li></ul>",
             processingText: "Processing...",
-            processIndicatorImageUrl: "https://s3.amazonaws.com/images.roblox.com/ec4e85b0c4396cf753a06fade0a8d8af.gif",
+            processIndicatorImageUrl: "http://s3.amazonaws.com/images.roblox.com/ec4e85b0c4396cf753a06fade0a8d8af.gif",
             confirmUsernameChangeFooterText: "Your balance after this transaction will be {0}.",
             confirmUsernameChangeAccept: "Buy Now",
             usernameChangedText: "Congratulations, {0}! Your username has been changed.",
@@ -545,7 +545,7 @@ if(isset($newblurb)){
 </script>
 <div id="ProcessingView" style="display:none">
                             <div class="ProcessingModalBody">
-                                <p class="processing-indicator"><img src='https://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif' alt="Searching..." /></p>
+                                <p class="processing-indicator"><img src='http://images.rbxcdn.com/ec4e85b0c4396cf753a06fade0a8d8af.gif' alt="Searching..." /></p>
                             </div>
                         </div>
       <div style="clear:both"></div>

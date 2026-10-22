@@ -178,7 +178,7 @@ $idsCsv = implode(',', $assetIds);
 </div>                           
     </div>
     <div class="right-content divider-left">
-        <a  href="https://www.roblox.com/upgrades/robux?ctx=catalog" class="btn-medium btn-primary">Buy Robux</a>
+        <a  href="http://www.roblox.com/upgrades/robux?ctx=catalog" class="btn-medium btn-primary">Buy Robux</a>
 
         <h2>Featured Items on ROBLOX</h2>
         <div style="clear:both;"></div>

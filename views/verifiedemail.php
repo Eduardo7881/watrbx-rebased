@@ -35,7 +35,7 @@ $pagebuilder->buildheader();
             <div style="text-align: center;">
                 <div style="text-align: center; width: 250px; margin-left: auto; margin-right: auto;">
                     <div style=" float: left; text-align: right; width: 250px; margin-left: auto; margin-right: auto;" >
-                        <img style="float: left;" src="https://images.rbxcdn.com/116db03ed7027c242f773e70a4ed2e68.png">
+                        <img style="float: left;" src="http://images.rbxcdn.com/116db03ed7027c242f773e70a4ed2e68.png">
                         <h1 style="margin: 0px;">Thank You!</h1>
                         <p style="margin: 0px;">Your email has been verified.</p>
                     </div>

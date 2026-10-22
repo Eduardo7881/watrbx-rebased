@@ -276,17 +276,17 @@ $pagebuilder->buildheader();
     <div class="FooterNav">
         <a href="/info/Privacy.aspx">Privacy Policy</a>
         &nbsp;|&nbsp;
-        <a href="https://corp.roblox.com/advertise-on-roblox" class="roblox-interstitial">Advertise with Us</a>
+        <a href="http://corp.roblox.com/advertise-on-roblox" class="roblox-interstitial">Advertise with Us</a>
         &nbsp;|&nbsp;
-        <a href="https://corp.roblox.com/press" class="roblox-interstitial">Press</a>
+        <a href="http://corp.roblox.com/press" class="roblox-interstitial">Press</a>
         &nbsp;|&nbsp;
-        <a href="https://corp.roblox.com/contact-us" class="roblox-interstitial">Contact Us</a>
+        <a href="http://corp.roblox.com/contact-us" class="roblox-interstitial">Contact Us</a>
         &nbsp;|&nbsp;
-            <a href="https://corp.roblox.com/about" class="roblox-interstitial">About Us</a>
-&nbsp;|&nbsp;        <a href="https://blog.roblox.com">Blog</a>
+            <a href="http://corp.roblox.com/about" class="roblox-interstitial">About Us</a>
+&nbsp;|&nbsp;        <a href="http://blog.roblox.com">Blog</a>
         &nbsp;|&nbsp;
-            <a href="https://corp.roblox.com/careers" class="roblox-interstitial">Jobs</a>
-&nbsp;|&nbsp;        <a href="https://corp.roblox.com/parents" class="roblox-interstitial">Parents</a>
+            <a href="http://corp.roblox.com/careers" class="roblox-interstitial">Jobs</a>
+&nbsp;|&nbsp;        <a href="http://corp.roblox.com/parents" class="roblox-interstitial">Parents</a>
     </div>
     <div class="legal">
             <div class="left">
@@ -298,7 +298,7 @@ $pagebuilder->buildheader();
             </div>
             <div class="right">
                 <p class="Legalese">
-    ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a href="https://corp.roblox.com/" ref="footer-smallabout" class="roblox-interstitial">ROBLOX Corporation</a>, ©2015. Patents pending.
+    ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a href="http://corp.roblox.com/" ref="footer-smallabout" class="roblox-interstitial">ROBLOX Corporation</a>, ©2015. Patents pending.
     ROBLOX is not sponsored, authorized or endorsed by any producer of plastic building bricks, including The LEGO Group, MEGA Brands, and K'Nex, and no resemblance to the products of these companies is intended.
     Use of this site signifies your acceptance of the <a href="/info/terms-of-service" ref="footer-terms">Terms and Conditions</a>.
 </p>
@@ -338,17 +338,17 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
                     <div class="ph-install-step ph-installinstructions-step1-of4">
                         <h1>1</h1>
                         <p class="larger-font-size">Click RobloxPlayerLauncher.exe to run the ROBLOX installer, which just downloaded via your web browser.</p>
-                        <img width="230" height="180" src="https://images.rbxcdn.com/8b0052e4ff81d8e14f19faff2a22fcf7.png" />
+                        <img width="230" height="180" src="http://images.rbxcdn.com/8b0052e4ff81d8e14f19faff2a22fcf7.png" />
                     </div>
                     <div class="ph-install-step ph-installinstructions-step2-of4">
                         <h1>2</h1>
                         <p class="larger-font-size">Click <strong>Run</strong> when prompted by your computer to begin the installation process.</p>
-                        <img width="230" height="180" src="https://images.rbxcdn.com/4a3f96d30df0f7879abde4ed837446c6.png" />
+                        <img width="230" height="180" src="http://images.rbxcdn.com/4a3f96d30df0f7879abde4ed837446c6.png" />
                     </div>
                     <div class="ph-install-step ph-installinstructions-step3-of4">
                         <h1>3</h1>
                         <p class="larger-font-size">Click <strong>Ok</strong> once you've successfully installed ROBLOX.</p>
-                        <img width="230" height="180" src="https://images.rbxcdn.com/6e23e4971ee146e719fb1abcb1d67d59.png" />
+                        <img width="230" height="180" src="http://images.rbxcdn.com/6e23e4971ee146e719fb1abcb1d67d59.png" />
                     </div>
                     <div class="ph-install-step ph-installinstructions-step4-of4">
                         <h1>4</h1>
@@ -370,7 +370,7 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
 <div id="pluginObjDiv" style="height:1px;width:1px;visibility:hidden;position: absolute;top: 0;"></div>
 <iframe id="downloadInstallerIFrame" style="visibility:hidden;height:0;width:1px;position:absolute"></iframe>
 
-<script type='text/javascript' src='https://js.rbxcdn.com/6077529ce969aded942c2ec9b40c91c0.js'></script>
+<script type='text/javascript' src='http://js.rbxcdn.com/6077529ce969aded942c2ec9b40c91c0.js'></script>
 
 <script type="text/javascript">
     Roblox.Client._skip = null;
@@ -422,7 +422,7 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
      data-protocol-detection-enabled="true">
     <div class="modalPopup blueAndWhite PlaceLauncherModal" style="min-height: 160px">
         <div id="Spinner" class="Spinner" style="padding:20px 0;">
-            <img src="https://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif" height="32" width="32" alt="Progress" />
+            <img src="http://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif" height="32" width="32" alt="Progress" />
         </div>
         <div id="status" style="min-height:40px;text-align:center;margin:5px 20px">
             <div id="Starting" class="PlaceLauncherStatus MadStatusStarting" style="display:block">
@@ -449,7 +449,7 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
                 ROBLOX is now loading. Get ready to play!
             </p>
             <div class="ph-startingdialog-spinner-row">
-                <img src="https://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif" width="82" height="24" />
+                <img src="http://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif" width="82" height="24" />
             </div>
         </div>
     </div>
@@ -472,7 +472,7 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
                 </button>
             </div>
             <div class="rbx-small rbx-text-notes">
-                <a href="https://en.help.roblox.com/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
+                <a href="http://en.help.roblox.com/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
             </div>
 
         </div>
@@ -481,7 +481,7 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
 <div id="ProtocolHandlerClickAlwaysAllowed" class="ph-clickalwaysallowed" style="display:none;">
     <p class="larger-font-size">
         <span class="rbx-icon-moreinfo"></span>
-        Check <b>Remember my choice</b> and click <img src="https://images.rbxcdn.com/7c8d7a39b4335931221857cca2b5430b.png" alt="Launch Application" />  in the dialog box above to join games faster in the future!
+        Check <b>Remember my choice</b> and click <img src="http://images.rbxcdn.com/7c8d7a39b4335931221857cca2b5430b.png" alt="Launch Application" />  in the dialog box above to join games faster in the future!
     </p>
 </div>
 
@@ -501,7 +501,7 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
         </div>
         <div id="videoPrerollJoinBC">
             <span>Get more with Builders Club!</span>
-            <a href="https://www.roblox.com/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
+            <a href="http://www.roblox.com/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
         </div>
     </div>
     <script type="text/javascript">
@@ -553,7 +553,7 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
         <div class="RevisedFooter">
             <div style="width:200px;margin:10px auto 0 auto;">
                 <a href="/?returnUrl=http%3A%2F%2Fforum.roblox.com%2FForum%2FShowForum.aspx%3FForumID%3D13"><div class="RevisedCharacterSelectSignup"></div></a>
-                <a class="HaveAccount" href="https://www.roblox.com/newlogin?returnUrl=http%3A%2F%2Fforum.roblox.com%2FForum%2FShowForum.aspx%3FForumID%3D13">I have an account</a>
+                <a class="HaveAccount" href="http://www.roblox.com/newlogin?returnUrl=http%3A%2F%2Fforum.roblox.com%2FForum%2FShowForum.aspx%3FForumID%3D13">I have an account</a>
             </div>
         </div>
     </div>
@@ -643,7 +643,7 @@ $(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });//]]>
         (function() {
             var s = document.createElement("script"), el = document.getElementsByTagName("script")[0];
             s.async = true;
-            s.src = (document.location.protocol == "https:" ? "https://sb" : "https://b") + ".scorecardresearch.com/beacon.js";
+            s.src = (document.location.protocol == "https:" ? "http://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
             el.parentNode.insertBefore(s, el);
         })();
     </script>

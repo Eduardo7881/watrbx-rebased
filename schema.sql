@@ -1,6 +1,6 @@
 -- phpMyAdmin SQL Dump
 -- version 5.2.2
--- https://www.phpmyadmin.net/
+-- http://www.phpmyadmin.net/
 --
 -- Host: localhost
 -- Generation Time: Mar 27, 2026 at 07:13 AM

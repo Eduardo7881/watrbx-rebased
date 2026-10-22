@@ -95,8 +95,8 @@ $router->get('/my/settings/json', function() {
                 "DesktopPush",
                 "MobilePush"
             ],
-            "NotificationSettingsDomain" => "https://www.watrbx.wtf",
-            "ApiProxyDomain" => "https://api.watrbx.wtf",
+            "NotificationSettingsDomain" => $_ENV["BASE_URL"],
+            "ApiProxyDomain" => $_ENV["BASE_URL"],
             "MinimumChromeVersionForPushNotifications" => "46",
             "PushNotificationsEnabledOnFirefox" => false,
             "BlacklistedNotificationSourceTypesForMobilePush" => []
@@ -105,3 +105,4 @@ $router->get('/my/settings/json', function() {
         return $data;
     }
 });
+

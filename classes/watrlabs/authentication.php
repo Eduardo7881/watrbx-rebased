@@ -44,7 +44,7 @@ class authentication {
         } elseif($userinfo->membership == "OutrageousBuildersClub"){
             return "/images/icons/overlay_obcOnly.png";
         } else {
-            return "https://cdn.watrbx.wtf/blank.jpg";
+            return "http://cdn.watrbx.wtf/blank.jpg";
         }
     }
 
@@ -212,7 +212,7 @@ class authentication {
             }
 
             $insertId = $db->table('sessions')->insert($data);
-            setcookie(".ROBLOSECURITY", $session, $expiration, "/", "." . $_ENV["APP_DOMAIN"]);
+            setcookie(".ROBLOSECURITY", $session, $expiration, "/");
         } else {
 
             $data = array(
@@ -228,7 +228,7 @@ class authentication {
             }
 
             $insertId = $db->table('sessions')->insert($data);
-            setcookie(".ROBLOSECURITY", $session, $expiration, '/', '.' . $_ENV["APP_DOMAIN"]);
+            setcookie(".ROBLOSECURITY", $session, $expiration, '/');
         }
         
         return $session;
@@ -320,7 +320,7 @@ class authentication {
         $altcount = count($unique);
 
         if($altcount > 5){
-            setcookie("noregister", 1, time() + 9999999, "/", "." . $_ENV["APP_DOMAIN"]);
+            setcookie("noregister", 1, time() + 9999999, "/");
             $discord->internal_log($username . " had too many accounts.\n\n(possible alts): $possiblealts", "Failed Signup");
             return ["code"=>400, "message"=>"You have too many accounts!"];
         }
@@ -598,7 +598,7 @@ class authentication {
     }
     
     static function verifycaptcha($captcha){
-        $url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+        $url = "http://challenges.cloudflare.com/turnstile/v0/siteverify";
         $post_data = array('secret' => $_ENV["PrivateTurnstileKey"], "response"=>$captcha);
 
         $ch = curl_init($url);
@@ -967,7 +967,7 @@ class authentication {
     }
 
     public function geolocateip($ip){
-        //$ch = curl_init('https://ipwho.is/'.$ip);
+        //$ch = curl_init('http://ipwho.is/'.$ip);
         //curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         //curl_setopt($ch, CURLOPT_HEADER, false);
         //$ipwhois = curl_exec($ch);
@@ -998,12 +998,12 @@ class authentication {
 
         if($this->havesession()){
             if(!$this->hasaccount()){
-                setcookie("redirectUri", $func->encrypt($uriraw), time() + 600, "/", $_ENV["APP_DOMAIN"]);
+                setcookie("redirectUri", $func->encrypt($uriraw), time() + 600, "/");
                 header("Location: /newlogin");
                 die();
             }
         } else {
-            setcookie("redirectUri", $func->encrypt($uriraw), time() + 600, '/', $_ENV["APP_DOMAIN"]);
+            setcookie("redirectUri", $func->encrypt($uriraw), time() + 600, '/');
             header("Location: /newlogin");
             die();
         }
