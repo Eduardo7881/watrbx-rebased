@@ -5295,6 +5295,81 @@ $router->get("/UserCheck/doesusernameexist", function() {
     }
 });
 
+$router->post('/login/v1', function() {
+    $sendJson = function(array $data, int $status = 200) {
+        http_response_code($status);
+        echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+        exit;
+    };
+
+    function processLoginForm($username, $password, $userAgent, $legacyResponse) {
+        $username = urldecode($username);
+        $password = urldecode($password);
+        if ($username === '' || $password === '') $sendJson(['message'=>'Username and password are required.'], 400);
+
+        $auth = new authentication();
+        $result = $auth->login($username, $password);
+
+        if(isset($result["code"])){
+            if($result["code"] == 200){
+                if (isset($_GET['form'])) header('Location: /home?nl=true'); exit;
+                $isMobile = strpos($userAgent, 'Android') !== false || strpos($userAgent, 'GooglePlayStore') !== false || strpos($userAgent, 'iPhone') !== false;
+                $user = $auth->getuserinfo($_COOKIE[".ROBLOSECURITY"]);
+
+                if ($isMobile || $legacyResponse) {
+                    $sendJson([
+                        'membershipType' => $user->membership,
+                        'username'       => $user->username,
+                        'isUnder13'      => false,
+                        'countryCode'    => 0,
+                        'userId'         => $user->id
+                    ]);
+                }
+
+                $sendJson([
+                    'user' => [
+                        'id' => $user->id,
+                        'name' => $user->name
+                    ],
+                    'isBanned' => false
+                ]);
+            }
+        } else {
+            if(isset($result["message"])){
+                //$func->set_message($result["message"]);
+                header("Location: /newlogin");
+                die(create_error($result["message"]));
+            } else {
+                //$func->set_message("Something went wrong. Please try again later.");
+                header("Location: /newlogin");
+                die(create_error("Something went wrong. Please try again later.", [], 200));
+            }
+        }
+    }
+
+    $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+    $isJson = stripos($contentType, 'application/json') !== false;
+    $jsonData = [];
+
+    header('Content-Type: application/json; charset=UTF-8');
+
+    if ($isJson) {
+        $decoded = json_decode(file_get_contents('php://input'), true);
+        if (is_array($decoded)) $jsonData = $decoded;
+    }
+
+    if (isset($jsonData['cvalue'], $jsonData['password'])) processLoginForm((string)$jsonData['cvalue'], (string)$jsonData['password'], $userAgent, true);
+    if (isset($jsonData['username'], $jsonData['password'])) processLoginForm((string)$jsonData['username'], (string)$jsonData['password'], $userAgent, false);
+    if (isset($_POST['username'], $_POST['password'])) processLoginForm((string)$_POST['username'], (string)$_POST['password'], $userAgent, false);
+
+    $sendJson(['message'=>'Username and password are required.'], 400);
+});
+
+$router->get('/captcha/validate/login', function() {
+    echo json_encode(['success'=>true]);
+});
+
 $router->post('/api/v1/login', function() {
 
     $func = new sitefunctions();
@@ -5371,6 +5446,144 @@ $router->post('/api/v1/login', function() {
         die(create_error("Please fill out all fields and try again.", [], 200));
     }
 });
+
+/* V2 shit */
+$router->post("/v2/login", function() {
+    $func = new sitefunctions();
+    $canlogin = $func->get_setting("CAN_LOGIN");
+
+    if($canlogin == "false"){
+        create_error("Login is currently disabled.");
+        die();
+    }
+
+    $makeResponse = function($user, $type) {
+        if ($type == "legacy") {
+            return [
+                'membershipType' => $user->membership,
+                'username'       => $user->username,
+                'isUnder13'      => false,
+                'countryCode'    => 0,
+                'userId'         => $user->id,
+                //'displayName'   => $user->username
+            ];
+        } else {
+            return [
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->username,
+                    //'displayName' => $user->username
+                ],
+                'isBanned' => false
+            ];
+        }
+    };
+
+    $sendJson = function(array $data, int $status = 200) {
+        http_response_code($status);
+        echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+        exit;
+    };
+
+    $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    header('Content-Type: application/json; charset=UTF-8');
+    header('X-Robots-Tag: noindex');
+
+    $longLifetime = time() + (30 * 24 * 60 * 60); // 1 month
+    $shortLifetime = time() + (24 * 60 * 60);     // 1 day
+    $isMobileClient = false;
+
+    if (strpos($userAgent, 'Roblox') !== false || strpos($userAgent, 'GooglePlayStore') !== false) {
+        $isMobileClient = true;
+    }
+
+    $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+    $isJsonRequest = stripos($contentType, 'application/json') !== false;
+    $jsonData = [];
+
+    if ($isJsonRequest) {
+        $rawBody = file_get_contents('php://input');
+        $decodedData = json_decode($rawBody, true);
+
+        if (is_array($decodedData)) {
+            $jsonData = $decodedData;
+        }
+    }
+
+    /* Post Form */
+    if (isset($_POST['username'], $_POST['password']) && $_POST['username'] !== '' && $_POST['password'] !== '') {
+        $username = (string)$_POST['username'];
+        $password = (string)$_POST['password'];
+        $responseType = "legacy";
+    } elseif (isset($jsonData['cvalue'], $jsonData['password']) && $jsonData['cvalue'] !== '' && $jsonData['password'] !== '') {
+        $username = (string)$jsonData['cvalue'];
+        $password = (string)$jsonData['password'];
+        $responseType = "legacy";
+    } else {
+        $sendJson(['message'=>'Username and password are required.'], 400);
+    }
+
+    $auth = new authentication();
+    $result = $auth->login($username, $password);
+
+    if(isset($result["code"])){
+        if($result["code"] == 200){
+            if ($auth->hasaccount() === false) $sendJson("You should go to the lottery. Something bad happened while logging in.", 500);
+            $user = $auth->getuserinfo($_COOKIE[".ROBLOSECURITY"]);
+            $sendJson($makeResponse($user, $responseType));
+        } else {
+            if(isset($result["message"])){
+                //$func->set_message($result["message"]);
+                //header("Location: /newlogin");
+                //die(create_error($result["message"], [], 200));
+                $sendJson(['message'=>$result->message], 500);
+            } else {
+                //$func->set_message("Something went wrong. Please try again later.");
+                //header("Location: /newlogin");
+                //die(create_error("Something went wrong. Please try again later.", [], 200));
+                $sendJson(['message'=>"Something went wrong. Please try again later."], 500);
+            }
+        }
+    } else {
+        if(isset($result["message"])){
+            //$func->set_message($result["message"]);
+            //header("Location: /newlogin");
+            //die(create_error($result["message"], [], 200));
+            $sendJson(['message'=>$result->message], 500);
+        } else {
+            //$func->set_message("Something went wrong. Please try again later.");
+            //header("Location: /newlogin");
+            //die(create_error("Something went wrong. Please try again later.", [], 200));
+            $sendJson(['message'=>"Something went wrong. Please try again later."], 500);
+        }
+    }
+});
+
+$router->post('/sign-out/v1', function() {
+    setcookie(".ROBLOSECURITY", "ThisIsInvalid!!!!", time() - 9999999, "/", "." . $_ENV["APP_DOMAIN"]);
+    header("Location: /newlogin");
+    die("[]");
+});
+
+$router->get("/signup/is-username-valid", function() {
+    global $db;
+    $func = new sitefunctions();
+    $canlogin = $func->get_setting("CAN_LOGIN");
+
+    $username = filter_var($_GET['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES); // no xss pls
+    $check = $db->table('users')->where('username', '=', $username)->first();
+
+    if ($func->isbadtext($username)) return json_encode(array('IsValid' => false, 'ErrorCode' => 2, 'ErrorMessage' => 'Username not appropriate for ROBLOX'));
+    if (is_array($check)) return json_encode(array('IsValid' => true, 'ErrorCode' => 1, 'ErrorMessage' => 'This username is already in use.'));
+    echo json_encode(array('IsValid' => true, 'ErrorCode' => 0, 'ErrorMessage' => 'diddy'));
+});
+
+$router->get('/signup/is-password-valid', function() {
+    header('Content-Type: application/json');
+    echo json_encode(array('IsValid' => true, 'ErrorCode' => 0, 'ErrorMessage' => 'diddy'));
+});
+
+/* -------------------- */
 
 $router->post('/api/v1/verify-captcha', function(){
     if(isset($_POST["captcha"])){
