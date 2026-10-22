@@ -16,6 +16,9 @@ use watrlabs\fastflags;
 use watrlabs\watrkit\pagebuilder;
 use watrbx\email;
 use watrlabs\pagination;
+use rbx\roblox;
+use watrbx\RBX;
+use rbx\ItemInfo;
 
 global $router; // IMPORTANT: KEEP THIS HERE!
 global $db;
@@ -409,9 +412,7 @@ $router->post('/my/account/sendverifyemail', function(){
 
                 $allowedEmailDomains = [
                     "gmail.com",
-                    "icloud.com",
-                    "watr.lol",
-                    "watrbx.wtf"
+                    "icloud.com"
                 ];
 
                 $split = explode("@", $email);
@@ -1035,6 +1036,8 @@ $router->post('/api/item.ashx', function(){
                                 die(json_encode($notforsale));
                             }
 
+                            $assetType = RBX::get_friendly_asset_type_by_object($asset);
+
                             if($expectedcurrency == 1){
                                 if($asset->robux !== $price){
                                     // assume the price changed (might in the future store price changes)
@@ -1067,17 +1070,18 @@ $router->post('/api/item.ashx', function(){
                                     if($asset->limited == 1){
                                         $result = $catalog::purchase_item($userinfo->id, $asset->id, $expectedcurrency);
 
+
                                         if($result){
                                             $success = array(
                                                 "Price"=>$asset->robux,
                                                 "Currency"=>1,
                                                 "AssetID"=>$asset->id,
                                                 "AssetName"=>$asset->name,
-                                                "AssetType"=>"Hat", // TODO: create a roblox class to handle stuff like this
+                                                "AssetType"=>RBXItemType::{$assetType}->value,
                                                 "SellerName"=>$sellerinfo->username,
                                                 "TransactionVerb"=>"purchased",
                                                 "IsMultiPrivateSale"=>false ,
-                                                "AssetIsWearable"=>true // TODO: add onto the roblox class for this
+                                                "AssetIsWearable"=>ItemInfo::IsWearable() // TODO: add onto the roblox class for this
                                             );
                                             die(json_encode($success));
                                         }
@@ -1091,7 +1095,7 @@ $router->post('/api/item.ashx', function(){
                                                     "Currency"=>1,
                                                     "AssetID"=>$asset->id,
                                                     "AssetName"=>$asset->name,
-                                                    "AssetType"=>"Hat", // TODO: create a roblox class to handle stuff like this
+                                                    "AssetType"=>RBXItemType::{$assetType}->value,
                                                     "SellerName"=>$sellerinfo->username,
                                                     "TransactionVerb"=>"purchased",
                                                     "IsMultiPrivateSale"=>false ,
@@ -1150,7 +1154,7 @@ $router->post('/api/item.ashx', function(){
                                                 "Currency"=>1,
                                                 "AssetID"=>$asset->id,
                                                 "AssetName"=>$asset->name,
-                                                "AssetType"=>"Hat", // TODO: create a roblox class to handle stuff like this
+                                                "AssetType"=>RBXItemType::{$assetType}->value,
                                                 "SellerName"=>$sellerinfo->username,
                                                 "TransactionVerb"=>"purchased",
                                                 "IsMultiPrivateSale"=>false ,
@@ -1168,7 +1172,7 @@ $router->post('/api/item.ashx', function(){
                                                     "Currency"=>2,
                                                     "AssetID"=>$asset->id,
                                                     "AssetName"=>$asset->name,
-                                                    "AssetType"=>"Hat", // TODO: create a roblox class to handle stuff like this
+                                                    "AssetType"=>RBXItemType::{$assetType}->value,
                                                     "SellerName"=>$sellerinfo->username,
                                                     "TransactionVerb"=>"purchased",
                                                     "IsMultiPrivateSale"=>false ,
@@ -1241,7 +1245,6 @@ $router->post('/api/v1/shirt-creator', function(){
     }
 
     if(isset($_POST["title"]) && isset($_POST["description"]) && isset($_POST["robux"]) && isset($_POST["tix"]) && isset($_FILES["shirt"])){
-        
         global $db;
 
         $oneday = time() - 160;
@@ -1423,7 +1426,7 @@ $router->post('/api/v1/pants-creator', function(){
                         <Item class="Pants" referent="RBX0">
                             <Properties>
                             <Content name="PantsTemplate">
-                                <url>https://www.watrbx.wtf/asset/?id='.$insertid.'</url>
+                                <url>$_ENV["BASE_URL"]/asset/?id='.$insertid.'</url>
                             </Content>
                             <string name="Name">Pants</string>
                             <bool name="archivable">true</bool>
@@ -1713,7 +1716,7 @@ $router->post('/api/v1/decal-creator', function(){
                                     <string name="Name">Decal</string>
                                     <float name="Shiny">20</float>
                                     <float name="Specular">0</float>
-                                    <Content name="Texture"><url>https://www.watrbx.wtf/asset/?id='.$insertid.'</url></Content>
+                                    <Content name="Texture"><url>$_ENV["BASE_URL"]/asset/?id='.$insertid.'</url></Content>
                                     <float name="Transparency">0</float>
                                 </Properties>
                             </Item>
@@ -3805,8 +3808,8 @@ $router->get('/Game/PlaceLauncher.ashx', function() {
         "jobid"              => null,
         "status"             => 12,
         "joinScriptUrl"      => null,
-        "authenticationUrl"  => "https://www.watrbx.wtf/Login/Negotiate.ashx",
-        "authenticationTicket"=> "diddy",
+        "authenticationUrl"  => $_ENV["BASE_URL"] . "/Login/Negotiate.ashx",
+        "authenticationTicket"=> "diddy", // WTF
         "message"            => "hi."
     ];
 
@@ -3851,7 +3854,7 @@ $router->get('/Game/PlaceLauncher.ashx', function() {
     $buildJoinResponse = function($db, $jobinfo, $serverinfo, $placeId, $placelauncher) use ($sendResponse) {
         $joincode = genJoinCode($serverinfo->ip, $jobinfo->port, $jobinfo->jobid, $placeId);
         $placelauncher["jobid"] = $jobinfo->jobid;
-        $placelauncher["joinScriptUrl"] = "https://www.watrbx.wtf/Game/Join.ashx?joincode={$joincode}";
+        $placelauncher["joinScriptUrl"] = $_ENV["BASE_URL"] . "/Game/Join.ashx?joincode={$joincode}";
         $placelauncher["status"] = 2;
         $sendResponse($placelauncher);
 
@@ -4007,7 +4010,7 @@ $router->post('/Game/PlaceLauncher.ashx', function() {
     $buildJoinResponse = function($db, $jobinfo, $serverinfo, $placeId, $placelauncher, $wasm = false, $token = null) use ($sendResponse) {
         $joincode = genJoinCode($serverinfo->ip, $jobinfo->port, $jobinfo->jobid, $placeId);
         $placelauncher["jobid"] = $jobinfo->jobid;
-        $placelauncher["joinScriptUrl"] = "https://www.watrbx.wtf/Game/Join.ashx?joincode={$joincode}";
+        $placelauncher["joinScriptUrl"] = $_ENV["BASE_URL"] . "/Game/Join.ashx?joincode={$joincode}";
         
         if($wasm){
             $placelauncher["joinScriptUrl"] .= "&wasm=true&token=$token";

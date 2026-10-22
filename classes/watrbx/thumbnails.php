@@ -97,7 +97,8 @@ class thumbnails {
                 "dimensions"=>"1024x1024",
                 "apikey"=>"",
                 "x"=>"1024",
-                "y"=>"1024"
+                "y"=>"1024",
+                "baseUrl"=>$_ENV["BASE_URL"]
             ]
         ];
 
@@ -145,7 +146,8 @@ class thumbnails {
                 "dimensions"=>"1024x1024",
                 "apikey"=>"",
                 "x"=>"1024",
-                "y"=>"1024"
+                "y"=>"1024",
+                "baseUrl"=>$_ENV["BASE_URL"]
             ]
         ];
 
@@ -200,7 +202,8 @@ class thumbnails {
                 "dimensions"=>"1024x1024",
                 "apikey"=>$jobinfo->apikey,
                 "x"=>$x,
-                "y"=>$y
+                "y"=>$y,
+                "baseUrl"=>$_ENV["BASE_URL"]
             ]
         ];
 

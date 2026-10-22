@@ -1,10 +1,10 @@
 -- Decal v1.0.2
 -- Used for faces and decals
 
-local assetId = ...
+local assetId, baseUrl = ...
 
 local assetUrl = "rbxassetid://" .. assetId
-local baseUrl = "http://www.watrbx.wtf"
+--local baseUrl = "http://www.watrbx.wtf"
 local fileExtension = "PNG"
 
 local ThumbnailGenerator = game:GetService("ThumbnailGenerator")

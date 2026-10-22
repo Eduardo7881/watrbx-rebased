@@ -1,10 +1,10 @@
 -- Credits to Only Retro Roblox Here
-local assetId = ...
+local assetId, baseUrl = ...
 print("Rendering package")
 
 local ThumbnailGenerator = game:GetService("ThumbnailGenerator")
 
-game:GetService("ContentProvider"):SetBaseUrl("http://www.watrbx.wtf/")
+game:GetService("ContentProvider"):SetBaseUrl(baseUrl)
 game:GetService("ScriptContext").ScriptsDisabled = true
 
 local mannequin = game:GetObjects("http://www.watrbx.wtf/asset/?id=1785197&version=6")[1]

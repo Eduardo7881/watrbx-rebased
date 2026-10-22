@@ -1,14 +1,13 @@
 -- Place v1.0.2
 
-local assetId, FAKEDimensions, apikey, x, y = ...
+local assetId, FAKEDimensions, apikey, x, y, baseUrl = ...
 
-local baseUrl = "https://www.watrbx.wtf/"
+--local baseUrl = "https://www.watrbx.wtf/"
 local assetUrl = baseUrl .. "asset/?id=" .. assetId .. "=" .. apikey
 local fileExtension = "PNG"
 local ThumbnailGenerator = game:GetService("ThumbnailGenerator")
 print("X is ", x)
 print("Y is ", y)
-
 
 pcall(function() game:GetService("ContentProvider"):SetBaseUrl(baseUrl) end)
 -- lets ignore the universe id for a while, i think this is stupid.

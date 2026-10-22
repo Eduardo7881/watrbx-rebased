@@ -1,9 +1,9 @@
 -- Head v1.2.0
 
-local assetId = ...
+local assetId, baseUrl = ...
 
 local assetUrl = "rbxassetid://" .. assetId 
-local baseUrl = "https://www.watrbx.wtf/"
+--local baseUrl = "https://www.watrbx.wtf/"
 local fileExtension = "PNG"
 local x, y = 1024, 1024
 local mannequinId = 1785197

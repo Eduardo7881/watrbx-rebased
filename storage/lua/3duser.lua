@@ -1,5 +1,5 @@
-local userId, diddy, diddy2, x, y = ...
-local baseUrl = "http://www.watrbx.wtf"
+local userId, diddy, diddy2, x, y, baseUrl = ...
+--local baseUrl = "http://www.watrbx.wtf"
 local fileExtension = "OBJ"
 local ThumbnailGenerator = game:GetService("ThumbnailGenerator")
 

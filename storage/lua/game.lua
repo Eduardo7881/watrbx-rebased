@@ -26,8 +26,8 @@ local assetId = placeId -- might be able to remove this now
 local url = nil
 local assetGameUrl = nil
 if baseUrl~=nil and protocol ~= nil then
-	url = protocol .. "www." .. baseUrl --baseUrl is actually the domain, no leading .
-	assetGameUrl = protocol .. assetGameSubdomain .. "." .. baseUrl
+	if baseUrl ~= "localhost:8080" then url = protocol .. "www." .. baseUrl end --baseUrl is actually the domain, no leading .
+	if baseUrl ~= "localhost:8080" then assetGameUrl = protocol .. assetGameSubdomain .. "." .. baseUrl end
 end
 
 local logs = {}
@@ -54,13 +54,13 @@ end
 local badgeUrlFlagExists, badgeUrlFlagValue = pcall(function () return settings():GetFFlag("NewBadgeServiceUrlEnabled") end)
 local newBadgeUrlEnabled = badgeUrlFlagExists and badgeUrlFlagValue
 if url~=nil then
-	local apiProxyUrl = "https://api." .. baseUrl -- baseUrl is really the domain
+	if baseUrl ~= "localhost:8080" then local apiProxyUrl = "https://api." .. baseUrl else local apiProxyUrl = baseUrl end -- baseUrl is really the domain
 
 	pcall(function() game:GetService("Players"):SetAbuseReportUrl(url .. "/AbuseReport/InGameChatHandler.ashx") end)
 	pcall(function() game:GetService("ScriptInformationProvider"):SetAssetUrl(assetGameUrl .. "/Asset/") end)
 	pcall(function() game:GetService("ContentProvider"):SetBaseUrl(url .. "/") end)
 	--pcall(function() game:GetService("Players"):SetChatFilterUrl(assetGameUrl .. "/Game/ChatFilter.ashx") end)
-	pcall(function() game:GetService("Players"):SetSysStatsUrl("https://www.watrbx.wtf/Game/ReportSystats.ashx?apikey=" .. access) end)
+	pcall(function() game:GetService("Players"):SetSysStatsUrl(url .. "/Game/ReportSystats.ashx?apikey=" .. access) end)
 
 	if gameCode then
 		game:SetVIPServerId(tostring(gameCode))
@@ -241,25 +241,7 @@ function onChatted(msg, speaker)
     msg = string.lower(msg)
     -- Note: This one is NOT caps sensitive
 
-    if msg == ";ec" then
-		local sound = Instance.new("Sound")
-    	sound.SoundId = "https://www.watrbx.wtf/asset/?id=17"
-    	sound.Parent = speaker.Character.Torso
-    	sound.Volume = 0.5
-    	sound:Play()
-        speaker.Character.Humanoid.Health = 0
-    end
-
-	if msg == ";raymonf" then
-		local sound = Instance.new("Sound")
-    	sound.SoundId = "https://www.watrbx.wtf/asset/?id=19"
-    	sound.Parent = speaker.Character.Torso
-    	sound.Volume = 0.5
-    	sound:Play()
-        speaker.Character.Humanoid.Health = 0
-    end
-
-	if msg == ";triple t" or msg == ";triplet" or msg == ";tt" then
+    if msg == ";triple t" or msg == ";triplet" or msg == ";tt" then
         pcall(function()
             local head = game:GetService("InsertService"):LoadAsset(23907)
             for _, v in pairs(head:GetChildren()) do v.Parent = speaker.Character.Head end
@@ -268,13 +250,9 @@ function onChatted(msg, speaker)
         end)
     end
 
-    if msg == ";kick" then
-	    speaker:Kick("GET OUT!!!!!!!!")
-    end
-
     if msg == ";sit" then
-		speaker.Character.Humanoid.Jump = true
-		wait(0.1)
+	speaker.Character.Humanoid.Jump = true
+	wait(0.1)
         speaker.Character.Humanoid.Sit = true
     end
 end
@@ -284,8 +262,6 @@ function onPlayerEntered(newPlayer)
 end
  
 game.Players.ChildAdded:connect(onPlayerEntered)
-
-
 
 local onlyCallGameLoadWhenInRccWithAccessKey = newBadgeUrlEnabled
 if placeId ~= nil  then
@@ -337,11 +313,9 @@ if not isCloudEdit then
 end
 
 while wait(30) do
+    sendLogs(false)
 
-	sendLogs(false)
-
-	local PlayerCount = game:GetService('Players').NumPlayers
+    local PlayerCount = game:GetService('Players').NumPlayers
     game:HttpGet(url .. "/api/v1/gameserver/pinger?jobId=" .. game.JobId .. "&apiKey=" .. access .. "&Players=" .. PlayerCount)
-	-- We have this to tell the website the server still exists (it adds 35 seconds every request to help it stay alive)
-
+    -- We have this to tell the website the server still exists (it adds 35 seconds every request to help it stay alive)
 end

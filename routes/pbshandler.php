@@ -17,7 +17,7 @@ $router->get("/RoleSets/GetRoleSetForUser", function () {
             ]
         ];
 
-        if($userid == 2){
+        if($userid == 1){
             $dataarray["data"]["Rank"] = 255; // owner perms
         }
 

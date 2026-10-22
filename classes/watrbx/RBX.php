@@ -46,13 +46,17 @@ class RBX {
         'WalkAnimation' => 55
     );
 
-    public function get_friendly_asset_type($assetid){
+    public function get_friendly_asset_type_by_object($asset) {
+        return array_search($asset->prodcategory, $this->assetTypes); // Receives the object directly.
+    }
+
+    public function get_friendly_asset_type($assetid){ // Searches the db for the id and returns string
         global $db;
         $assetinfo = $db->table("assets")->where("id", $assetid)->first();
         return array_search($assetinfo->prodcategory, $this->assetTypes);
     }
 
-    public function get_asset_type_with_id($assetid){
+    public function get_asset_type_with_id($assetid){ // Returns the string for the category id.
         return array_search($assetid, $this->assetTypes);
     }
 }
