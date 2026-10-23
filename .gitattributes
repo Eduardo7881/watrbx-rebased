@@ -1,4 +1,0 @@
-public/wasm/UniversalClient.data filter=lfs diff=lfs merge=lfs -text
-public/wasm/UniversalClient.wasm filter=lfs diff=lfs merge=lfs -text
-*.wasm filter=lfs diff=lfs merge=lfs -text
-*.data filter=lfs diff=lfs merge=lfs -text
