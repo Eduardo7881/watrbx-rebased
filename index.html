@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WATRBX Recontinued</title>
+  <style>
+    :root {
+      --blue: #0879bd;
+      --blue-dark: #075b91;
+      --link: #0055a5;
+      --border: #c8c8c8;
+      --page: #eeeeee;
+      --panel: #ffffff;
+      --text: #333333;
+      --muted: #777777;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+      min-height: 54px;
+      background: var(--blue);
+      border-bottom: 3px solid var(--blue-dark);
+      color: white;
+    }
+
+    .nav {
+      max-width: 1000px;
+      min-height: 51px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .brand {
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: -1.2px;
+      white-space: nowrap;
+    }
+
+    .brand span { color: #d9efff; }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { color: white; font-size: 13px; }
+    .nav-spacer { flex: 1; }
+    .nav-note { color: #d7edfb; font-size: 11px; }
+
+    .wrap { max-width: 1000px; margin: 22px auto 35px; padding: 0 16px; }
+
+    .notice {
+      background: #fff9df;
+      border: 1px solid #e5d79b;
+      padding: 10px 13px;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .hero {
+      min-height: 210px;
+      padding: 28px 30px;
+      color: white;
+      background: #1687c9;
+      border: 1px solid #086eaa;
+      box-shadow: inset 0 1px rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .hero h1 { margin: 0 0 10px; font-size: 30px; letter-spacing: -.7px; }
+    .hero p { max-width: 570px; margin: 0; font-size: 15px; line-height: 1.6; color: #edf8ff; }
+    .hero-mark {
+      flex: 0 0 145px;
+      height: 120px;
+      display: grid;
+      place-items: center;
+      font-size: 67px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 3px 3px 0 #075b91;
+      transform: rotate(-5deg);
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+    .button {
+      display: inline-block;
+      padding: 9px 14px;
+      border: 1px solid #d6d6d6;
+      border-radius: 3px;
+      background: #f7f7f7;
+      color: #333;
+      font-weight: bold;
+      box-shadow: 0 1px 1px rgba(0,0,0,.12);
+    }
+    .button:hover { background: white; text-decoration: none; }
+    .button.primary { color: #064d7a; background: #fff; border-color: #c9e7f8; }
+
+    .section-title {
+      margin: 22px 0 10px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid #c9c9c9;
+      font-size: 17px;
+      color: #444;
+    }
+
+    .columns { display: grid; grid-template-columns: 1.45fr 1fr; gap: 16px; }
+    .panel { background: var(--panel); border: 1px solid var(--border); }
+    .panel-heading {
+      padding: 10px 13px;
+      background: #f7f7f7;
+      border-bottom: 1px solid #d5d5d5;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .panel-body { padding: 14px; line-height: 1.65; }
+    .panel-body p:first-child { margin-top: 0; }
+    .panel-body p:last-child { margin-bottom: 0; }
+
+    .status {
+      display: inline-block;
+      padding: 3px 7px;
+      color: #70540a;
+      background: #fff2bd;
+      border: 1px solid #e8d88d;
+      border-radius: 2px;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .quick-links { list-style: none; padding: 0; margin: 0; }
+    .quick-links li { padding: 8px 0; border-bottom: 1px solid #ededed; }
+    .quick-links li:last-child { border-bottom: 0; }
+    .quick-links a { font-weight: bold; }
+    .small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+
+    .old-school {
+      margin-top: 16px;
+      padding: 13px 15px;
+      background: #f8f8f8;
+      border: 1px solid #d1d1d1;
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid #ccc;
+      padding: 17px 10px 24px;
+      text-align: center;
+      color: #777;
+      font-size: 11px;
+    }
+
+    @media (max-width: 650px) {
+      .nav { flex-wrap: wrap; gap: 10px 18px; padding-top: 10px; padding-bottom: 10px; }
+      .nav-links { order: 3; width: 100%; gap: 16px; flex-wrap: wrap; }
+      .nav-note { display: none; }
+      .hero { padding: 23px 20px; }
+      .hero h1 { font-size: 25px; }
+      .hero-mark { display: none; }
+      .columns { grid-template-columns: 1fr; }
+      .wrap { margin-top: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="WATRBX home">WAT<span>RBX</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#project">Project</a>
+        <a href="#community">Community</a>
+      </div>
+      <div class="nav-spacer"></div>
+      <span class="nav-note">A little piece of 2016</span>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="notice">
+      <strong>Heads up:</strong> WATRBX Recontinued is a community project and is still in development.
+      Things may change while work continues.
+    </div>
+
+    <section class="hero">
+      <div>
+        <h1>Welcome to WATRBX Recontinued</h1>
+        <p>A continuation of the old WATRBX revival, bringing back the look and feel of classic Roblox from around 2015–2016.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/Eduardo7881/watrbx-rec" target="_blank" rel="noopener noreferrer">View the source on GitHub</a>
+          <a class="button" href="#about">Learn more</a>
+        </div>
+      </div>
+      <div class="hero-mark" aria-hidden="true">W</div>
+    </section>
+
+    <h2 class="section-title">What's going on?</h2>
+    <div class="columns">
+      <section class="panel" id="about">
+        <div class="panel-heading">About the project</div>
+        <div class="panel-body">
+          <p>Remember the old Roblox website? The simple pages, blue headers, catalog, and blocky avatars. That's the era this project is trying to bring back.</p>
+          <p><strong>WATRBX Recontinued/Rebased</strong> is a PHP-based continuation of WATRBX, a revival inspired by Roblox in 2015 and 2016. It's being worked on by the community, one part at a time.</p>
+          <p>This is an independent fan project and is not affiliated with ROBLOX Corporation.</p>
+        </div>
+      </section>
+
+      <aside class="panel" id="project">
+        <div class="panel-heading">Project status</div>
+        <div class="panel-body">
+          <p><span class="status">In development</span></p>
+          <p>Features and pages are being worked on. Follow the repository for code changes, issues, and project updates.</p>
+          <ul class="quick-links">
+            <li>
+              <a href="https://github.com/Eduardo7881/watrbx-rec" target="_blank" rel="noopener noreferrer">GitHub repository</a>
+              <span class="small">Source code and updates</span>
+            </li>
+            <li>
+              <a href="https://github.com/Eduardo7881/watrbx-rec/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+              <span class="small">Bugs and suggestions</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <section class="old-school" id="community">
+      <strong>Got something to contribute?</strong><br>
+      If you're interested in helping out, checking the source or reporting a bug is a good place to start. Keep it friendly, and let's see how far this project can go.
+    </section>
+  </main>
+
+  <footer>
+    WATRBX:R · A community-made Roblox revival project<br>
+    Not affiliated with ROBLOX Corporation.
+  </footer>
+</body>
+  </html>
