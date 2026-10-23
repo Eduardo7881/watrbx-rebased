@@ -1,4 +1,14 @@
-# WatrBX Rebased (a.k.a. `watrbx-recontinued` and `watrbx-fixed`)
+
+<h1 align="center">watrbx:r</h1>
+<p align="center">(a continuation of a 2016 roblox revival.)</p>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/php-8.5%2B-777bb4?style=flat-square&logo=php&logoColor=white" alt="PHP Version">
+    <img src="https://img.shields.io/github/repo-size/Eduardo7881/watrbx-rec" alt="Repository Size">
+    <img src="https://img.shields.io/github/last-commit/Eduardo7881/watrbx-rec" alt="Last Commit">
+    <img src="https://img.shields.io/github/stars/Eduardo7881/watrbx-rec" alt="Repository Stars">
+    <img src="https://img.shields.io/github/forks/Eduardo7881/watrbx-rec" alt="Repository Forks">
+</p>
 
 WatrBX Rebased (short for `watrbx:r`) is a continuation of **watrbx 1**, an old Roblox revival from around 2015-2016.
 
