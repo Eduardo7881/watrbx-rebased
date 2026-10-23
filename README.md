@@ -23,12 +23,16 @@ This is not everything! You should check the code and roadmap!
 ## Roadmap
 
 - [X] Admin Panel
-- [X] Local Storage Patches
+- [ ] Local Storage Patches (WIP)
 - [X] Database Fixes
 - [ ] Promotion Links (invite people to play this and the link owner gets robux and tixs from people joining using his link)
 - [ ] Most of the APIs (`<apiname>.roblox.com`)
-- [X] Better Chat Filtering (untested yet)
+- [X] Better Chat Filtering
 - [X] Game Server APIs
+- [ ] (IMPORTANT) Fix register giving "Sorry, an error occoured" even with right details.
+- [ ] (IMPORTANT) Fix groups page looking EXTREMELY weird
+- [X] URL Patches
+- [ ] Games (actually playable)
 
 This roadmap isn't final and it's constantly changed. It may look empty (right now), but i'll be accepting PRs and feature solicitations.
 
@@ -40,16 +44,16 @@ You will also have to download the required assets that the client uses. (Animat
 
 ### Requirements
 
-To run the server, you'll need to install these stuff:
+To run the server, you'll need to install these packages:
 
-- PHP
+- PHP (only PHP 8.4+)
 - Composer
 - MariaDB
-- OpenSSH
-- OpenSSL
-- Git (or `gh`)
+- OpenSSL (if it gives an error that openssl wasn't found, install the `openssl-tool` package.)
+- Git (to clone the repository)
 
 Some PHP extensions may also be required depending on the code and your PHP version. This has been tested on PHP 8.5.
+The project uses the `soap`, `fileinfo`, `curl`, `pdo`, `xml`, `mbstring` PHP extensions.
 
 ### Linux (Ubuntu / Debian)
 
@@ -94,7 +98,7 @@ The PHP Development Server is convenient for local testing, but it is not recomm
 
 ### Nginx (Recommended for production)
 
-Watrbx was hosted by NGINX!! We recommend you configure NGINX for the server using PHP-FPM too. Using the development server can break some stuff since it's not designed for production.
+Watrbx was hosted on NGINX!! We recommend you configure NGINX for the server using PHP-FPM too. Using the development server can break some stuff since it's not designed for production.
 
 Nginx with PHP-FPM is recommended over PHP's built-in Development Server when hosting WatrBX for other people. Nginx handles incoming HTTP requests and static files, while PHP-FPM runs the PHP application.
 
@@ -327,17 +331,17 @@ Contributions are welcome! If you want to add a feature, fix something, improve 
 
 I'm still working on getting everything functional, so there's plenty left to do.
 
-The usage of AI for basic things is allowed, don't use it on the whole codebase. Since vibecoding it would make it insecure.
+The usage of AI for basic things is allowed, don't use it on the whole codebase. Since vibecoding it would make it insecure and unsafe.
 
 Also, check if your code works before making any PRs.
 
 ## Disclaimer
 
-Some assets included in this project belong to Roblox Corporation. This project is not affiliated with or endorsed by Roblox Corporation.
+Some assets included in this project belong to ROBLOX Corporation. This project is not affiliated with or endorsed by ROBLOX Corporation.
 
 I'm **NOT watrabi**, the original owner of WatrBX.
 
-This is **NOT WatrBX 2's source code**. It's also not a leak. The code was publicly available.
+This is **NOT watrbx 2's source code**. It's also not a leak. The code **was/is** publicly available.
 
 ## About the Code
 

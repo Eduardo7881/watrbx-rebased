@@ -50,3 +50,41 @@ Stack trace:
 #8 /data/data/com.termux/files/home/watrbx-rec/router.php(16): require('/data/data/com....')
 #9 {main}
 
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'emblem' cannot be null in /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php:155
+Stack trace:
+#0 /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php(155): PDOStatement->execute()
+#1 /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php(329): Pixie\QueryBuilder\QueryBuilderHandler->statement('INSERT INTO `gr...', Array)
+#2 /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php(360): Pixie\QueryBuilder\QueryBuilderHandler->doInsert(Array, 'insert')
+#3 /data/data/com.termux/files/home/watrbx-rec/routes/webhandler.php(1754): Pixie\QueryBuilder\QueryBuilderHandler->insert(Array)
+#4 [internal function]: watrlabs\router\Routing->{closure:/data/data/com.termux/files/home/watrbx-rec/routes/webhandler.php:1701}()
+#5 /data/data/com.termux/files/home/watrbx-rec/classes/watrlabs/router/routing.php(79): call_user_func(Object(Closure))
+#6 /data/data/com.termux/files/home/watrbx-rec/public/index.php(254): watrlabs\router\Routing->dispatch('/my/creategroup...', 'POST')
+#7 /data/data/com.termux/files/home/watrbx-rec/router.php(16): require('/data/data/com....')
+#8 {main}
+
+PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'watrbx2015.group_wall' doesn't exist in /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php:147
+Stack trace:
+#0 /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php(147): PDO->prepare('SELECT * FROM `...')
+#1 /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php(175): Pixie\QueryBuilder\QueryBuilderHandler->statement('SELECT * FROM `...', Array)
+#2 /data/data/com.termux/files/home/watrbx-rec/views/groups/default.php(97): Pixie\QueryBuilder\QueryBuilderHandler->get()
+#3 /data/data/com.termux/files/home/watrbx-rec/classes/watrlabs/watrkit/pagebuilder.php(76): require('/data/data/com....')
+#4 /data/data/com.termux/files/home/watrbx-rec/routes/webhandler.php(1672): watrlabs\watrkit\pagebuilder::get_template('groups/default')
+#5 [internal function]: watrlabs\router\Routing->{closure:/data/data/com.termux/files/home/watrbx-rec/routes/webhandler.php:1662}()
+#6 /data/data/com.termux/files/home/watrbx-rec/classes/watrlabs/router/routing.php(79): call_user_func(Object(Closure))
+#7 /data/data/com.termux/files/home/watrbx-rec/public/index.php(254): watrlabs\router\Routing->dispatch('/my/groups.aspx', 'GET')
+#8 /data/data/com.termux/files/home/watrbx-rec/router.php(16): require('/data/data/com....')
+#9 {main}
+
+PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'ORDER BY' in /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php:147
+Stack trace:
+#0 /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php(147): PDO->prepare('SELECT * FROM `...')
+#1 /data/data/com.termux/files/home/watrbx-rec/vendor/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php(175): Pixie\QueryBuilder\QueryBuilderHandler->statement('SELECT * FROM `...', Array)
+#2 /data/data/com.termux/files/home/watrbx-rec/views/groups/default.php(97): Pixie\QueryBuilder\QueryBuilderHandler->get()
+#3 /data/data/com.termux/files/home/watrbx-rec/classes/watrlabs/watrkit/pagebuilder.php(76): require('/data/data/com....')
+#4 /data/data/com.termux/files/home/watrbx-rec/routes/webhandler.php(1672): watrlabs\watrkit\pagebuilder::get_template('groups/default')
+#5 [internal function]: watrlabs\router\Routing->{closure:/data/data/com.termux/files/home/watrbx-rec/routes/webhandler.php:1662}()
+#6 /data/data/com.termux/files/home/watrbx-rec/classes/watrlabs/router/routing.php(79): call_user_func(Object(Closure))
+#7 /data/data/com.termux/files/home/watrbx-rec/public/index.php(254): watrlabs\router\Routing->dispatch('/my/groups.aspx', 'GET')
+#8 /data/data/com.termux/files/home/watrbx-rec/router.php(16): require('/data/data/com....')
+#9 {main}
+

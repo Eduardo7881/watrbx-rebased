@@ -211,11 +211,14 @@ if ($selectedGroupId) {
             $isOwner = $myRoleInGroup && $myRoleInGroup->priority == 255;
         }
 
+        /*
         $groupWallPosts = $db->table("group_wall")
             ->where("groupid", $selectedGroupId)
             ->orderBy("id", "DESC")
             ->limit(10)
             ->get();
+        */
+        $groupWallPosts = [];
 
         $groupMembers = $db->table("hasrole")
             ->join("group_roles", "group_roles.id", "=", "hasrole.roleid")
@@ -498,6 +501,15 @@ if($selectedGroupId){
                     <?php if (empty($groupWallPosts)): ?>
                         <p style="padding:10px;">No wall posts yet.</p>
                     <?php else: ?>
+                        <!---
+                        Structure:
+                            group_wall:
+                            string `username` NOT NULL,
+                            int `groupid` NOT NULL,
+                            string `content` NOT NULL,
+                            int `date` NOT NULL,
+                            int `userid` NOT NULL,
+                        -->
                         <?php foreach ($groupWallPosts as $i => $post):
                             $poster = $auth->getuserbyid($post->userid);
                             if (!$poster) continue;

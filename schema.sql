@@ -505,7 +505,23 @@ CREATE TABLE `groups` (
   `shout` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `robux` int NOT NULL,
   `tix` int NOT NULL,
-  `emblem` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+  `emblem` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group_wall`
+--
+
+CREATE TABLE `group_wall` (
+    `groupid` int NOT NULL,
+    `userid` int NOT NULL,
+    `date` bigint NOT NULL,
+    `id` int NOT NULL,
+    `DESC` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+    `username` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+    `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
