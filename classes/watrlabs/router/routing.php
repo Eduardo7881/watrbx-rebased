@@ -18,6 +18,7 @@ class Routing {
             $middleware = $this->currentmiddleware;
 
             $callback = function(...$args) use ($middleware, $originalcallback) {
+//                if (isset($_ENV['LOG_REQUESTS']) && $_ENV["LOG_REQUESTS"] == true) error_log(sprintf("[Router] [%s] %s", $method, $uri));
                 $middleware();
                 return $originalcallback(...$args);
             };
@@ -122,5 +123,4 @@ class Routing {
         $regex = preg_replace('#\{[^/]+\}#', '([^/]+)', $pattern);
         return '#^' . $regex . '$#';
     }
-
 }

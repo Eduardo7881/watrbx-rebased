@@ -1,3 +1,7 @@
+<?php
+error_log("Really bad 500! Error: " . $e->getMessage());
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,11 +92,11 @@
     <!-- 
         Your Error:
 
-        <?=$e?>
+        <?=$e->getMessage()?>
 
         Report this to the website owner/hoster.
         
     -->
-    <script type="text/javascript">console.log("<?=$e?>");</script>
+    <script type="text/javascript">console.log("<?=$e->getMessage()?>");</script>
 </body>
 </html>

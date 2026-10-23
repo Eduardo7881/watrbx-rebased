@@ -10,15 +10,12 @@ use watrbx\refers;
 require_once '../init.php';
 
 try {
-
     try {
-        
         global $db;
         global $router;
 
         $func = new sitefunctions();
         $ip = $func->getip(true);
-
 
         $ipbanned = $db->table("ipbans")->where("ip", $ip)->first();
         if($ipbanned == true){
@@ -32,14 +29,13 @@ try {
 
         $auth = new authentication();
         $router = new routing();
-        
+
         if($_ENV["ACTUAL_MAINTENANCE"] == "true"){
             require("../views/maintenance.php");
             exit;
         }
 
         if($_ENV["MAINTENANCE"] == "true"){
-
             $canbypass = false;
 
             if(isset($_SERVER["HTTP_AUTHORIZATION"])){
@@ -75,10 +71,8 @@ try {
                 require("../views/maintenance.php");
                 exit;
             }
-
-            
         }
-
+        
         $routers = [
             "webhandler",
             "apihandler",
@@ -95,13 +89,15 @@ try {
             "fingerprinthandler",
             "accounthandler",
             "2013api",
-            "grouphandler"
+            "grouphandler",
+            "robloxhandler"
         ];
 
         foreach ($routers as $r) {
             $router->addrouter($r);
         }
 
+        
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $uriraw = $_SERVER['REQUEST_URI'];
         if($uri){
@@ -134,33 +130,18 @@ try {
         $unique = array_map(function($user) {
             $auth = new authentication();
             
-            if($user->last_login_ip !== null){
+            if($user->last_login_ip !== null || $user->register_ip !== null){
                 $isBanned = $auth->is_banned($user->id);
 
                 $altAppend = "";
 
-                // vmware says watrabi is gae
                 if($isBanned){
                     $altAppend = " (BANNED❌)";
                 } else {
                     $altAppend = " (OK)"; 
                 }
                 return $user->username . $altAppend;
-            } 
-
-            if($user->register_ip !== null){
-                $isBanned = $auth->is_banned($user->id);
-
-                $altAppend = "";
-
-                // vmware says ur gae
-                if($isBanned){
-                    $altAppend = " (BANNED❌)";
-                } else {
-                    $altAppend = " (OK)"; 
-                }
-                return $user->username . $altAppend;
-            } 
+            }
         }, $allalts);
 
         $possiblealts = implode(", ", $unique);
@@ -168,7 +149,6 @@ try {
         if (preg_match('/[<>"\'`]/', $uriraw)) {
             // suspicious input
             $discord->internal_log("Someone attempted xss. URL:\n$uriraw\nUser: $user\nPossible Accounts: $possiblealts", "XSS Attmpted!");
-
         }
 
         if (preg_match('/<\s*script|javascript:/i', $uriraw)) {
@@ -183,7 +163,6 @@ try {
         if (preg_match('/\bor\b\s+1\s*=\s*1/', $uriraw)) $score += 5;
 
         if($score >= 3){
-
             global $currentuser;
 
             // suspicious behaviour
@@ -202,7 +181,6 @@ try {
                 if(!in_array($uriraw, $dontlogthese)){
                     $discord->internal_log("XSS attempt in POST:\n$value\nUser: $user\nPossible Accounts: $possiblealts", "XSS Attempt!");
                 }
-                
             }
 
             if (preg_match('/<\s*script|javascript:/i', $value)) {
@@ -231,14 +209,11 @@ try {
             }
 
             $score = 0;
-            
         }
-
-        
 
         $refers = new refers();
         $discord->set_webhook_url($_ENV["REFER_WEBHOOK"]);
-        
+
         if(isset($_GET["refer"])){
             $referName = $_GET["refer"];
             $referInfo = $refers->getReferInfo($referName);
@@ -247,20 +222,14 @@ try {
                 $refers->incrementRefer($referName);
                 $refers->assignReferCookie($referName);
                 $discord->internal_log("Someone has been reffered by: $referName.\n This refferal has had " . $referInfo->uses + 1 . " uses.", "New Refferal!");
-            }              
-
+            }
         }
-        
+
         $response = $router->dispatch($uri, $method);
-
         ob_end_flush(); 
-
-
     } catch(PDOException $e){
         handle_error($e);
     }
-
-    
 } catch(ErrorException $e){
     handle_error($e);
 }
@@ -271,18 +240,22 @@ function handle_error($e){
 
     try {
         $discord->internal_log($e, "Site Error!");
+        
         ob_clean();
         file_put_contents("../storage/errorlog.log", $e . "\n\n", FILE_APPEND);
         http_response_code(500);
+        
         require("../views/status_codes/500.php");
     } catch(ErrorException $e){
         $discord->internal_log($e, "Really Bad Site Error!");
+        
         ob_clean();
         http_response_code(500);
         file_put_contents("../storage/errorlog.log", $e . "\n\n", FILE_APPEND);
+        
         require("../views/really_bad_500.php");
         die();
     }
 }
 
-// aaaaaaaaaaaaaaaa my brain hurts 
+// aaaaaaaaaaaaaaaa my brain hurts

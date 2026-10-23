@@ -1,7 +1,6 @@
 <?php
 
 namespace watrlabs\watrkit;
-
 use watrlabs\authentication;
 
 class pagebuilder {
@@ -120,40 +119,12 @@ class pagebuilder {
             }
         }
 
-        // this HAS to be expanded in the future 
-        if($this->authed){
-            if($this->legacy){
-                $this::get_snippet('legacy_header', [
-                    'cssfiles' => $this->cssfiles,
-                    'jsfiles' => $this->jsfiles,
-                    'metatags' => $this->metatags,
-                    'config' => $this->config
-                ]);
-            } else {
-                $this::get_snippet('header', [
-                    'cssfiles' => $this->cssfiles,
-                    'jsfiles' => $this->jsfiles,
-                    'metatags' => $this->metatags,
-                    'config' => $this->config
-                ]);
-            }
-        } else {
-            if($this->legacy){
-                $this::get_snippet('legacy_unauthed_header', [
-                    'cssfiles' => $this->cssfiles,
-                    'jsfiles' => $this->jsfiles,
-                    'metatags' => $this->metatags,
-                    'config' => $this->config
-                ]);
-            } else {
-                $this::get_snippet('unauthed_header', [
-                    'cssfiles' => $this->cssfiles,
-                    'jsfiles' => $this->jsfiles,
-                    'metatags' => $this->metatags,
-                    'config' => $this->config
-                ]);
-            }
-        }
-        
+        $snippetName = $this->authed ? ($this->legacy ? "legacy_header" : "header") : ($this->legacy ? "legacy_unauthed_header" : "unauthed_header");
+        $this::get_snippet($snippetName, [
+            'cssfiles' => $this->cssfiles,
+            'jsfiles'  => $this->jsfiles,
+            'metatags' => $this->metatags,
+            'config'   => $this->config
+        ]);
     }
 }

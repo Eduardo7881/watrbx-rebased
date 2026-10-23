@@ -3791,10 +3791,10 @@ function genJoinCode($ip, $port, $jobid, $placeid){
 }
 
 $router->get('/Game/PlaceLauncher.ashx', function() {
-
     // cleaned this up a lot (again)
 
-    header("Access-Control-Allow-Origin: http://wasm.watrbx.wtf");
+    //header("Access-Control-Allow-Origin: http://wasm.watrbx.wtf");
+    header("Access-Control-Allow-Origin: " . $_ENV["BASE_URL"]);
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
 

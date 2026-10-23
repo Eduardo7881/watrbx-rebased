@@ -575,8 +575,29 @@ $router->get('/GetAllowedMD5Hashes/', function(){
     die('{"data":["36aa5c84aedcb3910efccbda2709515f"]}');
 });
 
-$router->get('/game/LoadPlaceInfo.ashx', function(){ //Todo: implement it (not important)
-    die('');
+$router->get('/game/LoadPlaceInfo.ashx', function() {
+    header("Content-Type: text/plain; X-Robots-Tag: noindex");
+    $lua = '
+local baseUrl = "%baseurl%"
+
+-- Loaded by StartGameSharedScript --
+pcall(function() game:GetService("SocialService"):SetFriendUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerid=%d&userid=%d") end)
+pcall(function() game:GetService("SocialService"):SetBestFriendUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=IsBestFriendsWith&playerid=%d&userid=%d") end)
+pcall(function() game:GetService("SocialService"):SetGroupUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=IsInGroup&playerid=%d&groupid=%d") end)
+pcall(function() game:GetService("SocialService"):SetGroupRankUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=GetGroupRank&playerid=%d&userid=%d") end)
+pcall(function() game:GetService("SocialService"):SetGroupRoleUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=GetGroupRole&playerid=%d&userid=%d") end)
+pcall(function() game:GetService("GamePassService"):SetPlayerHasPassUrl(baseUrl .. "/Game/GamePass/GamePassHandler.ashx?Action=HasPass&UserID=%d&PassID=%d") end)
+pcall(function() game:GetService("MarketplaceService"):SetProductInfoUrl(baseUrl .. "/marketplace/productinfo?assetId=%d") end)
+pcall(function() game:GetService("MarketplaceService"):SetDevProductInfoUrl(baseUrl .. "/marketplace/productDetails?productId=%d") end)
+pcall(function() game:GetService("MarketplaceService"):SetPlayerOwnsAssetUrl(baseUrl .. "/ownership/hasasset?userId=%d&assetId=%d") end)
+pcall(function() game:SetPlaceVersion(1) end)
+';
+
+    $lua = str_replace("%baseurl%", $_ENV["BASE_URL"], $lua);
+    //$key = file_get_contents("../storage/PrivateNut.pem");
+    //openssl_sign($lua, $sig, $key, )
+    echo $lua;
+    die();
 });
 
 $router->get('/Error/Dmp.ashx', function(){
