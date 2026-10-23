@@ -18,6 +18,7 @@ use watrbx\email;
 use watrlabs\pagination;
 use rbx\roblox;
 use watrbx\RBX;
+use watrbx\Memberships;
 use rbx\ItemInfo;
 
 global $router; // IMPORTANT: KEEP THIS HERE!
@@ -5318,7 +5319,7 @@ $router->post('/login/v1', function() {
 
                 if ($isMobile || $legacyResponse) {
                     $sendJson([
-                        'membershipType' => $user->membership,
+                        'membershipType' => RBXMemberships::getIdFromName($user->membership),
                         'username'       => $user->username,
                         'isUnder13'      => false,
                         'countryCode'    => 0,
@@ -5460,7 +5461,7 @@ $router->post("/v2/login", function() {
     $makeResponse = function($user, $type) {
         if ($type == "legacy") {
             return [
-                'membershipType' => $user->membership,
+                'membershipType' => RBXMemberships::getIdFromName($user->membership),
                 'username'       => $user->username,
                 'isUnder13'      => false,
                 'countryCode'    => 0,

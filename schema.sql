@@ -504,7 +504,8 @@ CREATE TABLE `groups` (
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `shout` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `robux` int NOT NULL,
-  `tix` int NOT NULL
+  `tix` int NOT NULL,
+  `emblem` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
