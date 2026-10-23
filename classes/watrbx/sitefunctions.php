@@ -15,7 +15,7 @@ class sitefunctions {
     //public $filter = new ContextualModeration(new Config($_ENV["OPENAI_API_KEY"]));
     public $filter;
 
-    function construct__() {
+    function __construct() { // isnt it supposed to be __construct?
         $this->key = $_ENV["random_key"];
         $this->iv = $_ENV["encryption_iv"];
         $this->filter = new ContextualModeration(new Config($_ENV["OPENAI_API_KEY"]));
@@ -32,7 +32,7 @@ class sitefunctions {
         return $decrypted;
     }
 
-    public function maskMessage($text, $char = '#') { return str_repeat($char, mb_strlen($message, 'UTF-8')); }
+    public function maskMessage($text, $char = '#') { return str_repeat($char, mb_strlen($text, 'UTF-8')); }
 
     public static function returnPlatform($returnPc = false){
 
@@ -261,7 +261,7 @@ class sitefunctions {
         return $query->count();
     }
 
-    static function filter_text($text) 
+    public function filter_text($text) 
     {
         /*
         $badlist = array_filter(explode(",", file_get_contents("../storage/bad_words.txt")));
@@ -281,7 +281,7 @@ class sitefunctions {
         return $text;
     }
 
-    static function isbadtext($text){
+    public function isbadtext($text){
          /*
         $badlist = array_map('trim', array_filter(explode(",", file_get_contents("../storage/bad_words.txt"))));
                 

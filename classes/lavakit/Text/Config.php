@@ -7,7 +7,7 @@ final readonly class Config {
     public function __construct(
         public string $apiKey,
         public string $model = 'gpt-4o-mini',
-        public string $endpoint = 'http://api.openai.com/v1/chat/completions',
+        public string $endpoint = 'https://api.openai.com/v1/chat/completions',
         public int $timeoutSeconds = 12,
         public int $maxTextLength = 1000, // Text Chat Messages are smaller than that btw
         public int $maxHistoryMessages = 20, // Maximum messages to store in history

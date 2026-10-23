@@ -3,10 +3,19 @@
 declare(strict_types=1);
 namespace lavakit\Text;
 
+use ConsoleTVs\Profanity\Builder as ProfanityBuilder;
+
 final class ContextualModeration {
     public function __construct(private readonly Config $config) {}
+    public function profanityFallback(string $text): string { return ProfanityBuilder::blocker($text)->filter(); }
 
     public function moderate(string $text, ?ModerationContext $context = null): ModerationResult {
+        // 1. Check Locally for clear profanities (else my credits would go to waste)
+        // 2. Use AI (if fails, return the thing that profanity returned.
+        $filteredTextLocal = $this->profanityFallback($text);
+        $hasProfanity = $filteredTextLocal !== $text;
+        if ($hasProfanity) return new ModerationResult(Decision::BLOCK, 80, ['profanity'], ['local_profanity_match'], 'Message contains profanity.', $content->locale ?? 'und', false, false, 'consoletvs-profanity');
+
         $context ??= new ModerationContext();
         if (!mb_check_encoding($text, 'UTF-8')) return $this->fallback('Input is not a valid UTF-8 string.', ['invalid_encoding']);
         if (mb_strlen($text, 'UTF-8') > $this->config->maxTextLength) return $this->fallback('Message exceeds maximum length.', ['input_too_long']);
@@ -53,10 +62,51 @@ final class ContextualModeration {
         ];
 
         try {
+            $ch = curl_init($this->config->endpoint);
+            if ($ch === false) throw new \RuntimeException('Unable to initialize CURL!');
 
+            $headers = ['Content-Type: application/json', 'Authorization: Bearer ' . $this->config->apiKey];
+            curl_setopt_array($ch, [
+                CURLOPT_POST => true,
+                CURLOPT_HTTPHEADER => $headers,
+                CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR),
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_CONNECTTIMEOUT => min(5, $this->config->timeoutSeconds),
+                CURLOPT_TIMEOUT => $this->config->timeoutSeconds,
+                CURLOPT_HEADER => true
+            ]);
+            $raw = curl_exec($ch);
+            if (!is_string($raw)) {
+                $err = curl_error($ch);
+                //curl_close($ch);
+                throw new \RuntimeException('AI provider request failed: ' . $err);
+            }
+
+            $status = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+            $headerSize = (int)curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+            $responseHeaders = substr($raw, 0, $headerSize);
+            $body = substr($raw, $headerSize);
+            //curl_close($ch);
+            if ($status < 200 || $status >= 300) {
+                $errorData = json_decode($body, true);
+                $providerMessage = $errorData['error']['message'] ?? $errorData['message'] ?? 'No error message returned';
+                $providerCode = $errorData['error']['code'] ?? $errorData['error']['type'] ?? 'unknown';
+                error_log(sprintf('[TextFilter] HTTP %d | Code: %s | Error: %s', $status, (string)$providerCode, (string)$providerMessage));
+                throw new \RuntimeException('AI provider returned HTTP ' . $status);
+            }
+
+            $decoded = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+            $content = $decoded['choices'][0]['message']['content'] ?? null;
+            if (!is_string($content) || $content === '') throw new \RuntimeException("AI provider returned no classification.");
+           
+            $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+            return $this->result($data, $this->requestId($responseHeaders));
         } catch (\Throwable $e) {
-            if ($this->config->failClosed) return $this->fallback('Text moderation unavailable right now.', ['provider_unavailable']);
-            return new ModerationResult(Decision::UNAVAILABLE, 50, ['moderation_error'], ['provider_unavailable'], "Text moderation unavailable right now.", 'und', false, false, 'ai-fallback');
+            //error_log($e->getMessage());
+            //if ($this->config->failClosed) return $this->fallback('Text moderation unavailable right now.', ['provider_unavailable']);
+            //return new ModerationResult(Decision::UNAVAILABLE, 50, ['moderation_error'], ['provider_unavailable'], "Text moderation unavailable right now.", 'und', false, false, 'ai-fallback');
+            error_log('[TextFilter] AI moderation failed: ' . $e->getMessage());
+            return new ModerationResult(Decision::ALLOW, 50, [], [], 'AI was unavailable; and there was no clear profanities on the text.', $context->locale ?? 'und', false, false, 'consoletvs-profanity');
         }
     }
 
@@ -104,6 +154,8 @@ PROMPT;
             $signals[] = 'policy_external_platform';
         }
         if ($decision === Decision::ALLOW && $score >= $this->config->blockThreshold) $decision = Decision::BLOCK;
+        error_log($score);
+        error_log($decision->value);
         return new ModerationResult($decision, $score, array_values(array_unique($categories)), array_values(array_unique($signals)), mb_substr((string)($d['reason'] ?? 'Classified by automated systems.'), 0, 400, 'UTF-8'), mb_substr((string)($d['language'] ?? 'und'), 0, 20, 'UTF-8'), $contact, $external, 'openai-chat-completions', $requestId);
     }
 

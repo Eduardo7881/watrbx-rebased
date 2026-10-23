@@ -8,12 +8,12 @@ use watrlabs\watrkit\pagebuilder;
 global $db;
 
 class gameserver {
-
     private $current_server = [];
     private $connecting_user = null;
     private $close_server;
     private $grid;
     private $server;
+    private $used_ports = [];
 
     public function get_server() {
         if (!$this->server) {
@@ -24,7 +24,6 @@ class gameserver {
     }
 
     private function get_grid($server){
-
         if($server){
             $Grid = new \watrbx\Grid\Open\Service("http://" . $server->wireguard_ip . ":" . $server->port);
             $this->grid = $Grid;
@@ -65,25 +64,22 @@ class gameserver {
         return $earthsRadius * $c;
     }
 
-    public function get_all_servers(){
+    public function get_all_servers() {
         global $db;
         return $db->table("servers")->get();
     }
 
-    public function get_server_url($serverinfo){
+    public function get_server_url($serverinfo) {
         return "http://" . $serverinfo->wireguard_ip . ":" . $serverinfo->port;
     }
 
-    public function get_user_server($userid = null){
-
+    public function get_user_server($userid = null) {
         global $currentuser;
         $auth = new authentication();
         $userinfo = null;
 
-        if(!$userid){
-            if($currentuser){
-                $userinfo = $currentuser;
-            }
+        if(!$userid && $currentuser){
+            $userinfo = $currentuser;
         } else {
             $userinfo = $auth->getuserbyid($userid);
         }
@@ -97,12 +93,9 @@ class gameserver {
                 }
             }
         }
-        
-        
+
         // if they don't have a gs preference or something went wrong as a fall back
         return $this->get_closest_server();
-
-
     }
 
     public function get_closest_server(){
@@ -177,7 +170,6 @@ class gameserver {
     }
 
     public function is_gameserver_ip($ip) {
-        
         global $db;
         $result = $db->table("servers")
             ->where("ip", $ip)
@@ -193,7 +185,6 @@ class gameserver {
         $server = $this->get_server_info($jobinfo->server);
 
         $Grid = new \watrbx\Grid\Grid;
-        //$Grid = $Grid->Close("http://group-she.gl.at.ply.gg:49837");
         $Grid = new \watrbx\Grid\Close\Service("http://" . $server->wireguard_ip . ":" . $server->port);
         $Result = $Grid->CloseJob($jobid);
 
@@ -225,7 +216,6 @@ class gameserver {
     }
 
     public function execute_job($jobinfo, $scriptinfo, $server = null){
-
         $this->get_server();
 
         if(!$server){
@@ -239,15 +229,15 @@ class gameserver {
     }
 
     public function gen_port(){
-
         // TODO: Track used ports
 
         $port = rand(4000, 4500);
+        $used_ports[] = $port;
+
         return $port;
     }
 
     public function request_game($placeid, $context){
-
         $this->get_server();
 
         // Context 1 - Public Game
@@ -260,7 +250,7 @@ class gameserver {
         $jobid = $func->createjobid();
         $port = $this->gen_port();
         $close_server = $this->server;
-        
+
         $apikey = $this->create_api_key($jobid);
 
         $insert = array(
@@ -271,11 +261,11 @@ class gameserver {
             "apikey"=>$apikey,
             "server"=>$close_server->server_id,
         );
-        
+
         global $db;
 
         $gamescript = $pagebuilder->get_from_storage("lua/game.lua");
-        
+
         $jobInfo = [
             "Id"=>$jobid,
             "Expiration"=>300, 
@@ -295,7 +285,7 @@ class gameserver {
                 "protocol"=>"http://",
                 "apiKey"=>$apikey,
                 "matchmakingContextId"=>$context,
-                "assetGameSubdomain"=>"assetgame."
+                "assetGameSubdomain"=>"" // no subdomain
             ]
         ];
 

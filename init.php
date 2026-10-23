@@ -81,19 +81,18 @@ try {
     $connection = new Connection('mysql', $config);
     $db = $connection->getQueryBuilder(); 
  
-    /*
     $auth = new authentication();
     if($auth->hasaccount()){
         $currentuser = $auth->getuserinfo($_COOKIE["_ROBLOSECURITY"]);
     } else {
         $currentuser = null;
     }
-    */
     
 } catch (PDOException $e){
     require("../views/really_bad_500.php");
     die();
     echo "db problems!";
+    error_log($e);
 }
 
 try {

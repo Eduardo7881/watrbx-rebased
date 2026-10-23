@@ -119,7 +119,7 @@ $router->get("/account/signupredir", function() {
 });
 
 $router->get('/agree', function(){
-    setcookie('has_read', 1, time() + 999999999, '', '.' . $_ENV["APP_DOMAIN"]);
+    setcookie('has_read', 1, (int)(time() + 999999999), '/');
     header("Location: /");
 });
 
