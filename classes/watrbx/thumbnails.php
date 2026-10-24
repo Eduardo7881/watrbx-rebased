@@ -210,37 +210,6 @@ class thumbnails {
         return $gameserver->execute_job($jobInfo, $ScriptInfo, $closeserver);
     }
 
-    private function render_vanilla_fallback($jobinfo, $id): ?string {
-        $vanillaUrl = rtrim($_ENV["BASE_URL"] . "/vanilla/avatar.php", "?&");
-        $baseUrl = rtrim($_ENV["BASE_URL"], "/");
-        $params = [
-            'size' => preg_match("/^\d{1,4}x\d{1,4}$/", (string)($jobinfo->dimensions ?? '')) ? $jobinfo->dimensions : "300x300",
-            'format' => "png",
-            "renderer" => "2016" // experimental tho, i have to keep up w/ vanilla updates for 2016 renderer.
-        ];
-
-        if (!empty($jobinfo->userid)) {
-            $params['charapp'] = $baseUrl . "/Asset/CharacterFetch.aspx?Id=" . rawurlencode((string)$id);
-        } elseif (!empty($jobinfo->assetid)) {
-            // doesnt vanilla only support avatars?
-            return null;
-        } else {
-            return null;
-        }
-
-        $url = $vanillaUrl . (str_contains($vanillaurl, "?") ? "&" : "?") . http_build_query($params, "", "&", PHP_QUERY_RFC3986);
-        $context = stream_context_create(['http'] => [
-            "method" => "GET",
-            "timeout" => 45,
-            "ignore_errors" => true,
-            "header" => "Accept: image/png\r\nUser-Agent: watrbx-cron/1.0\r\n"
-        ]);
-
-        $image = @file_get_contents($url, false, $context);
-        if (!is_string($image) || $image === "" || !str_starts_with($image, "\x89PNG\r\n\x1a\n")) return null;
-        return $image;
-    }
-
     public function get_user_thumb($userid, $size, $type = "full"){
         global $db;
         $thumb = $db->table("thumbnails")->where("userid", $userid)->where("dimensions", $size)->where("mode", $type)->first();

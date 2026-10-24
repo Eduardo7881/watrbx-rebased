@@ -99,7 +99,7 @@ $pagebuilder->buildheader();
                 $universes[$u->assetid] = $u;
             }
 
-            
+        }    
             ?>
 
         <div id="recently-visited-places" class="col-xs-12 container-list home-games">
@@ -1461,3 +1461,4 @@ $pagebuilder->buildheader();
     </noscript>
 </body>
 </html>
+
