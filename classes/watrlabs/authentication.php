@@ -164,6 +164,14 @@ class authentication {
         return $colors[$bodycolor];
     }
     
+    public function hasperm($userid, $asset) {
+        // TODO
+        // Check if user is the asset owner or user is in a group and can access it
+
+        if ($userid === $asset->owner) return true;
+        return false;
+    }
+    
     public function createsession($author = 0, $fingerprint = null) {
         
         if($this->hasaccount()){

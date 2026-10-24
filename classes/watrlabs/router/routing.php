@@ -33,6 +33,14 @@ class Routing {
         }
     }
 
+    public function multi(array $list, callable $callback) {
+        if (!empty($list)) {
+            foreach($list as $uri => $method) {
+                $this->addRoute($method, $uri, $callback);
+            }
+        }
+    }
+
     public function get(string|array $uri, callable $callback) {
         $this->addRoute('GET', $uri, $callback);
     }

@@ -2,6 +2,8 @@
 use watrlabs\router\Routing;
 use watrlabs\watrkit\pagebuilder;
 use watrlabs\authentication;
+use watrbx\Memberships;
+
 global $router; // IMPORTANT: KEEP THIS HERE!
 
 $router->get("/game/GetCurrentUser.ashx", function() {
@@ -15,13 +17,12 @@ $router->get("/game/GetCurrentUser.ashx", function() {
             echo $userinfo->id;
             die();
         } else {
-            setcookie(".ROBLOSECURITY", "", time() - 9999999, "/", "." . $_ENV["APP_DOMAIN"]);
+            setcookie(".ROBLOSECURITY", "", time() - 9999999, "/");
             die();
         }
     }
 
     die();
-
 });
 
 $router->post('/ide/publish/uploadnewasset', function(){ 
@@ -33,15 +34,14 @@ $router->get('/login/RequestAuth.ashx', function(){
 
     if($currentuser !== null && isset($_COOKIE["_ROBLOSECURITY"])){
         http_response_code(200);
-        setcookie(".ROBLOSECURITY", $_COOKIE["_ROBLOSECURITY"], time() + 8600, "/", "." . $_ENV["APP_DOMAIN"]);
+        setcookie(".ROBLOSECURITY", $_COOKIE["_ROBLOSECURITY"], time() + 8600, "/");
         echo $_ENV["BASE_URL"] . "/Login/Negotiate.ashx?suggest=" . $_COOKIE["_ROBLOSECURITY"];
         die();
     } else {
         http_response_code(401);
-        setcookie(".ROBLOSECURITY", "", time() - 9999999, "/", "." . $_ENV["APP_DOMAIN"]);
+        setcookie(".ROBLOSECURITY", "", time() - 9999999, "/");
         die("User is not authorized.");
     }
-    
 });
 
 $router->get('/Game/Edit.ashx', function(){
@@ -156,7 +156,6 @@ $router->get('/universes/get-universe-places', function(){
         ];
 
         die(json_encode($return));
-
     }
 
     die('{"FinalPage":true,"RootPlace":1,"Places":[{"PlaceId":1,"Name":"Test"}],"PageSize":50}');
@@ -200,10 +199,24 @@ $router->get('/ide/publish/new', function() {
 $router->get('/my/settings/json', function() {
     header("Content-type: application/json");
     global $currentuser;
-    
+    global $db;
+
+    $blocked = $db->table("blockedusers")->where("userId", "=", $currentuser->id)->get();
+    $blockedIds = [];
+
+    foreach ($blocked as $item) {
+        $blockedIds[] = $item->blockedId;
+    }
+
     if($currentuser !== null){
+        $membershipId = RBXMemberships::getIdFromName($currentuser->membership);
+        $usernameChanges = $db->table("usernamechanges")->where("userid", "=", $currentuser->id)->get();
+        
+        $changes = [];
+        foreach ($usernameChanges as $item) { $changes[] = $item->oldusername; }
+
         $data = [
-            "AccountAgeInDays" => 29,
+            "AccountAgeInDays" => round((time() - $currentuser->regtime) / 86400),
             "AccountSettingsApiDomain" => $_ENV["BASE_URL"],
             "AgeBracket" => 0,
             "AllowedNotificationSourceTypes" => [
@@ -216,11 +229,11 @@ $router->get('/my/settings/json', function() {
             "ApiProxyDomain" => $_ENV["BASE_URL"],
             "AuthDomain" => $_ENV["BASE_URL"],
             "BcExpireDate" => "/Date(-0)/",
-            "BcLevel" => "None",
+            "BcLevel" => $currentuser->membership,
             "BcRenewalPeriod" => null,
             "BlacklistedNotificationSourceTypesForMobilePush" => [],
             "BlockedUsersModel" => [
-                "BlockedUserIds" => [],
+                "BlockedUserIds" => $blockedIds,
                 "BlockedUsers" => [],
                 "MaxBlockedUsers" => 50,
                 "Page" => 1,
@@ -254,18 +267,18 @@ $router->get('/my/settings/json', function() {
             "IsDisconnectFbSocialSignOnEnabled" => true,
             "IsDisconnectXboxEnabled" => true,
             "IsEmailOnFile" => true,
-            "IsEmailVerified" => false,
+            "IsEmailVerified" => $currentuser->email_verified,
             "IsFastTrackAccessible" => false,
             "IsGameChatSettingEnabled" => true,
             "IsI18nBirthdayPickerInAccountSettingsEnabled" => true,
-            "IsOBC" => false,
+            "IsOBC" => $membershipId === 3, // 0 = none, 1 = bc, 2 = tbc, 3 = obc, 4 = premium
             "IsPhoneFeatureEnabled" => false,
-            "IsPremium" => false,
+            "IsPremium" => $membershipId === 4,
             "IsPromotionChannelsEndpointEnabled" => true,
             "IsSendVerifyEmailApiEndpointEnabled" => true,
             "IsSetPasswordNotificationEnabled" => false,
             "IsSuperSafeModeEnabledForPrivacySetting" => false,
-            "IsTBC" => false,
+            "IsTBC" => $membershipId === 2,
             "IsTwoStepToggleEnabled" => false,
             "IsUiBootstrapModalV2Enabled" => true,
             "IsUnder13UpdateEmailMessageSectionShown" => false,
@@ -276,8 +289,8 @@ $router->get('/my/settings/json', function() {
             "MinimumChromeVersionForPushNotifications" => 50,
             "MissingParentEmail" => false,
             "MyAccountSecurityModel" => [
-                "IsEmailSet" => false,
-                "IsEmailVerified" => false,
+                "IsEmailSet" => ($currentuser->email !== ''),
+                "IsEmailVerified" => $currentuser->email_verified,
                 "IsTwoStepEnabled" => false,
                 "ShowSignOutFromAllSessions" => true,
                 "TwoStepVerificationViewModel" => [
@@ -289,12 +302,12 @@ $router->get('/my/settings/json', function() {
             ],
             "Name" => $currentuser->username,
             "NotificationSettingsDomain" => $_ENV["BASE_URL"],
-            "PreviousUserNames" => "",
+            "PreviousUserNames" => implode("; ", $changes), // is this the separator or what?
             "PushNotificationsEnabledOnFirefox" => true,
             "ReceiveNewsletter" => false,
             "RobuxRemainingForUsernameChange" => 1000 - $currentuser->robux,
-            "SocialNetworksVisibilityPrivacy" => 6,
-            "SocialNetworksVisibilityPrivacyValue" => "AllUsers",
+            "SocialNetworksVisibilityPrivacy" => $currentuser->social_networks_visibility ?? 6,
+            "SocialNetworksVisibilityPrivacyValue" => "AllUsers", // TODO: Update ts too
             "Tab" => null,
             "Twitch" => null,
             "Twitter" => null,
@@ -303,10 +316,10 @@ $router->get('/my/settings/json', function() {
             "UserAbove13" => true,
             "UserEmail" => $currentuser->email,
             "UserEmailMasked" => true,
-            "UserEmailVerified" => false,
+            "UserEmailVerified" => $currentuser->email_verified,
             "UserId" => $currentuser->id,
-            "YouTube" => null,
-            "CountryId" => 1
+            "YouTube" => $currentuser->youtube ?? null,
+            "CountryId" => $currentuser->countrycode ?? 1 // le states
         ];
 
         echo json_encode($data);
@@ -315,7 +328,32 @@ $router->get('/my/settings/json', function() {
         http_response_code(401);
         die();
     }
+});
 
+$router->get("/account/settings/countries", function() {
+    $errorresult = [
+        "success" => false,
+        "errorMessage" => null,
+        "countryList" => []
+    ];
+    
+    header("Content-Type: application/json");
+    $auth = new authentication;
+    if (!$auth->hasaccount()) {
+        $errorresult["errorMessage"] = "Unauthenticated.";
+        echo json_encode($errorresult, true);
+        die();
+    }
+   
+    $json = file_get_contents(__DIR__ . "/../storage/countries.json");
+    if ($json == '' || $json == false || $json == null) {
+        $errorresult["errorMessage"] = "Failed to parse JSON.";
+        echo json_encode($errorresult, true);
+        die();
+    }
+
+    echo $json;
+    die();
 });
 
 $router->get('/game/logout.aspx', function() {

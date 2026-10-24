@@ -550,17 +550,14 @@ $router->get('/Game/ReportSystats.ashx', function() {
 
             }
 
-            
             $discord->send_webhook($_ENV["SYSTATS_WEBHOOK"], "Systats Reporter", $prepend . $cheater->username . " - Code " . $message . "\nInfo: " . $info);
             http_response_code(200);
-        } 
-        
+        }
     } else {
         $api = new api;
         http_response_code(400);
         die(create_error("I don't think you're a gameserver.", [], 400));
     }
-    
 });
 
 // TODO: Check api key

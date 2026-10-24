@@ -49,6 +49,7 @@ $router->get('/marketplace/productinfo', function(){
         /* 2025
         {"TargetId":1818,"ProductType":"User Product","AssetId":1818,"ProductId":1305046,"Name":"Classic: Crossroads","Description":"The classic ROBLOX level is back!","AssetTypeId":9,"Creator":{"Id":1,"Name":"Roblox","CreatorType":"User","CreatorTargetId":1,"HasVerifiedBadge":true},"IconImageAssetId":607948062,"Created":"2007-05-01T01:07:04.78Z","Updated":"2024-01-29T22:05:10.417Z","PriceInRobux":null,"PriceInTickets":null,"Sales":0,"IsNew":false,"IsForSale":false,"IsPublicDomain":false,"IsLimited":false,"IsLimitedUnique":false,"Remaining":null,"MinimumMembershipLevel":0,"ContentRatingTypeId":0,"SaleAvailabilityLocations":null,"SaleLocation":null,"CollectibleItemId":null,"CollectibleProductId":null,"CollectiblesItemDetails":null}
         */
+
         $productinfo = array(
             "Name" => "Unknown",
             "Description" => "[\r\n[52, 57, 57, 52, 56, 49, 57, 51],\r\n[50, 52, 57, 53, 55, 50, 55, 58],\r\n[56, 56, 52, 51, 52, 58, 57, 53],\r\n[52, 56, 54, 55, 53, 50, 52, 51],\r\n[52, 53, 58, 53, 55, 53, 54, 57],\r\n[55, 49, 51, 53, 51, 53, 57, 57],\r\n[54, 58, 57, 51, 58, 55, 54, 56],\r\n[53, 52, 51, 57, 51, 49, 50, 58]\r\n]",
@@ -95,12 +96,9 @@ $router->get('/marketplace/productinfo', function(){
 
         http_response_code(200);
         die(json_encode($productinfo, JSON_UNESCAPED_SLASHES));
-
     } else {
-        
         http_response_code(200);
         die(json_encode($productinfo, JSON_UNESCAPED_SLASHES));
-        
     }
 });
 
@@ -1388,11 +1386,9 @@ function aspnet_updatepanel_response(array $panels, string $form_action = '/My/C
 }
 
 $router->get("/my/character2.aspx", function() {
-
     // TODO: Improve this. A LOT.
 
     $page = new pagebuilder;
-
     $page::get_template("improved_avatar");
 });
 
@@ -1407,7 +1403,6 @@ $router->post("/my/character2.aspx", function() {
 
     // Process the action first (wear/remove/color change)
     // ... your action handling code ...
-
 
     $pagebuilder = new pagebuilder();
 
@@ -1446,11 +1441,9 @@ $router->post("/my/character2.aspx", function() {
 });
 
 $router->get("/my/character.aspx", function() {
-
     // TODO: Improve this. A LOT.
 
     $page = new pagebuilder;
-
     $lastcategory = "7";
 
     $allowedevents = [
@@ -1463,15 +1456,13 @@ $router->get("/my/character.aspx", function() {
         "19",
         "32"
     ];
-    
 
     if(isset($_COOKIE["lastcategory"])){
         $lastcategory = $_COOKIE["lastcategory"];
 
         if(!in_array($lastcategory, $allowedevents)){
             $lastcategory = "7";
-        } 
-
+        }
     }
 
     $page::get_template("avatar", ["currentcategory"=>$lastcategory]);
@@ -1493,15 +1484,13 @@ $router->post('/my/character.aspx', function() {
         "19",
         "32"
     ];
-    
 
     if(isset($_COOKIE["lastcategory"])){
         $lastcategory = $_COOKIE["lastcategory"];
 
         if(!in_array($lastcategory, $allowedevents)){
             $lastcategory = "7";
-        } 
-
+        }
     }
 
     global $db;
@@ -1524,11 +1513,9 @@ $router->post('/my/character.aspx', function() {
             $exploded = explode("-", $event);
 
             if(isset($exploded[1])){
-
                 if($exploded[1] == "+1"){
                     if(isset($_COOKIE["page"])){
                         $currentpage = (int)$_COOKIE["page"];
-                        
                         $nextpage = $currentpage +1;
 
                         $_COOKIE["page"] = $nextpage;
@@ -1549,12 +1536,10 @@ $router->post('/my/character.aspx', function() {
         
         switch ($event){
             case "viewheads":
-
                 $page::get_template("avatar", ["currentcategory"=>17]);
                 setcookie("lastcategory", 17, time() + 9999999, "/", "." . $_ENV["APP_DOMAIN"]);
                 die();
             case "viewpackages":
-
                 $page::get_template("avatar", ["currentcategory"=>32]);
                 setcookie("lastcategory", 32, time() + 9999999, "/", "." . $_ENV["APP_DOMAIN"]);
                 die();
@@ -1590,22 +1575,18 @@ $router->post('/my/character.aspx', function() {
                         $db->table("thumbnails")->where("userid", $currentuser->id)->delete();
                         $db->table("3dthumnails")->where("userid", $currentuser->id)->delete();
                         $assetid = (int)$exploded[1];
-                        
+
                         $iswearing = $db->table("wearingitems")->where("itemid", $assetid)->where("userid", $currentuser->id)->first();
 
                         if($iswearing == null){
-
                             $asset = $db->table("assets")->where("id", $assetid)->first();
 
                             if($asset !== null){
-
                                 $hasasset = $db->table("ownedassets")->where("assetid", $assetid)->where("userid", $currentuser->id)->first();
 
                                 if($hasasset !== null){
                                     $db->table("wearingitems")->insert(["itemid"=>$assetid, "userid"=>$currentuser->id]);
                                 }
-                                
-                                
                             }
                         }
                         $page::get_template("avatar", ["currentcategory"=>$lastcategory]);
@@ -1654,11 +1635,9 @@ $router->post('/my/character.aspx', function() {
                         }
                     }
                 }
-                
         }
-
     }
-    
+
     $page::get_template("avatar", ["currentcategory"=>$lastcategory]);
     die();
 });

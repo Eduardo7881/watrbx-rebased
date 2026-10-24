@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+\-- phpMyAdmin SQL Dump
 -- version 5.2.2
 -- http://www.phpmyadmin.net/
 --
@@ -907,7 +907,22 @@ CREATE TABLE `users` (
   `register_ip` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
   `last_login_ip` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
   `is_admin` int NOT NULL DEFAULT '0',
-  `primarygroup` int DEFAULT NULL
+  `primarygroup` int DEFAULT NULL,
+  `countrycode` int NOT NULL DEFAULT '1',
+  `youtube` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `social_networks_visibility` int NOT NULL DEFAULT '6'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blockedusers`
+--
+
+CREATE TABLE `blockedusers` (
+  `userId` int NOT NULL,
+  `blockedId` int NOT NULL,
+  `date` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------

@@ -1,16 +1,15 @@
-<?php
+?php
 use watrlabs\router\Routing;
 use watrlabs\authentication;
 
 global $router; // IMPORTANT: KEEP THIS HERE!
 
 $router->get("/mobileapi/check-app-version", function() {
-    header("Content-type: applcation/json");
+    header("Content-type: application/json");
     die('{"data":{"UpgradeAction":"None"}}');
 });
 
 $router->post('/mobileapi/login', function(){
-    
     $errorresponse = [
         "Status"=>""
     ];
@@ -38,7 +37,6 @@ $router->post('/mobileapi/login', function(){
         if(isset($result["code"])){
             if($result["code"] == 200){
                 $userinfo = $db->table("users")->where("username", $username)->first();
-
                 $banresult = $auth->is_banned($userinfo->id);
                 
                 if($banresult == false){
@@ -46,6 +44,7 @@ $router->post('/mobileapi/login', function(){
                     $loginarray["UserInfo"]["RobuxBalance"] = $userinfo->robux;
                     $loginarray["UserInfo"]["TicketsBalance"] = $userinfo->tix;
                     $loginarray["UserInfo"]["UserID"] = $userinfo->id;
+                    $loginarray["UserInfo"]["IsAnyBuildersClubMember"] = ($userinfo->membership > 0 && $userinfo->membership < 4);
 
                     die(json_encode($loginarray));
                 } else {

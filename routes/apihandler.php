@@ -20,6 +20,9 @@ use rbx\roblox;
 use watrbx\RBX;
 use watrbx\Memberships;
 use rbx\ItemInfo;
+use lavakit\Guid\GuidGenerator as GUID;
+use rbx\security;
+use lavakit\Http\ClientIp;
 
 global $router; // IMPORTANT: KEEP THIS HERE!
 global $db;
@@ -1082,7 +1085,7 @@ $router->post('/api/item.ashx', function(){
                                                 "SellerName"=>$sellerinfo->username,
                                                 "TransactionVerb"=>"purchased",
                                                 "IsMultiPrivateSale"=>false ,
-                                                "AssetIsWearable"=>ItemInfo::IsWearable() // TODO: add onto the roblox class for this
+                                                "AssetIsWearable"=>ItemInfo::IsWearable(RBXItemType::{$assetType})
                                             );
                                             die(json_encode($success));
                                         }
@@ -1100,7 +1103,7 @@ $router->post('/api/item.ashx', function(){
                                                     "SellerName"=>$sellerinfo->username,
                                                     "TransactionVerb"=>"purchased",
                                                     "IsMultiPrivateSale"=>false ,
-                                                    "AssetIsWearable"=>true // TODO: add onto the roblox class for this
+                                                    "AssetIsWearable"=>ItemInfo::IsWearable(RBXItemType::{$assetType})
                                                 );
                                                 die(json_encode($success));
                                             }
@@ -1159,7 +1162,7 @@ $router->post('/api/item.ashx', function(){
                                                 "SellerName"=>$sellerinfo->username,
                                                 "TransactionVerb"=>"purchased",
                                                 "IsMultiPrivateSale"=>false ,
-                                                "AssetIsWearable"=>true // TODO: add onto the roblox class for this
+                                                "AssetIsWearable"=>ItemInfo::IsWearable(RBXItemType::{$assetType})
                                             );
                                             die(json_encode($success));
                                         }
@@ -1177,7 +1180,7 @@ $router->post('/api/item.ashx', function(){
                                                     "SellerName"=>$sellerinfo->username,
                                                     "TransactionVerb"=>"purchased",
                                                     "IsMultiPrivateSale"=>false ,
-                                                    "AssetIsWearable"=>true // TODO: add onto the roblox class for this
+                                                    "AssetIsWearable"=>ItemInfo::IsWearable(RBXItemType::{$assetType})
                                                 );
                                                 die(json_encode($success));
                                             }
@@ -1205,7 +1208,6 @@ $router->post('/api/item.ashx', function(){
 
                             die(json_encode($notforsale));
                         }
-
                     }
             } else {
                 http_response_code(404);
@@ -1235,7 +1237,6 @@ $router->post('/api/v2/shirt-creator', function(){
 });
 
 $router->post('/api/v1/shirt-creator', function(){
-
     $router = new Routing();
     $auth = new authentication();
     global $currentuser;
@@ -2230,10 +2231,7 @@ $router->get('/sets/get-roblox-sets', function(){
 });
 
 $router->get('/universes/validate-place-join', function(){
-
-    
     if(isset($_GET["destinationPlaceId"])){
-        
         $destination = (int)$_GET["destinationPlaceId"];
 
         global $db;
@@ -2244,7 +2242,6 @@ $router->get('/universes/validate-place-join', function(){
     }
 
     die("false");
-
 });
 
 $router->get('/ide/toolbox/items', function(){
@@ -2290,7 +2287,7 @@ $router->get('/ide/toolbox/items', function(){
                     "Creator"=>[
                         "Id"=>$creatorinfo->id,
                         "Name"=>$creatorinfo->username,
-                        "Type"=>1 // todo
+                        "Type"=>1 // 1 = user, 2 = group (i'm guessing)
                     ],
                     "Thumbnail"=>[
                         "Final"=>true,
@@ -2298,6 +2295,7 @@ $router->get('/ide/toolbox/items', function(){
                         "RetryUrl"=>null,
                         "UserId"=>0,
                         "EndpointType"=>"Avatar" // no idea what this means
+                        // ed here, prob means if this should be a avatar thumb or asset (or im just stupid)
                     ],
                     "Voting"=>[
                         "ShowVotes"=>true,
@@ -2306,7 +2304,6 @@ $router->get('/ide/toolbox/items', function(){
             }
 
             $return["TotalResults"] = count($return["Results"]);
-
             die(json_encode($return));
         }
 
@@ -2334,7 +2331,7 @@ $router->get('/ide/toolbox/items', function(){
                         "Url"=>$thumbs->get_asset_thumb($asset->id),
                         "RetryUrl"=>null,
                         "UserId"=>0,
-                        "EndpointType"=>"Avatar" // no idea what this means
+                        "EndpointType"=>"Avatar"
                     ],
                     "Voting"=>[
                         "ShowVotes"=>false,
@@ -2384,8 +2381,6 @@ $router->get("/user/get-friendship-count", function(){
             die();
         }
     }
-
-    
 });
 
 $router->post('/user/multi-following-exists', function(){
@@ -3387,18 +3382,11 @@ $router->post('/game-instances/shutdown', function(){
 
         global $currentuser;
 
-        $userinfo = $currentuser; // TODO: Check for group access as well ( Implement $auth->hasperm($userid, $assetid) )
+        $userinfo = $currentuser; // TODO: Check for group access as well ( On $auth->hasperm($userid, $asset) )
         $assetinfo = $db->table("assets")->where("id", $placeid)->first();
+        $hasaccess = $auth->hasperm($userinfo->id, $assetinfo);
 
-        if($currentuser->is_admin == 1){
-            if($gameserver->end_job($jobid)){
-                die(create_success("Game shutdown requested.", '', 200));
-            } else {
-                die(create_error("Failed to shutdown game!", '', 500));
-            }
-        }
-
-        if($userinfo->id == $assetinfo->owner){
+        if($currentuser->is_admin == 1 || $hasaccess == true){
             if($gameserver->end_job($jobid)){
                 die(create_success("Game shutdown requested.", '', 200));
             } else {
@@ -3407,7 +3395,6 @@ $router->post('/game-instances/shutdown', function(){
         } else {
             die(create_error("You don't have the authorization to do this!", '', 403));
         }
-
     } else {
         die(create_error("You're not authenticated or something wasn't posted!", '', 400));
     }
@@ -3430,7 +3417,6 @@ $router->get('/games/getgameinstancesjson', function() {
         if($assetinfo && $currentuser){
             $canshutdown = $assetinfo->owner == $currentuser->id;
         }
-
 
         $json = array(
             "PlaceId" => "$placeid",
@@ -3612,7 +3598,6 @@ $router->get('/private-server/instance-list-json', function() {
     );
 
     //die(json_encode($priavte));
-
     die('{"Instances": [], "CurrentPage": 1, "TotalPages": 0 }'); 
 });
 
@@ -3646,17 +3631,15 @@ $router->post('/AbuseReport/InGameChatHandler.ashx', function(){
 
     if(!$gameserver->is_gameserver_ip($ip)){
         http_response_code(403);
-        die();        
+        die();
     }
-    
+
     $post = file_get_contents('php://input');
 
     if(!empty($post)){
-
         $xml = simplexml_load_string($post);
 
         if($xml !== false){
-
             $report = [
                 'reportinguser' => $xml['userID'],
                 'placeid' => $xml['placeID'],
@@ -3692,13 +3675,8 @@ $router->post('/AbuseReport/InGameChatHandler.ashx', function(){
             http_response_code(400);
             die();
         }
-
     }
-
 });
-
-
-
 
 $router->get('/marketplace/productDetails', function(){
 
@@ -5032,8 +5010,8 @@ $router->get('/users/inventory/recommended-json', function(){
 });
 
 $router->get('/Game/Join.ashx', function() {
-
-    header("Access-Control-Allow-Origin: http://wasm.watrbx.wtf");
+    //header("Access-Control-Allow-Origin: http://wasm.watrbx.wtf");
+    header("Access-Control-Allow-Origin: " . $_ENV["BASE_URL"]);
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
 
@@ -5042,15 +5020,10 @@ $router->get('/Game/Join.ashx', function() {
     global $db;
     global $currentuser;
 
-    $wasm = false;
-
-    if(isset($_GET["wasm"])){
-        $wasm = true;
-    }
+    $wasm = isset($_GET["wasm"]);
 
     if(isset($_GET["token"])){
         $token = $_GET["token"];
-        
         $sessionInfo = $db->table("sessions")->where("session", $token)->first();
 
         if($sessionInfo){
@@ -5058,25 +5031,21 @@ $router->get('/Game/Join.ashx', function() {
             $currentuser = $auth->getuserbyid($sessionInfo->author);
 
             $expiration = time() + 2629743;
-            setcookie(".ROBLOSECURITY", $token, $expiration, '/', '.' . $_ENV["APP_DOMAIN"]);
-            
+            setcookie(".ROBLOSECURITY", $token, $expiration, '/');
         }
-
     }
 
     if(isset($_GET["universeId"])){
         $universeId = (int)$_GET["universeId"];
 
-
         if($universeId == 0){
-
             $port = 53640;
 
             if(isset($_GET["serverPort"])){
                 $port = (int)$_GET["serverPort"];
             } 
 
-            $charappurl = "http://www.watrbx.wtf/CharacterFetch.aspx?Id=1&placeId=1";
+            $charappurl = $_ENV["BASE_URL"] . "/CharacterFetch.aspx?Id=1&placeId=1";
 
             header("Content-Type: application/json");
             // Construct joinscript
@@ -5086,17 +5055,17 @@ $router->get('/Game/Join.ashx', function() {
                 "ServerPort" => $port,
                 "PingUrl" => "",
                 "PingInterval" => 20,
-                "UserName" => "Player1",
+                "UserName" => $currentuser !== null ? $currentuser->username : "Player1",
                 "SeleniumTestMode" => false,
-                "UserId" => 69420,
+                "UserId" => $currentuser !== null ? $currentuser->id : 1,
                 "SuperSafeChat" => true,
                 "CharacterAppearance" => $charappurl,
                 "ClientTicket" => "",
                 "GameId" => 0,
                 "PlaceId" => 0,
                 "MeasurementUrl" => "", // No telemetry here :) (pls add telemetry)
-                "WaitingForCharacterGuid" => "26eb3e21-aa80-475b-a777-b43c3ea5f7d2", // todo: generate uuid
-                "BaseUrl" => "http://www.watrbx.wtf/",
+                "WaitingForCharacterGuid" => GUID::generate(true),
+                "BaseUrl" => $_ENV["BASE_URL"] . "/",
                 "ChatStyle" => "ClassicAndBubble",
                 "VendorId" => "0",
                 "ScreenShotInfo" => "",
@@ -5108,10 +5077,11 @@ $router->get('/Game/Join.ashx', function() {
                 "CookieStoreFirstTimePlayKey" => "rbx_evt_ftp",
                 "CookieStoreFiveMinutePlayKey" => "rbx_evt_fmp",
                 "CookieStoreEnabled" => true,
-                "IsRobloxPlace" => false,//implement for events
+                "IsRobloxPlace" => false, //implement for events
                 "GenerateTeleportJoin" => false,
                 "IsUnknownOrUnder13" => false,
-                "SessionId" => "39412c34-2f9b-436f-b19d-b8db90c2e186|00000000-0000-0000-0000-000000000000|0|190.23.103.228|8|2021-03-03T17:04:47+01:00|0|null|null", // todo: implement this (mostly used to also track what device you play)
+                //"SessionId" => "39412c34-2f9b-436f-b19d-b8db90c2e186|00000000-0000-0000-0000-000000000000|0|190.23.103.228|8|2021-03-03T17:04:47+01:00|0|null|null", // todo: implement this (mostly used to also track what device you play)
+                "SessionId" => security::generateSessionId("0", 1, ClientIp::get() ?? "000.00.000.000"),
                 "DataCenterId" => 0,
                 "UniverseId" => 3,
                 "BrowserTrackerId" => 0,
@@ -5133,7 +5103,6 @@ $router->get('/Game/Join.ashx', function() {
     }
     
     if(isset($_GET["joincode"]) && $currentuser){
-
         $code = $_GET["joincode"];
         $joincode = $db->table("join_codes")->where("code", $code)->first();
 
@@ -5143,7 +5112,7 @@ $router->get('/Game/Join.ashx', function() {
         $port = $joincode->port;
         $pid = $joincode->placeid;
         $placeinfo = $db->table("assets")->where("id", $joincode->placeid)->first();
-        $charappurl = "http://www.watrbx.wtf/CharacterFetch.aspx?Id=" . $currentuser->id . "&placeId=" . $pid;
+        $charappurl = $_ENV["BASE_URL"] . "/CharacterFetch.aspx?Id=" . $currentuser->id . "&placeId=" . $pid;
         
         $clientticket = $func->generateClientTicket($currentuser->id, $currentuser->username,$charappurl, $joincode->jobid, file_get_contents("../storage/PrivateNut.pem"));
 
@@ -5164,29 +5133,30 @@ $router->get('/Game/Join.ashx', function() {
             "GameId" => $pid,
             "PlaceId" => $pid,
             "MeasurementUrl" => "", // No telemetry here :) (pls add telemetry)
-            "WaitingForCharacterGuid" => "26eb3e21-aa80-475b-a777-b43c3ea5f7d2", // todo: generate uuid
-            "BaseUrl" => "http://www.watrbx.wtf/",
+            "WaitingForCharacterGuid" => GUID::generate(true),
+            "BaseUrl" => $_ENV["BASE_URL"] . "/",
             "ChatStyle" => "ClassicAndBubble",
             "VendorId" => "0",
             "ScreenShotInfo" => "",
             "VideoInfo" => "",
             "CreatorId" => $placeinfo->owner,
             "CreatorTypeEnum" => "User",
-            "MembershipType" => "$userinfo->membership",
-            "AccountAge" => "3000000",
+            "MembershipType" => $userinfo->membership,
+            "AccountAge" => round((time() - $userinfo->regtime) / 86400),
             "CookieStoreFirstTimePlayKey" => "rbx_evt_ftp",
             "CookieStoreFiveMinutePlayKey" => "rbx_evt_fmp",
             "CookieStoreEnabled" => true,
-            "IsRobloxPlace" => false,//implement for events
+            "IsRobloxPlace" => false, //implement for events
             "GenerateTeleportJoin" => false,
             "IsUnknownOrUnder13" => false,
-            "SessionId" => "39412c34-2f9b-436f-b19d-b8db90c2e186|00000000-0000-0000-0000-000000000000|0|190.23.103.228|8|2021-03-03T17:04:47+01:00|0|null|null", // todo: implement this (mostly used to also track what device you play)
+            //"SessionId" => "39412c34-2f9b-436f-b19d-b8db90c2e186|00000000-0000-0000-0000-000000000000|0|190.23.103.228|8|2021-03-03T17:04:47+01:00|0|null|null", // todo: implement this (mostly used to also track what device you play)
+            "SessionId" => security::generateSessionId((string)$pid, $pid, ClientIp::get() ?? "000.00.000.000"),
             "DataCenterId" => 0,
-            "UniverseId" => 3,
+            "UniverseId" => (isset($_GET["universeId"]) ? ((int)$_GET["universeId"] > 0 ? (int)$_GET["universeId"] : 3) : 3) ?? 3,
             "BrowserTrackerId" => 0,
             "UsePortraitMode" => false,
             "FollowUserId" => 1416,
-            "characterAppearanceId" => 1
+            "characterAppearanceId" => $userinfo->id // was 1
         ];
 
         // Encode it!
@@ -5201,7 +5171,6 @@ $router->get('/Game/Join.ashx', function() {
         http_response_code(400);
         die();
     }
-    
 });
 
 $router->get("/UserCheck/checkifinvalidusernameforsignup", function() {
