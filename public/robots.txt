@@ -9,6 +9,8 @@ Disallow: /CombineScriptsHandler.ashx
 Disallow: /Forum/AddPost.aspx
 Disallow: /asset/
 Disallow: /Ads/
+Disallow: /admin.php
+Disallow: /notrobloxindex.php
 
 User-agent: Mediapartners-Google
 Allow: /

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/base.css?t=<?=time()?>">
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <title>watrbx - Privacy Policy</title>
+    <title><?=htmlspecialchars($_ENV["APP_NAME"])?> - Privacy Policy</title>
 </head>
 <body>
     <div id="main">
@@ -24,12 +24,14 @@
                 <br><br>
                 Most info provided using a form (e.g. the forum or a status update) is stored into our database so we can store your action and show it to other users/admins.
                 <br><br>
-                None of this data is sold or shared with third parties. Only moderators and admins can see limited info.
+                When joining a game, <b>a session id</b> is made, containing your IP, Date & Time and a GUID to know your information for moderation purposes.
+                <br><br>
+                None of this data is sold or shared with third parties. Only moderators and admins can see limited (hashed) info.
             </p>
             <small>We will also make a notice if our privacy policy is updated. (via site alert and discord)</small>
             <br><br>
             <a href="/legal/tos">Terms of Service</a> - <a href="/legal/privacy">Privacy Policy</a> - <a href="/legal/account-deletion">Account Deletion</a>
         </div>
-    </div>   
+    </div>
 </body>
 </html>

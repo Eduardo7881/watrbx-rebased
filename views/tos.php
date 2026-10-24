@@ -25,6 +25,7 @@
                     <li>You must be 13+</li>
                     <li>You can only have up to 5 accounts. (this is enforced per ip but <a href="mailto:help@watrbx.wtf">contact us</a> if you need this upped for anything "reasonable")</li>
                     <li>No content we deem inappropriate (e.g. genitalia)</li>
+                    <li>We only agree for you to use cheats/exploits for testing <b>your own</b> anti-cheat.</b>
                 </ol>
                 
                 We may also terminate your account if related off-platform events take place that we feel hurts the platform.
@@ -37,7 +38,8 @@
             <small>We will also make a notice if our terms are updated. (via site alert and discord)</small>
             <br><br>
             <a href="/legal/tos">Terms of Service</a> - <a href="/legal/privacy">Privacy Policy</a> - <a href="/legal/account-deletion">Account Deletion</a>
+            <li>(powered by <a href="https://www.github.com/Eduardo7881/watrbx-rec">watrbx:r</a>)</li>
         </div>
-    </div>   
+    </div>
 </body>
 </html>

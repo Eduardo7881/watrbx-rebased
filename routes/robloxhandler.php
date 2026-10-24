@@ -27,39 +27,6 @@ global $currentuser;
 
 //$auth = new authentication();
 
-/*
-function create_error($error, $otherstuff = array(), $code = 400){
-    http_response_code($code);
-    header("Content-type: application/json");
-    $array = array(
-        "success"=>false,
-        "error"=>$error,
-        "data"=>$otherstuff
-    );
-
-    return json_encode($array);
-}
-
-function create_success($msg, $otherstuff = array(), $code = 200){
-    http_response_code($code);
-    header("Content-type: application/json");
-    $array = array(
-        "success"=>true,
-        "msg"=>$msg,
-        "data"=>$otherstuff
-    );
-
-    return json_encode($array);
-}
-
-function get_signature($script)
-{
-    $signature = "";
-    openssl_sign($script, $signature, file_get_contents("../storage/PrivateNut.pem"), OPENSSL_ALGO_SHA1);
-    return base64_encode($signature);
-}
-*/
-
 function require_auth() {
     $gm = new gameserver();
     $isgameserver = $gm->is_gameserver_ip($ip);
@@ -73,16 +40,6 @@ function require_auth() {
         }
     }
 }
-
-/*$requireaccount = function() {
-    global $currentuser;
-    if (!$currentuser) {
-        http_response_code(403);
-        header("Location: /newlogin");
-        die("GET OUT!!!!!!");
-    }
-};
-*/
 
 function requireaccount() {
     global $currentuser;
@@ -116,51 +73,6 @@ $router->group("/v1", function($router) {
     $router->get("/avatar", function() {
         requireaccount();
         global $db;
-
-        /*
-            Response:
-            {
-                'scales': { // r15
-                    'height': int,
-                    'width': int,
-                    'head': int,
-                    'depth': int,
-                    'proportion': ???,
-                    'bodyType': string
-                },
-                'playerAvatarType': string // R6/R15
-                'bodyColors': [
-                    'headColorId': int,
-                    'torsoColorId': int,
-                    'rightArmColorId': int,
-                    'rightLegColorId': int,
-                    'leftArmColorId': int,
-                    'leftLegColorId': int,
-                ],
-                'assets': [
-                    // array
-                    $assets[] = [
-                        id: int,
-                        name: string,
-                        assetType = [
-                            id: int (type id)
-                            name: string (type name)
-                        ],
-                        currentVersionId: int (assetid)
-                    ]
-                ],
-                'defaultShirtApplied': bool,
-                'defaultPantsApplied': bool,
-                'emotes' = [
-                    // array
-		    $emotes[] = [
-                        assetId: int,
-                        assetName: string,
-                        position: int // count($emotes) + 1
-                    ]
-                ],
-            }
-        */
 
         header("Content-Type: application/json");
         $auth = new authentication;
@@ -252,6 +164,117 @@ $router->group("/v2", function($router) {
 
         $auth = new authentication;
         $auth->login($currentuser->username, $hashedPassword);
+    });
+
+    $router->post("/login", function() {
+        $func = new sitefunctions();
+        $canlogin = $func->get_setting("CAN_LOGIN");
+
+        if($canlogin == "false"){
+            create_error("Login is currently disabled.");
+            die();
+        }
+
+        $makeResponse = function($user, $type) {
+            if ($type == "legacy") {
+                return [
+                    'membershipType' => RBXMemberships::getIdFromName($user->membership),
+                    'username'       => $user->username,
+                    'isUnder13'      => false,
+                    'countryCode'    => 0,
+                    'userId'         => $user->id,
+                    //'displayName'   => $user->username
+                ];
+            } else {
+                return [
+                    'user' => [
+                        'id' => $user->id,
+                        'name' => $user->username,
+                        //'displayName' => $user->username
+                    ],
+                    'isBanned' => false
+                ];
+            }
+        };
+
+        $sendJson = function(array $data, int $status = 200) {
+            http_response_code($status);
+            echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+            exit;
+        };
+
+        $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+        header('Content-Type: application/json; charset=UTF-8');
+        header('X-Robots-Tag: noindex');
+
+        $longLifetime = time() + (30 * 24 * 60 * 60); // 1 month
+        $shortLifetime = time() + (24 * 60 * 60);     // 1 day
+        $isMobileClient = false;
+
+        if (strpos($userAgent, 'Roblox') !== false || strpos($userAgent, 'GooglePlayStore') !== false) {
+            $isMobileClient = true;
+        }
+
+        $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+        $isJsonRequest = stripos($contentType, 'application/json') !== false;
+        $jsonData = [];
+
+        if ($isJsonRequest) {
+            $rawBody = file_get_contents('php://input');
+            $decodedData = json_decode($rawBody, true);
+
+            if (is_array($decodedData)) {
+                $jsonData = $decodedData;
+            }
+        }
+
+        /* Post Form */
+    	if (isset($_POST['username'], $_POST['password']) && $_POST['username'] !== '' && $_POST['password'] !== '') {
+            $username = (string)$_POST['username'];
+            $password = (string)$_POST['password'];
+            $responseType = "legacy";
+    	} elseif (isset($jsonData['cvalue'], $jsonData['password']) && $jsonData['cvalue'] !== '' && $jsonData['password'] !== '') {
+            $username = (string)$jsonData['cvalue'];
+            $password = (string)$jsonData['password'];
+            $responseType = "legacy";
+    	} else {
+            $sendJson(['message'=>'Username and password are required.'], 400);
+    	}
+
+    	$auth = new authentication();
+   	$result = $auth->login($username, $password);
+
+    	if(isset($result["code"])){
+            if($result["code"] == 200){
+                if ($auth->hasaccount() === false) $sendJson("You should go to the lottery. Something bad happened while logging in.", 500);
+                $user = $auth->getuserinfo($_COOKIE[".ROBLOSECURITY"]);
+                $sendJson($makeResponse($user, $responseType));
+            } else {
+                if(isset($result["message"])){
+                    //$func->set_message($result["message"]);
+                    //header("Location: /newlogin");
+                    //die(create_error($result["message"], [], 200));
+                    $sendJson(['message'=>$result->message], 500);
+                } else {
+                    //$func->set_message("Something went wrong. Please try again later.");
+                    //header("Location: /newlogin");
+                    //die(create_error("Something went wrong. Please try again later.", [], 200));
+                    $sendJson(['message'=>"Something went wrong. Please try again later."], 500);
+                }
+            }
+        } else {
+            if(isset($result["message"])){
+                //$func->set_message($result["message"]);
+                //header("Location: /newlogin");
+                //die(create_error($result["message"], [], 200));
+                $sendJson(['message'=>$result->message], 500);
+            } else {
+                //$func->set_message("Something went wrong. Please try again later.");
+                //header("Location: /newlogin");
+                //die(create_error("Something went wrong. Please try again later.", [], 200));
+                $sendJson(['message'=>"Something went wrong. Please try again later."], 500);
+            }
+        }
     });
 }, 'require_auth');
 ?>
