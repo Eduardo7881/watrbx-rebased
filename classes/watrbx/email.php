@@ -23,7 +23,6 @@ class email {
     }
 
     public function get_template($name, $values = []){
-        
         $template = file_get_contents("../storage/email_templates/$name.txt");
 
         if($template){

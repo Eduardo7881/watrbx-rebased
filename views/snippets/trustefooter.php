@@ -23,7 +23,7 @@
                 <p class="Legalese">
     ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a href="http://corp.watrbx.wtf/" ref="footer-smallabout" class="roblox-interstitial">ROBLOX Corporation</a>, ©2015. Patents pending.
     ROBLOX is not sponsored, authorized or endorsed by any producer of plastic building bricks, including The LEGO Group, MEGA Brands, and K'Nex, and no resemblance to the products of these companies is intended.
-    Use of this site signifies your acceptance of the <a href="http://www.watrbx.wtf/info/terms-of-service" ref="footer-terms">Terms and Conditions</a>.
+    Use of this site signifies your acceptance of the <a href="<?=$_ENV['BASE_URL']?>/info/terms-of-service" ref="footer-terms">Terms and Conditions</a>.
 </p>
             </div>
         <div class="clear"></div>

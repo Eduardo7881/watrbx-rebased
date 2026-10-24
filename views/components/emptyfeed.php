@@ -5,19 +5,19 @@
 							<p class="list-content">Nearly all Roblox games are built by players like you. Here are some of our favorites:</p>
 							<ul id="FeaturedGamesContainer" class="list-gallery">
 								<li class="item-place">
-									<a href="http://www.watrbx.wtf/games/228/destroy-the-buildings" data-retry-url="null"><img src="http://cdn.watrbx.wtf/19839c2caa1a667bc78c098cf969c1dc" alt="Destroy The Buildings" class="default-feed-image"> </a>
+									<a href="<?=$_ENV['BASE_URL']?>/games/228/destroy-the-buildings" data-retry-url="null"><img src="http://cdn.watrbx.wtf/19839c2caa1a667bc78c098cf969c1dc" alt="Destroy The Buildings" class="default-feed-image"> </a>
 									<p class="text-description text-overflow">Destroy The Buildings</p>
 								</li>
 								<li class="item-place">
-									<a href="http://www.watrbx.wtf/games/173/five-nights-at-chuck-e-cheese" data-retry-url="null"><img src="http://cdn.watrbx.wtf/a9c2516e1b0f4f7212b74ee8b4e5dfaf" alt="Five Nights at Chuck E. Cheese" class="default-feed-image"> </a>
+									<a href="<?=$_ENV['BASE_URL']?>/games/173/five-nights-at-chuck-e-cheese" data-retry-url="null"><img src="http://cdn.watrbx.wtf/a9c2516e1b0f4f7212b74ee8b4e5dfaf" alt="Five Nights at Chuck E. Cheese" class="default-feed-image"> </a>
 									<p class="text-description text-overflow">Five Nights at Chuck E. Cheese</p>
 								</li>
 								<li class="item-place">
-									<a href="http://www.watrbx.wtf/games/72/watr-fencing" data-retry-url="null"><img src="http://cdn.watrbx.wtf/879620c550b6da22578c6c86adb8285c" alt="watr fencing" class="default-feed-image"> </a>
+									<a href="<?=$_ENV['BASE_URL']?>/games/72/watr-fencing" data-retry-url="null"><img src="http://cdn.watrbx.wtf/879620c550b6da22578c6c86adb8285c" alt="watr fencing" class="default-feed-image"> </a>
 									<p class="text-description text-overflow">watr fencing</p>
 								</li>
 								<li class="item-place">
-									<a href="http://www.watrbx.wtf/games/166/who-killed-watrabi-obby" data-retry-url="null"><img src="http://cdn.watrbx.wtf/3642a27599444366817e561d7f13b50e" alt="Who killed Watrabi Obby" class="default-feed-image"> </a>
+									<a href="<?=$_ENV['BASE_URL']?>/games/166/who-killed-watrabi-obby" data-retry-url="null"><img src="http://cdn.watrbx.wtf/3642a27599444366817e561d7f13b50e" alt="Who killed Watrabi Obby" class="default-feed-image"> </a>
 									<p class="text-description text-overflow">Who killed Watrabi Obby</p>
 								</li>
 							</ul>

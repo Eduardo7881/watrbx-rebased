@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +23,7 @@
 		_gaq.push(['b._setCampMediumKey', 'rbx_medium']);
 		_gaq.push(['b._setCampContentKey', 'rbx_campaign']);
 
-		_gaq.push(['b._setDomainName', 'watrbx.wtf']);
+		_gaq.push(['b._setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
         
             _gaq.push(['b._setCustomVar', 1, 'Visitor', 'Anonymous', 2]);
             _gaq.push(['b._trackPageview']);    
@@ -36,7 +32,7 @@
         
 
 		_gaq.push(['c._setAccount', 'UA-26810151-2']);
-		_gaq.push(['c._setDomainName', 'watrbx.wtf']);
+		_gaq.push(['c._setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
 
 		(function() {
 			var ga = document.createElement('script');
@@ -80,9 +76,9 @@
         
 
                 <div id="EventStreamData"
-             data-default-url="//ecsv2.watrbx.wtf/www/e.png"
-             data-www-url="//ecsv2.watrbx.wtf/www/e.png"
-             data-studio-url="//ecsv2.watrbx.wtf/pe?t=studio"></div>
+             data-default-url="<?=$_ENV['BASE_URL']?>/www/e.png"
+             data-www-url="<?=$_ENV['BASE_URL']?>/www/e.png"
+             data-studio-url="<?=$_ENV['BASE_URL']?>/pe?t=studio"></div>
 
         <script type="text/javascript">
 if (typeof(Roblox) === "undefined") { Roblox = {}; }
@@ -97,7 +93,7 @@ Roblox.Endpoints.Urls['/game/getauthticket'] = '<?=$_ENV["BASE_URL"]?>/game/geta
 Roblox.Endpoints.Urls['/game/placelauncher.ashx'] = '<?=$_ENV["BASE_URL"]?>/game/placelauncher.ashx';
 Roblox.Endpoints.Urls['/game/report-stats'] = '<?=$_ENV["BASE_URL"]?>/game/report-stats';
 Roblox.Endpoints.Urls['/game/report-event'] = '<?=$_ENV["BASE_URL"]?>/game/report-event';
-Roblox.Endpoints.Urls['/chat/chat'] = 'http://misc.watrbx.wtf/chat/chat';
+Roblox.Endpoints.Urls['/chat/chat'] = '<?=$_ENV["BASE_URL"]?>/chat/chat';
 Roblox.Endpoints.Urls['/presence/users'] = '<?=$_ENV["BASE_URL"]?>/presence/users';
 Roblox.Endpoints.Urls['/presence/user'] = '<?=$_ENV["BASE_URL"]?>/presence/user';
 Roblox.Endpoints.Urls['/friends/list'] = '<?=$_ENV["BASE_URL"]?>/friends/list';

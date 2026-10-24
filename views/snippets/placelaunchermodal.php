@@ -13,9 +13,9 @@
      data-event-stream-for-protocol-enabled="True"
      data-is-protocol-handler-launch-enabled="True"
      data-is-user-logged-in="True"
-     data-os-name="Windows"
-     data-protocol-name-for-client="watrbx-player"
-     data-protocol-name-for-studio="watrbx-studio"
+     data-os-name="Windows" // might not be always windows; TODO: Update ts too
+     data-protocol-name-for-client="<?=$_ENV["APP_NAME"]?>-player"
+     data-protocol-name-for-studio="<?=$_ENV["APP_NAME"]?>-studio"
      data-protocol-url-includes-launchtime="true"
      data-protocol-detection-enabled="true">
     <div class="modalPopup blueAndWhite PlaceLauncherModal" style="min-height: 160px">
@@ -70,7 +70,7 @@
                 </button>
             </div>
             <div class="rbx-small rbx-text-notes">
-                <a href="http://en.help.watrbx.wtf/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
+                <a href="http://en.help.roblox.com/hc/en-us/articles/204473560" class="rbx-link" target="_blank">Click here for help</a>
             </div>
 
         </div>
@@ -112,7 +112,7 @@
         </div>
         <div id="videoPrerollJoinBC">
             <span>Get more with Builders Club!</span>
-            <a href="http://www.watrbx.wtf/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
+            <a href="<?=$_ENV['BASE_URL']?>/premium/membership?ctx=preroll" target="_blank" class="btn-medium btn-primary" id="videoPrerollJoinBCButton">Join Builders Club</a>
         </div>
     </div>   
         <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
@@ -132,7 +132,7 @@
                 videoPreRollDFP.adTime = 15;
                 videoPreRollDFP.isSwfPreloaderEnabled = true;
                 videoPreRollDFP.isPrerollShownEveryXMinutesEnabled = true;
-                customTargeting.userAge = "9";
+                customTargeting.userAge = "13";
                 customTargeting.userGender = "Male";
                 customTargeting.gameGenres = "";
                 customTargeting.environment = "Production";
@@ -161,8 +161,8 @@
         <div style="clear:both; height:25px;"></div>
         <div class="RevisedFooter">
             <div style="width:200px;margin:10px auto 0 auto;">
-                <a href="http://www.watrbx.wtf/?returnUrl=http%3A%2F%2Fwww.watrbx.wtf%2Fmy%2Fmessages%2F"><div class="RevisedCharacterSelectSignup"></div></a>
-                <a class="HaveAccount" href="http://www.watrbx.wtf/newlogin?returnUrl=http%3A%2F%2Fwww.watrbx.wtf%2Fmy%2Fmessages%2F">I have an account</a>
+                <a href="<?=$_ENV["BASE_URL"]?>/newlogin?returnUrl=<?=urlencode($_ENV["BASE_URL"] . '/my/messages')?>"><div class="RevisedCharacterSelectSignup"></div></a>
+                <a class="HaveAccount" href="<?=$_ENV["BASE_URL"]?>/newlogin?returnUrl=<?=urlencode($_ENV["BASE_URL"] . '/my/messages')?>">I have an account</a>
             </div>
         </div>
     </div>
@@ -222,7 +222,7 @@
 <script type="text/javascript">
     Roblox.Client._skip = null;
     Roblox.Client._CLSID = '76D50904-6780-4c8b-8986-1A7EE0B1716D';
-    Roblox.Client._installHost = 'setup.watrbx.wtf';
+    Roblox.Client._installHost = $_ENV["BASE_URL"];
     Roblox.Client.ImplementsProxy = true;
     Roblox.Client._silentModeEnabled = true;
     Roblox.Client._bringAppToFrontEnabled = false;

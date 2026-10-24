@@ -17,7 +17,7 @@ $bad = false;
             <span class="card-thumb-wrapper game-thumb-wrapper"
                   >
                 <img class="card-thumb game-thumb" src="<?=$url?>" alt="<?=$game->title?>"
-                     thumbnail='{"Final":false,"Url":"<?=$url?>","RetryUrl":"http://watrbx.wtf/images/defaultimage.png"}' image-retry />
+                     thumbnail='{"Final":false,"Url":"<?=$url?>","RetryUrl":"<?=$_ENV['BASE_URL']?>/images/defaultimage.png"}' image-retry />
             </span>
         </span>
         <span class="rbx-text-overflow rbx-game-title card-title" title="<?=$game->title?>" ng-non-bindable>

@@ -81,7 +81,13 @@ git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
-**3. Run the setup script**
+**3. Install Composer Packages (first-time only)**
+
+```bash
+composer install
+```
+
+**4. Run the setup script**
 
 ```bash
 chmod +x init.sh start-db.sh server
@@ -90,7 +96,7 @@ chmod +x init.sh start-db.sh server
 
 Follow the instructions provided by the setup script.
 
-**4. Start MariaDB**
+**5. Start MariaDB**
 
 If MariaDB isn't already running:
 
@@ -98,7 +104,7 @@ If MariaDB isn't already running:
 sudo systemctl start mariadb
 ```
 
-**5. Start the website with the PHP Development Server (development only)**
+**6. Start the website with the PHP Development Server (development only)**
 
 ```bash
 ./server
@@ -157,20 +163,26 @@ git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
-**3. Run the setup script**
+**3. Install Composer Packages (first-time only)**
+
+```bash
+composer install
+```
+
+**4. Run the setup script**
 
 ```bash
 chmod +x init.sh start-db.sh server
 ./init.sh
 ```
 
-**4. Start MariaDB**
+**5. Start MariaDB**
 
 ```bash
 sudo systemctl enable --now mariadb
 ```
 
-**5. Start the website**
+**6. Start the website**
 
 ```bash
 ./server
@@ -195,14 +207,20 @@ git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
-**3. Run the setup script**
+**3. Install Composer Packages (first-time only)**
+
+```bash
+composer install
+```
+
+**4. Run the setup script**
 
 ```bash
 chmod +x init.sh start-db.sh server
 ./init.sh
 ```
 
-**4. Initialize MariaDB**
+**5. Initialize MariaDB**
 
 On a fresh installation, initialize the database directory:
 
@@ -212,13 +230,13 @@ sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 Skip this step if MariaDB has already been initialized.
 
-**5. Start MariaDB**
+**6. Start MariaDB**
 
 ```bash
 sudo systemctl enable --now mariadb
 ```
 
-**6. Start the website**
+**7. Start the website**
 
 ```bash
 ./server
@@ -247,20 +265,26 @@ git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
-**4. Run the setup script**
+**4. Install Composer Packages (first-time only)**
+
+```bash
+composer install
+```
+
+**5. Run the setup script**
 
 ```bash
 chmod +x init.sh start-db.sh server
 ./init.sh
 ```
 
-**5. Start MariaDB**
+**6. Start MariaDB**
 
 ```bash
 brew services start mariadb
 ```
 
-**6. Start the website**
+**7. Start the website**
 
 ```bash
 ./server
@@ -304,20 +328,26 @@ git clone http://github.com/Eduardo7881/watrbx-rebased.git
 cd watrbx-rebased
 ```
 
-**5. Run the setup script**
+**5. Install Composer Packages (first-time only)**
+
+```bash
+composer install
+```
+
+**6. Run the setup script**
 
 ```bash
 chmod +x init.sh start-db.sh server
 ./init.sh
 ```
 
-**6. Start MariaDB**
+**7. Start MariaDB**
 
 ```bash
 sudo service mariadb start
 ```
 
-**7. Start the website**
+**8. Start the website**
 
 ```bash
 ./server

@@ -18,7 +18,7 @@
                 <ul>
                     <li>Email: <a href="mailto:help@watrbx.wtf">help@watrbx.wtf</a></li>
                     <li>Discord: <a href="http://discord.gg/CHANGE_THIS_LINK">http://discord.gg/CHANGE_THIS_LINK</a></li>
-                    <li>Direct Messaging (on-site) or via forum: <a href="<?=$_ENV['BASE_URL']?>/users/2/profile">via pm</a> - <a href="<?=$_ENV['BASE_URL']?>/Forum/ShowForum.aspx?ForumID=2">via forum</a></li> 
+                    <li>Direct Messaging (on-site) or via forum: <a href="<?=$_ENV['BASE_URL']?>/users/1/profile">via pm</a> - <a href="<?=$_ENV['BASE_URL']?>/Forum/ShowForum.aspx?ForumID=2">via forum</a></li> 
                 </ul>
                 <br>
                 We will get back to you as soon as we can.

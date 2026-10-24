@@ -127,7 +127,7 @@ $pagebuilder->buildheader();
 												</div>
 												<div id="RightColumn">
 													<ul>
-														<li><a href="//setup.watrbx.wtf/RobloxStudioLauncherBeta.exe" class="studio-launch" download="//setup.watrbx.wtf/RobloxStudioLauncherBeta.exe">Download</a></li>
+														<li><a href="<?=$_ENV['BASE_URL']?>/CDN/RobloxStudioLauncherBeta.exe" class="studio-launch" download="<?=$_ENV['BASE_URL']?>/CDN/RobloxStudioLauncherBeta.exe">Download</a></li>
 														<li><a href="#">Forum</a></li>
 														<li><a href="#">Wiki</a></li>
 													</ul>

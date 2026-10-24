@@ -378,7 +378,6 @@ $router->get('/comments/get-json', function (){
 });
 
 $router->post('/my/account/sendverifyemail', function(){
-
     global $currentuser;
     global $db;
 
@@ -410,10 +409,7 @@ $router->post('/my/account/sendverifyemail', function(){
         }
 
         if($sanitize::email($email)){
-            
             if(password_verify($password, $currentuser->password)){
-
-
                 $allowedEmailDomains = [
                     "gmail.com",
                     "icloud.com"
@@ -491,8 +487,8 @@ $router->post('/my/account/sendverifyemail', function(){
 
                 $db->table("email_codes")->insert($insert);
 
-                $template = $emailClass->get_template("verifyemail", ["%username%"=>$currentuser->username, "%ticket%"=>$code]);
-                $emailClass->send_email($email, "watrbx Email Verification", $template);
+                $template = $emailClass->get_template("verifyemail", ["%username%"=>$currentuser->username, "%ticket%"=>$code, "%baseurl%"=>$_ENV["BASE_URL"], "%appname%"=>$_ENV["APP_NAME"]]);
+                $emailClass->send_email($email, $_ENV["APP_NAME"] . " Email Verification", $template);
 
                 $discord->internal_log("$currentuser->username is attempting to verify with email $email", "Email Verification Attempt");
 
@@ -534,7 +530,6 @@ $router->post('/my/account/sendverifyemail', function(){
 
         die(json_encode($return));
     }
-
 });
 
 $router->get("/avatar-thumbnail-3d/", function(){

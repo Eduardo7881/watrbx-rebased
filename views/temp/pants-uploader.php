@@ -24,7 +24,7 @@
     <h1>Temporary pants creator</h1>
     <small>this is temporary till the develop page is done</small>
     <br>
-    <small><a href="http://cdn.watrbx.wtf/PantsTemplate_02222016.png">Need the template?</a></small>
+    <small><a href="<?=$_ENV['BASE_URL']?>/PantsTemplate_02222016.png">Need the template?</a></small>
     <br><br>
 
     <form method="post" action="/api/v1/pants-creator" enctype="multipart/form-data">

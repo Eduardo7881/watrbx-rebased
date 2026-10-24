@@ -328,7 +328,7 @@ if($ismobile == false){ ?>
                         <a id="header-login" class="rbx-navbar-login" data-behavior="login" data-toggle="popover" data-bind="popover-login" data-viewport="#header">Log In</a>
                     </li>
                     <div id="iFrameLogin" class="rbx-popover-content" data-toggle="popover-login" role="menu">
-                        <iframe class="rbx-navbar-login-iframe" src="/Login/iFrameLogin.aspx?loginRedirect=True&amp;parentUrl=http%3a%2f%2fwww.watrbx.wtf%2fgames" scrolling="no" frameborder="0" width="320"></iframe>
+                        <iframe class="rbx-navbar-login-iframe" src="/Login/iFrameLogin.aspx?loginRedirect=True&amp;parentUrl=<?=urlencode($_ENV['BASE_URL'] . '/games')?>" scrolling="no" frameborder="0" width="320"></iframe>
                     </div>
                     <li>
                         <a class="rbx-navbar-signup" href="/">Sign Up</a>

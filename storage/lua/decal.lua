@@ -13,10 +13,12 @@ pcall(function() game:GetService("ContentProvider"):SetBaseUrl(baseUrl) end)
 game:GetService('ScriptContext').ScriptsDisabled = true
 
 local decal = game:GetObjects(assetUrl)[1]
+decal.Texture = string.gsub(decal.Texture, "https://www.roblox.com", baseUrl)
+decal.Texture = string.gsub(decal.Texture, "https://roblox.com", baseUrl)
 
 local image, requestedUrls
 local success = pcall(function()
-	image, requestedUrls = ThumbnailGenerator:ClickTexture(string.gsub(decal.Texture, "roblox.com", "watrbx.wtf"), fileExtension, 1024, 1024)
+	image, requestedUrls = ThumbnailGenerator:ClickTexture(decal.Texture, fileExtension, 1024, 1024)
 end)
 
 if success then

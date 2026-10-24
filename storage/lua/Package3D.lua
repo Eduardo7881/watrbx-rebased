@@ -10,7 +10,7 @@ game:GetService("ScriptContext").ScriptsDisabled = true
 local mannequin = game:GetObjects(baseUrl .. "/asset/?id=1785197&version=6")[1]
 mannequin.Parent = workspace
 
-local package = {"http://www.watrbx.wtf/asset/?id=" .. assetId}
+local package = {baseUrl .. "/asset/?id=" .. assetId}
 local bodyParts = {}
 
 for _, v in pairs(package) do
@@ -33,23 +33,23 @@ for _, v in pairs(package) do
 end
 
 if bodyParts[Enum.BodyPart.LeftArm] and bodyParts[Enum.BodyPart.Torso] and bodyParts[Enum.BodyPart.RightArm] then
-    game:GetObjects("http://www.watrbx.wtf/asset/?id=27113661")[1].Parent = mannequin
+    game:GetObjects(baseUrl .. "/asset/?id=27113661")[1].Parent = mannequin
 elseif bodyParts[Enum.BodyPart.LeftArm] and bodyParts[Enum.BodyPart.RightArm] then
-    game:GetObjects("http://www.watrbx.wtf/asset/?id=25251042")[1].Parent = mannequin
+    game:GetObjects(baseUrl .. "/asset/?id=25251042")[1].Parent = mannequin
 elseif bodyParts[Enum.BodyPart.Torso] then
-    game:GetObjects("http://www.watrbx.wtf/asset/?id=25251062")[1].Parent = mannequin
+    game:GetObjects(baseUrl .. "/asset/?id=25251062")[1].Parent = mannequin
 elseif bodyParts[Enum.BodyPart.LeftArm] then
-    game:GetObjects("http://www.watrbx.wtf/asset/?id=25251081")[1].Parent = mannequin
+    game:GetObjects(baseUrl .. "/asset/?id=25251081")[1].Parent = mannequin
 elseif bodyParts[Enum.BodyPart.RightArm] then
-    game:GetObjects("http://www.watrbx.wtf/asset/?id=25251071")[1].Parent = mannequin
+    game:GetObjects(baseUrl .. "/asset/?id=25251071")[1].Parent = mannequin
 end
 
 if bodyParts[Enum.BodyPart.LeftLeg] and bodyParts[Enum.BodyPart.RightLeg] then
-    game:GetObjects("http://www.watrbx.wtf/asset/?id=25251154")[1].Parent = mannequin
+    game:GetObjects(baseUrl .. "/asset/?id=25251154")[1].Parent = mannequin
 elseif bodyParts[Enum.BodyPart.LeftLeg] then
-    game:GetObjects("http://www.watrbx.wtf/asset/?id=25251138")[1].Parent = mannequin
+    game:GetObjects(baseUrl .. "/asset/?id=25251138")[1].Parent = mannequin
 elseif bodyParts[Enum.BodyPart.RightLeg] then
-    game:GetObjects("http://www.watrbx.wtf/asset/?id=25251144")[1].Parent = mannequin
+    game:GetObjects(baseUrl .. "/asset/?id=25251144")[1].Parent = mannequin
 end
 
 return ThumbnailGenerator:Click("OBJ", 1024, 1024, --[[hideSky = ]] true, false)

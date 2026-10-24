@@ -1,3 +1,7 @@
+local baseUrl = '%baseurl%'
+local accountAgeDays = %accountage%
+local membershipId = %membership%
+
 -- functions --------------------------
 function onPlayerAdded(player)
   -- override
@@ -49,20 +53,20 @@ end)
 
 game:GetService("ChangeHistoryService"):SetEnabled(false)
 game:GetService("ContentProvider"):SetThreadPool(16)
-game:GetService("InsertService"):SetBaseSetsUrl("http://www.watrbx.wtf/Game/Tools/InsertAsset.ashx?nsets=10&type=base")
-game:GetService("InsertService"):SetUserSetsUrl("http://www.watrbx.wtf/Game/Tools/InsertAsset.ashx?nsets=20&type=user&userid=%d")
-game:GetService("InsertService"):SetCollectionUrl("http://www.watrbx.wtf/Game/Tools/InsertAsset.ashx?sid=%d")
-game:GetService("InsertService"):SetAssetUrl("http://www.watrbx.wtf/asset/?id=%d")
-game:GetService("InsertService"):SetAssetVersionUrl("http://www.watrbx.wtf/Asset/?assetversionid=%d")
+game:GetService("InsertService"):SetBaseSetsUrl(baseUrl .. "/Game/Tools/InsertAsset.ashx?nsets=10&type=base")
+game:GetService("InsertService"):SetUserSetsUrl(baseUrl .. "/Game/Tools/InsertAsset.ashx?nsets=20&type=user&userid=%d")
+game:GetService("InsertService"):SetCollectionUrl(baseUrl .. "/Game/Tools/InsertAsset.ashx?sid=%d")
+game:GetService("InsertService"):SetAssetUrl(baseUrl .. "/asset/?id=%d")
+game:GetService("InsertService"):SetAssetVersionUrl(baseUrl .. "/Asset/?assetversionid=%d")
 
-pcall(function() game:GetService("SocialService"):SetFriendUrl("http://www.watrbx.wtf/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerid=%d&userid=%d") end)
-pcall(function() game:GetService("SocialService"):SetBestFriendUrl("http://www.watrbx.wtf/Game/LuaWebService/HandleSocialRequest.ashx?method=IsBestFriendsWith&playerid=%d&userid=%d") end)
-pcall(function() game:GetService("SocialService"):SetGroupUrl("http://www.watrbx.wtf/Game/LuaWebService/HandleSocialRequest.ashx?method=IsInGroup&playerid=%d&groupid=%d") end)
-pcall(function() game:GetService("SocialService"):SetGroupRankUrl("http://www.watrbx.wtf/Game/LuaWebService/HandleSocialRequest.ashx?method=GetGroupRank&playerid=%d&groupid=%d") end)
-pcall(function() game:GetService("SocialService"):SetGroupRoleUrl("http://www.watrbx.wtf/Game/LuaWebService/HandleSocialRequest.ashx?method=GetGroupRole&playerid=%d&groupid=%d") end)
-pcall(function() game:GetService("GamePassService"):SetPlayerHasPassUrl("http://www.watrbx.wtf/Game/GamePass/GamePassHandler.ashx?Action=HasPass&UserID=%d&PassID=%d") end)
-pcall(function() game:GetService("MarketplaceService"):SetProductInfoUrl("http://api.roblox.com/marketplace/productinfo?assetId=%d") end)
-pcall(function() game:GetService("MarketplaceService"):SetPlayerOwnsAssetUrl("http://api.roblox.com/ownership/hasasset?userId=%d&assetId=%d") end)
+pcall(function() game:GetService("SocialService"):SetFriendUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerid=%d&userid=%d") end)
+pcall(function() game:GetService("SocialService"):SetBestFriendUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=IsBestFriendsWith&playerid=%d&userid=%d") end)
+pcall(function() game:GetService("SocialService"):SetGroupUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=IsInGroup&playerid=%d&groupid=%d") end)
+pcall(function() game:GetService("SocialService"):SetGroupRankUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=GetGroupRank&playerid=%d&groupid=%d") end)
+pcall(function() game:GetService("SocialService"):SetGroupRoleUrl(baseUrl .. "/Game/LuaWebService/HandleSocialRequest.ashx?method=GetGroupRole&playerid=%d&groupid=%d") end)
+pcall(function() game:GetService("GamePassService"):SetPlayerHasPassUrl(baseUrl .. "/Game/GamePass/GamePassHandler.ashx?Action=HasPass&UserID=%d&PassID=%d") end)
+pcall(function() game:GetService("MarketplaceService"):SetProductInfoUrl(baseUrl .. "/marketplace/productinfo?assetId=%d") end)
+pcall(function() game:GetService("MarketplaceService"):SetPlayerOwnsAssetUrl(baseUrl .. "/ownership/hasasset?userId=%d&assetId=%d") end)
 pcall(function() game:SetCreatorID(0, Enum.CreatorType.User) end)
 
 pcall(function() game:GetService("Players"):SetChatStyle(Enum.ChatStyle.ClassicAndBubble) end)
@@ -84,7 +88,7 @@ function setMessage(message)
   if not false then
     game:SetMessage(message)
   else
-    -- hack, good enought for now
+    -- hack, good enough for now
     game:SetMessage("Teleporting ...")
   end
 end
@@ -103,7 +107,6 @@ function onDisconnection(peer, lostConnection)
 end
 
 function requestCharacter(replicator)
-  
   -- prepare code for when the Character appears
   local connection
   connection = player.Changed:connect(function (property)
@@ -196,14 +199,14 @@ local success, err = pcall(function()
 
   player:SetSuperSafeChat(false)
   pcall(function() player:SetUnder13(false) end)
-  pcall(function() player:SetMembershipType(Enum.MembershipType.OutrageousBuildersClub) end)
-  pcall(function() player:SetAccountAge(365) end)
+  pcall(function() player:SetMembershipType(membershipId) end)
+  pcall(function() player:SetAccountAge(accountAgeDays) end)
   player.Idled:connect(onPlayerIdled)
   
   -- Overriden
   onPlayerAdded(player)
   
-  player.CharacterAppearance = "http://www.watrbx.wtf/CharacterFetch.aspx?Id=%userid%&placeId=2"
+  player.CharacterAppearance = baseUrl .. "/CharacterFetch.aspx?Id=%userid%&placeId=2"
   if not test then visit:SetUploadUrl("")end
         player.Name = "%username%"
     

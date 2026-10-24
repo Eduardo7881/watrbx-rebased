@@ -119,9 +119,9 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
             });
         </script>
             <div id="EventStreamData"
-             data-default-url="//ecsv2.watrbx.wtf/www/e.png"
-             data-www-url="//ecsv2.watrbx.wtf/www/e.png"
-             data-studio-url="//ecsv2.watrbx.wtf/pe?t=studio"></div>
+             data-default-url="<?=$_ENV['BASE_URL']?>/www/e.png"
+             data-www-url="<?=$_ENV['BASE_URL']?>/www/e.png"
+             data-studio-url="<?=$_ENV['BASE_URL']?>/pe?t=studio"></div>
 
     <script type="text/javascript">
 if (typeof(Roblox) === "undefined") { Roblox = {}; }
@@ -299,7 +299,7 @@ if($ismobile == false){ ?>
                         <a id="header-login" class="rbx-navbar-login" data-behavior="login" data-toggle="popover" data-bind="popover-login" data-viewport="#header">Log In</a>
                     </li>
                     <div id="iFrameLogin" class="rbx-popover-content" data-toggle="popover-login" role="menu">
-                        <iframe id="iframe-login" class="rbx-navbar-login-iframe" src="/Login/iFrameLogin.aspx?loginRedirect=False&amp;parentUrl=https%3a%2f%2fwww.watrbx.wtf%2fNewLogin" scrolling="no" frameborder="0" width="320"></iframe>
+                        <iframe id="iframe-login" class="rbx-navbar-login-iframe" src="/Login/iFrameLogin.aspx?loginRedirect=False&amp;parentUrl=<?=urlencode($_ENV['BASE_URL'] . '/newlogin')?>" scrolling="no" frameborder="0" width="320"></iframe>
                     </div>
                     <li>
                         <a class="rbx-navbar-signup" href="/">Sign Up</a>

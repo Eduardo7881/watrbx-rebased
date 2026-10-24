@@ -1,7 +1,7 @@
-
+local placeId = %placeid%
 local port = 53640
 
-game:Load('rbxasset://temp.rbxl')
+game:Load('rbxassetid://' .. tostring(placeId))
 print("Loading map")
 local scriptContext = game:GetService('ScriptContext')
 pcall(function() scriptContext:AddStarterScript(libraryRegistrationScriptAssetID) end)

@@ -7,7 +7,6 @@ $func = new sitefunctions();
 $canregister = $func->get_setting("CAN_REGISTER");
 $captchaEnabled = $func->get_setting("CaptchaEnabled");
 
-
 if($auth->hasaccount()){
     header("Location: /home");
     die();
@@ -22,7 +21,7 @@ if($auth->hasaccount()){
 <!--<![endif]-->
 <head>
     <!-- MachineID: WEB129 -->
-    <title>watrbx.wtf</title>
+    <title><?=$_ENV['APP_NAME']?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,requiresActiveX=true" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,13 +74,13 @@ if($auth->hasaccount()){
 		    _gaq.push(['_setCampSourceKey', 'rbx_source']);
 		    _gaq.push(['_setCampMediumKey', 'rbx_medium']);
 		    _gaq.push(['_setCampContentKey', 'rbx_campaign']);
-		        _gaq.push(['_setDomainName', 'watrbx.wtf']);
+		        _gaq.push(['_setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
 		_gaq.push(['b._setAccount', 'UA-486632-1']);
 		_gaq.push(['b._setCampSourceKey', 'rbx_source']);
 		_gaq.push(['b._setCampMediumKey', 'rbx_medium']);
 		_gaq.push(['b._setCampContentKey', 'rbx_campaign']);
 
-		_gaq.push(['b._setDomainName', 'watrbx.wtf']);
+		_gaq.push(['b._setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
         
             _gaq.push(['b._setCustomVar', 1, 'Visitor', 'Anonymous', 2]);
             _gaq.push(['b._trackPageview']);    
@@ -90,7 +89,7 @@ if($auth->hasaccount()){
         
 
 		_gaq.push(['c._setAccount', 'UA-26810151-2']);
-		_gaq.push(['c._setDomainName', 'watrbx.wtf']);
+		_gaq.push(['c._setDomainName', '<?=$_ENV["APP_DOMAIN"]?>']);
 
 		(function() {
 			var ga = document.createElement('script');
@@ -107,7 +106,7 @@ if($auth->hasaccount()){
             <script type="text/javascript">
             $(function() {
                 if (Roblox.EventStream) {
-                    Roblox.EventStream.InitializeEventStream("//ecsv2.watrbx.wtf/www/e.png");
+                    Roblox.EventStream.InitializeEventStream("<?=$_ENV['APP_DOMAIN']?>/www/e.png");
                 }
             });
         </script>

@@ -63,7 +63,7 @@
       function publish(placeid){
          progresstext.innerHtml = "Updating " + placename + " ...";
          uploadbar.style.width = "20%";
-         window.external.SaveUrl('http://www.watrbx.wtf/api/v1/upload-place?placeId=' + placeid);
+         window.external.SaveUrl('<?=$_ENV["BASE_URL"]?>/api/v1/upload-place?placeId=' + placeid);
          uploadbar.style.width = "100%";
          uploadcontainer.style.display = "none";
          uploadsuccess.style.display = "block";

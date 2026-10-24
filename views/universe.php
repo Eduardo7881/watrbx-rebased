@@ -1725,7 +1725,7 @@ $pagebuilder->buildheader();
 
 <div id="usernotifications-data-model"
      class="hidden"
-     data-notificationsdomain="http://notifications.watrbx.wtf/"
+     data-notificationsdomain="<?=$_ENV["BASE_URL"]?>"
      data-notificationstestinterval="5000"
      data-notificationsmaxconnectiontime="43200000">
 </div>    <script type="text/javascript">
@@ -2635,8 +2635,8 @@ $pagebuilder->buildheader();
         <div style="clear:both; height:25px;"></div>
         <div class="RevisedFooter">
             <div style="width:200px;margin:10px auto 0 auto;">
-                <a href="/?returnUrl=http%3A%2F%2Fwww.watrbx.wtf%2Fgames%2F<?=$assetinfo->id?>%2FWork-at-a-Pizza-Place"><div class="RevisedCharacterSelectSignup"></div></a>
-                <a class="HaveAccount" href="<?=$_ENV['BASE_URL']?>/newlogin?returnUrl=http%3A%2F%2Fwww.watrbx.wtf%2Fgames%2F<?=$assetinfo->id?>%2FWork-at-a-Pizza-Place">I have an account</a>
+                <a href="/?returnUrl=<?=urlencode($_ENV['BASE_URL'] . '/games/' . $assetinfo->id . '/' . $assetinfo->name)?>"><div class="RevisedCharacterSelectSignup"></div></a>
+                <a class="HaveAccount" href="<?=$_ENV['BASE_URL']?>/newlogin?returnUrl=<?=urlencode($_ENV['BASE_URL'] . '/games/' . $assetinfo->id . '/' . $assetinfo->name)?>">I have an account</a>
             </div>
         </div>
     </div>
@@ -2646,7 +2646,6 @@ $pagebuilder->buildheader();
     function checkRobloxInstall() {
              return true;
     }
-
 </script>
 
     <div id="InstallationInstructions" style="display:none;">
@@ -2775,7 +2774,7 @@ $pagebuilder->buildheader();
 
     <script type="text/javascript">
         $(function () {
-            Roblox.CookieUpgrader.domain = 'watrbx.wtf';
+            Roblox.CookieUpgrader.domain = '$_ENV["APP_DOMAIN"]';
             Roblox.CookieUpgrader.upgrade("GuestData", { expires: Roblox.CookieUpgrader.thirtyYearsFromNow });
             Roblox.CookieUpgrader.upgrade("RBXSource", { expires: function (cookie) { return Roblox.CookieUpgrader.getExpirationFromCookieValue("rbx_acquisition_time", cookie); } });
             Roblox.CookieUpgrader.upgrade("RBXViralAcquisition", { expires: function (cookie) { return Roblox.CookieUpgrader.getExpirationFromCookieValue("time", cookie); } });

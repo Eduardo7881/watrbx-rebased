@@ -1134,8 +1134,8 @@ $router->post('/Login/ResetPasswordRequest.aspx', function(){
                     "date"=>time()
                 ];
 
-                $template = $emailClass->get_template("newpass", ["%username%"=>$userinfo->username, "%emailTicket%"=>$ticket]);
-                $emailClass->send_email($userinfo->email, "watrbx password reset", $template);
+                $template = $emailClass->get_template("newpass", ["%username%"=>$userinfo->username, "%emailTicket%"=>$ticket, "%baseurl%"=>$_ENV["BASE_URL"], "%appname%"=>$_ENV["APP_NAME"]]);
+                $emailClass->send_email($userinfo->email, $_ENV["APP_NAME"] . " password reset", $template);
 
                 $db->table("password_tickets")->insert($insert);
 
