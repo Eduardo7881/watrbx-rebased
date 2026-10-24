@@ -536,7 +536,7 @@ Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
             </ul>
         </div>
     </div>
-    <? } else { ?>
+    <?php } else { ?>
 
     <style>
         body, #wrap, .container-main {
@@ -545,7 +545,7 @@ Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
         }
     </style>
 
-    <? } ?>
+    <?php } ?>
     <div class="container-main    ">
             <script type="text/javascript">
                 if (top.location != self.location) {
