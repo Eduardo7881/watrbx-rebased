@@ -1,4 +1,4 @@
-?php
+<?php
 use watrlabs\router\Routing;
 use watrlabs\authentication;
 
