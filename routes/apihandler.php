@@ -4659,71 +4659,42 @@ $router->post('/marketplace/submitpurchase', function(){ // todo implement
     die('{"success": true, "receipt": "hi" }');
 });
 
-$router->get('/asset/CharacterFetch.aspx', function(){
+function fetchCharacter($id) {
+    global $db;
 
-    $charapp = "";
-    $placeid = 0;
+    $allitems = $db->table("wearingitems")->where("userid", $id)->get();
+    $charapp = $_ENV["BASE_URL"] . "/Asset/BodyColors.ashx?Id=$id;";
 
-    if(isset($_GET["placeid"])){
-        $placeid = (int)$_GET["placeid"];
-    }
-
-    if(isset($_GET["userId"])){
-        global $db;
-        $id = (int)$_GET["userId"];
-
-        $allitems = $db->table("wearingitems")->where("userid", $id)->get();
-
-        if(!empty($allitems)){
-            $charapp = "http://www.watrbx.wtf/Asset/BodyColors.ashx?Id=$id;";
-        }
-
+    if (!empty($allitems)) {
         foreach ($allitems as $item){
             $assetinfo = $db->table("assets")->where("id", $item->itemid)->first();
 
             if ($assetinfo === null) {
-                $charapp .= "http://www.watrbx.wtf/asset/?id=". $item->itemid .";";
+                $charapp .= $_ENV["BASE_URL"] . "/asset/?id=". $item->itemid .";";
             } else {
                 if (!($assetinfo->prodcategory == 19 && false)) {
-                    $charapp .= "http://www.watrbx.wtf/asset/?id=". $item->itemid .";";
+                    $charapp .= $_ENV["BASE_URL"] . "/asset/?id=". $item->itemid .";";
                 }
             }
         }
     }
 
-    die($charapp);
-});
+    return $charapp;
+}
 
-$router->get('/CharacterFetch.aspx', function(){
-
+$router->get(['/asset/CharacterFetch.aspx', '/CharacterFetch.aspx'], function(){
     $charapp = "";
-    $placeid = 0;
+    $userId = filter_input(INPUT_GET, 'userId', FILTER_VALIDATE_INT);
+    $legacyId = filter_input(INPUT_GET, 'Id', FILTER_VALIDATE_INT);
 
-    if(isset($_GET["placeid"])){
-        $placeid = (int)$_GET["placeid"];
-    }
+    $id = ($userId !== false && $userId !== null && $userId > 0) ? $userId : (($legacyId !== false && $legacyId !== null && $legacyId > 0) ? $legacyId : 0);
 
-    if(isset($_GET["Id"])){
-        global $db;
-        $id = (int)$_GET["Id"];
-
-        $allitems = $db->table("wearingitems")->where("userid", $id)->get();
-
-        if(!empty($allitems)){
-            $charapp = "http://www.watrbx.wtf/Asset/BodyColors.ashx?Id=$id;";
-        }
-
-        foreach ($allitems as $item){
-            $assetinfo = $db->table("assets")->where("id", $item->itemid)->first();
-
-            if ($assetinfo === null) {
-                $charapp .= "http://www.watrbx.wtf/asset/?id=". $item->itemid .";";
-            } else {
-                if (!($assetinfo->prodcategory == 19 && false)) {
-                    $charapp .= "http://www.watrbx.wtf/asset/?id=". $item->itemid .";";
-                }
-            }
-        }
+    if($id > 0) {
+        $charapp = fetchCharacter($id);
+    } else {
+        echo "your id is 0";
+        echo $id;
+        die();
     }
 
     die($charapp);

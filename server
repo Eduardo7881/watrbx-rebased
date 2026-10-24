@@ -2,4 +2,4 @@
 
 #mysqladmin -u root shutdown
 #mysqld_safe --datadir=$PREFIX/var/lib/mysql
-php -S 0.0.0.0:8080 -t ./public ./router.php
+PHP_CLI_SERVER_WORKERS=4 php -S 0.0.0.0:8080 -t ./public ./router.php

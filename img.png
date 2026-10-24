@@ -1,0 +1,19 @@
+<br />
+<b>Warning</b>:  Undefined array key "BASE_URL" in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php</b> on line <b>5</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "BASE_URL" in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php</b> on line <b>6</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "APP_DOMAIN" in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php</b> on line <b>6</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "APP_DOMAIN" in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php</b> on line <b>6</b><br />
+<br />
+<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at /data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php:5) in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/avatar.php</b> on line <b>18</b><br />
+<br />
+<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at /data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php:5) in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/avatar.php</b> on line <b>19</b><br />
+<br />
+<b>Warning</b>:  http_response_code(): Cannot set response code - headers already sent (output started at /data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php:5) in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/avatar.php</b> on line <b>11</b><br />
+<br />
+<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at /data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php:5) in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/avatar.php</b> on line <b>12</b><br />
+<br />
+<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at /data/data/com.termux/files/home/watrbx-rec/public/vanilla/config.php:5) in <b>/data/data/com.termux/files/home/watrbx-rec/public/vanilla/avatar.php</b> on line <b>13</b><br />
+could not fetch the charapp url (blocked or unresolvable localhost)

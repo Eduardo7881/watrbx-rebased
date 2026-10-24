@@ -25,6 +25,10 @@ $router->get('/wasm/UniversalClient.html', function() {
     $page::get_template("UniversalClient", ["placeId"=>(int)$_GET['placeId']]);
 });
 
+$router->get("/vanilla/avatar.php", function() {
+    require_once __DIR__ . '/../vanilla/avatar.php';
+});
+
 $router->get('/game/GetAllowedExperimentalFeatures', function(){
     die("{}");
 });

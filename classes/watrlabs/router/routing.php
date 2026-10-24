@@ -4,58 +4,64 @@ namespace watrlabs\router;
 use watrlabs\watrkit\pagebuilder;
 
 class Routing {
-    
     protected array $routes = [];
     protected array $prefix = [];
     protected $currentprefix = '';
     protected $currentmiddleware = null;
 
-    protected function addRoute(string $method, string $uri, callable $callback): void {
-        $fullUri = $this->currentprefix . (rtrim($uri, '/') ?: '/');
+    protected function addRoute(string $method, string|array $uri, callable $callback): void {
+        if (is_array($uri)) {
+            foreach ($uri as $newUri) {
+                $this->addRoute($method, $newUri, $callback);
+            }
+            return;
+        } else {
+            $fullUri = $this->currentprefix . (rtrim($uri, '/') ?: '/');
 
-        if ($this->currentmiddleware) {
-            $originalcallback = $callback;
-            $middleware = $this->currentmiddleware;
+            if ($this->currentmiddleware) {
+                $originalcallback = $callback;
+                $middleware = $this->currentmiddleware;
 
-            $callback = function(...$args) use ($middleware, $originalcallback) {
-//                if (isset($_ENV['LOG_REQUESTS']) && $_ENV["LOG_REQUESTS"] == true) error_log(sprintf("[Router] [%s] %s", $method, $uri));
-                $middleware();
-                return $originalcallback(...$args);
-            };
+                $callback = function(...$args) use ($middleware, $originalcallback) {
+                    //if (isset($_ENV['LOG_REQUESTS']) && $_ENV["LOG_REQUESTS"] == true) error_log(sprintf("[Router] [%s] %s", $method, $uri));
+                    $middleware();
+                    return $originalcallback(...$args);
+                };
+            }
+
+            $this->routes[$method][strtolower($fullUri)] = $callback;
         }
-
-        $this->routes[$method][strtolower($fullUri)] = $callback;
     }
 
-    public function get(string $uri, callable $callback) {
+    public function get(string|array $uri, callable $callback) {
         $this->addRoute('GET', $uri, $callback);
     }
 
-    public function post(string $uri, callable $callback) {
+    public function post(string|array $uri, callable $callback) {
         $this->addRoute('POST', $uri, $callback);
     }
     
-    public function put(string $uri, callable $callback) {
-        $this->addRoute('POST', $uri, $callback);
+    public function put(string|array $uri, callable $callback) {
+        $this->addRoute('PUT', $uri, $callback);
     }
     
-    public function del(string $uri, callable $callback) {
+    public function del(string|array $uri, callable $callback) {
         $this->addRoute('DELETE', $uri, $callback);
     }
     
-    public function connect(string $uri, callable $callback) {
+    public function connect(string|array $uri, callable $callback) {
        $this->addRoute('CONNECT', $uri, $callback);
     }
     
-    public function options(string $uri, callable $callback) {
+    public function options(string|array $uri, callable $callback) {
         $this->addRoute('OPTIONS', $uri, $callback);
     }
     
-    public function trace(string $uri, callable $callback) {
+    public function trace(string|array $uri, callable $callback) {
         $this->addRoute('TRACE', $uri, $callback);
     }
     
-    public function patch(string $uri, callable $callback) {
+    public function patch(string|array $uri, callable $callback) {
         $this->addRoute('PATCH', $uri, $callback); 
     }
     
@@ -73,7 +79,6 @@ class Routing {
     }
 
     public function dispatch($uri, $method) {
-        
         $uri = rtrim($uri, '/') ?: '/';
         
         if (isset($this->routes[$method][$uri])) {
@@ -96,7 +101,6 @@ class Routing {
                     array_shift($matches);
                     return call_user_func_array($callback, $matches);
                 }
-                
             }
         }
         
